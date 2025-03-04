@@ -5,10 +5,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/warehouses" element={<WarehouseList />} />
-        <Route path="/warehouses/:warehouseId" element={<WarehouseDetails />} />
-        <Route path="/warehouses/:warehouseId/inventories" element={<WarehouseInventories />} />
-        <Route path="/inventories/:inventoryId" element={<InventoryDetails />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/warehouses/:warehouseId" element={<WarehouseDetailsPage />} />
+        <Route path="/warehouses/add" element={<WarehouseFormPage />} />
+        <Route path="/warehouses/edit" element={<WarehouseFormPage />} />
+        <Route path="/inventories" element={<InventoriesListPage />} />
+        <Route path="/inventories/:inventoryId" element={<InventoryDetailsPage />} />
+        <Route path="/inventories/add" element={<InventoriesFormPage />} />
+        <Route path="/inventories/edit" element={<InventoriesFormPage />} />
       </Routes>
     </Router>
   );
