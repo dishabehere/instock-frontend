@@ -1,7 +1,14 @@
+@use "/src/styles/_variables.scss" as *;
+@use "/src/styles/_mixins.scss" as *;
+
+
 .footer {
     &__container {
         display: flex;
         justify-content: center;
         background-color: lightgrey;
+    }
+    &__text {
+        color: $table-text-color;
     }
 }
