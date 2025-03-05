@@ -1,3 +1,6 @@
+@use "/src/styles/partials/_mixins.scss" as *;
+@use "/src/styles/partials/_variables.scss" as *;
+
 header {
   background-color: #232940;
   min-width: 23.4375rem;

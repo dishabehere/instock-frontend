@@ -7,7 +7,7 @@ function Header() {
     <header className='header__container'>
       <img
         className="header__logo"
-        src="../src/assets/logo/InStock-Logo_1x.png"
+        src="../src/assets/logo/InStock-Logo.svg"
         alt="header logo of two arrows in opposite directions"
         ></img>
       <nav className='nav-bar__container'>
