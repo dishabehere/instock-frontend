@@ -10,12 +10,12 @@ function Header() {
         src="../src/assets/logo/InStock-Logo_1x.png"
         alt="header logo of two arrows in opposite directions"
         ></img>
-      <nav>
-        <Link to="/">
-          <h2>Warehouse</h2>
+      <nav className='nav-bar__container'>
+        <Link className='nav-bar__link' to="/">
+          <h2 className='nav-bar__title'>Warehouse</h2>
         </Link>
-        <Link to="/inventories">
-          <h2>Inventory</h2>
+        <Link className='nav-bar__link' to="/inventories">
+          <h2 className='nav-bar__title'>Inventory</h2>
         </Link>
       </nav>
     </header>

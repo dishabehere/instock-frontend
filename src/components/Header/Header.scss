@@ -1,7 +1,34 @@
 header {
+  background-color: #232940;
+  min-width: 23.4375rem;
+  width: 100%;
+  height: 12.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .header__logo {
+    padding-top: 1.5rem;
+  }
+}
+.nav-bar {
     &__container {
-        background-color: #232940;
-        width: 23.4375rem;
-        height: 12.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    }
+    &__link {
+    text-decoration: none;
+    }
+    &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+    width: 10.25rem;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+    margin-top: 3.25rem
     }
 }
