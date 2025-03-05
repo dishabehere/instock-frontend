@@ -24,6 +24,10 @@ return (
                     + Add New Warehouse
                 </button>
             </div>
+
+            <div>
+                
+            </div>
         </section>
     </>
 );
