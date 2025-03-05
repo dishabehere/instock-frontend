@@ -2,17 +2,27 @@
 @use "/src/styles/partials/_variables.scss" as *;
 
 header {
-  background-color: #232940;
+  background-color: $secondary-background-color;
   min-width: 23.4375rem;
   width: 100%;
   height: 12.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .header__logo {
+  @include responsive(tablet) {
+    height: 11.625rem;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem;
+  }
+  .header__container {
     padding-top: 1.5rem;
   }
+//   .header__logo {
+//     padding-top: 1.5rem;
+//     @include responsive(tablet) {
+//     }
+//   }
 }
 .nav-bar {
     &__container {
@@ -21,17 +31,23 @@ header {
     justify-content: space-around;
     }
     &__link {
-    text-decoration: none;
+        text-decoration: none;
+        &--active {
+          .nav-bar__title {
+            color: $global-white-color;
+          }
+        }
     }
     &__title {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    background-color: black;
+    color: $table-border-color;
+    background-color: $global-text-color;
     width: 10.25rem;
     height: 2.25rem;
     border-radius: 1.25rem;
-    margin-top: 3.25rem
+    margin-top: 3.25rem;
+    @include text-style(.8125rem, 1.25rem, 600)
     }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Header.scss";
 
 function Header() {
@@ -11,13 +11,18 @@ function Header() {
         alt="header logo of two arrows in opposite directions"
         ></img>
       <nav className='nav-bar__container'>
-        <Link className='nav-bar__link' to="/">
+        <NavLink className={({ isActive }) => 
+            isActive ? 'nav-bar__link nav-bar__link--active' : 'nav-bar__link'
+          } to="/">
           <h2 className='nav-bar__title'>Warehouse</h2>
-        </Link>
-        <Link className='nav-bar__link' to="/inventories">
+        </NavLink>
+        <NavLink to="/inventories" className={({ isActive }) => 
+            isActive ? 'nav-bar__link nav-bar__link--active' : 'nav-bar__link'
+          } >
           <h2 className='nav-bar__title'>Inventory</h2>
-        </Link>
+        </NavLink>
       </nav>
+
     </header>
   );
 }
