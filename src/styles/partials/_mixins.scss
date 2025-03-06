@@ -1,7 +1,7 @@
 @use "./variables" as *;
 @use "./fonts" as *;
 
-// The same mixin can be used for both tablet and desktop individually and togather
+// The same mixin can be used for both tablet and desktop individually and together
 @mixin responsive($breakpoints...) {
     @each $breakpoint in $breakpoints {
       @if $breakpoint == tablet {
@@ -11,7 +11,6 @@
       }
     }
 }
-
 // To add all font-styles using one mixin
 @mixin text-style($size, $line-height, $weight, $style: normal) {
     font-size: $size;

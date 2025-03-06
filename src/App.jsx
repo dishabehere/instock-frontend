@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import HomePage from "./pages/HomePage/HomePage";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Route path="/inventories" element={<InventoriesListPage />} />
         <Route path="/inventories/:inventoryId" element={<InventoryDetailsPage />} />
         <Route path="/inventories/add" element={<InventoriesFormPage />} />
-        <Route path="/inventories/edit" element={<InventoriesFormPage />} /> */}
+        <Route path="/inventories/edit" element={<InventoriesFormPage />} /> */} 
       </Routes>
+      <Footer/>
     </Router>
   );
 }

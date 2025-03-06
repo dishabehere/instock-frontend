@@ -1,0 +1,25 @@
+@use "/src/styles/partials/_global.scss" as *;
+@use "/src/styles/partials/_mixins.scss" as *;
+@use "/src/styles/partials/_variables.scss" as *;
+
+.footer {
+    &__container {
+        display: flex;
+        justify-content: center;
+        background-color: $primary-background-color;
+        min-width: 9.8125rem;
+        margin-top: 109.4375rem;
+        padding: 2.5rem 0;
+        @include responsive (tablet) {
+            margin-top: 60.375rem;
+            padding: 3.5rem 0 2.5rem 0;
+        }
+    }
+    &__text {
+        color: $table-text-color;
+        @include text-style(.6875rem, 1rem, 400);
+        @include responsive (tablet) {
+            @include text-style(.75rem, 1.125rem, 400);
+        }
+    }
+}
