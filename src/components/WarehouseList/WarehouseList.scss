@@ -56,7 +56,7 @@
         transition: 0.3s;
 
         &:hover {
-            background-color: #1d4ed8;
+            background-color: $secondary-background-color;
         }
     }
 
@@ -97,6 +97,10 @@
         &--name {
             font-weight: 600;
             color: $interactive-color;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 
