@@ -88,7 +88,7 @@ function WarehouseList() {
                                 </div>
                             </div>
 
-                            <div className="warehouse-list__content">
+                            <div className="warehouse-list__content warehouse-list__content--contact">
                                 <div className="warehouse-list__info">
                                     <h4 className="warehouse-list__label">CONTACT NAME</h4>
                                     <p className="warehouse-list__text">{warehouse.contact_name}</p>
