@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
 import "./App.scss";
 import Footer from "./components/Footer/Footer";
 
@@ -6,8 +7,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* <Route path="/" element={<HomePage />} />
-        <Route path="/warehouses/:warehouseId" element={<WarehouseDetailsPage />} />
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/warehouses/:warehouseId" element={<WarehouseDetailsPage />} />
         <Route path="/warehouses/add" element={<WarehouseFormPage />} />
         <Route path="/warehouses/edit" element={<WarehouseFormPage />} />
         <Route path="/inventories" element={<InventoriesListPage />} />
@@ -20,4 +21,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
