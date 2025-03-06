@@ -34,7 +34,7 @@ header {
       display: flex;
       justify-content: space-around;
       @include responsive(tablet) {
-        width: 40%;
+        width: 30%;
       }
     }
     &__link {
@@ -42,32 +42,23 @@ header {
       width: 50%;
       display: flex;
       justify-content: center;
-      &--active {
+
+      &:hover {
+        .nav-bar__title {
+          color: $global-white-color;
+          text-decoration: underline;
+        }
+      }
+
+      &--warehouse-active , &--inventory-active {
         .nav-bar__title {
           color: $global-white-color;
           background-color: $global-text-color;
           border-radius: 1.25rem;
           min-height: 2.25rem;
-        }
-      }
-      &--warehouse-active {
-        .nav-bar__title {
-          width: 10.25rem;
+          padding: 0.5rem 1.5rem;
           @include responsive(tablet) {
-            width: 6.6875rem;
-            height: 2.375rem;
-          }
-          @include responsive(desktop) {
-            width: 4.6875rem;
-          }
-        }
-      }
-      &--inventory-active {
-        .nav-bar__title {
-          width: 10.1875rem;
-          @include responsive(tablet) {
-            width: 5.625rem;
-            height: 2.375rem;
+            padding: 0.5rem 1.5rem;
           }
         }
       }

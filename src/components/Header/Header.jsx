@@ -14,7 +14,7 @@ function Header() {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "nav-bar__link nav-bar__link--active nav-bar__link--warehouse-active"
+              ? "nav-bar__link nav-bar__link--warehouse-active"
               : "nav-bar__link"
           }
           to="/"
@@ -24,7 +24,7 @@ function Header() {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "nav-bar__link nav-bar__link--active nav-bar__link--inventory-active"
+              ? "nav-bar__link nav-bar__link--inventory-active"
               : "nav-bar__link"
           }
           to="/inventories"
