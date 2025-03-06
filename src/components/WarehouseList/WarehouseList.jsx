@@ -4,6 +4,7 @@ import searchIcon from "../../assets/icons/search-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
+import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
 
 function WarehouseList() {
@@ -33,17 +34,39 @@ function WarehouseList() {
         <section className="warehouse-list">
             <div className="warehouse-list__header">
                 <h1 className="warehouse-list__heading">Warehouses</h1>
-                <div className="warehouse-list__search-bar">
-                    <input
-                        className="warehouse-list__search-text"
-                        type="text"
-                        placeholder="Search..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                    />
-                    <img className="warehouse-list__search-icon" src={searchIcon} alt="Search" />
+                <div className="warehouse-list__buttons">
+                    <div className="warehouse-list__search-bar">
+                        <input
+                            className="warehouse-list__search-text"
+                            type="text"
+                            placeholder="Search..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                        <img className="warehouse-list__search-icon" src={searchIcon} alt="Search" />
+                    </div>
+                    <button className="warehouse-list__button">+ Add New Warehouse</button>
                 </div>
-                <button className="warehouse-list__button">+ Add New Warehouse</button>
+            </div>
+
+            <div className="warehouse-list__index">
+                <div className="warehouse-list__title">
+                    <h4 className="warehouse-list__title-text">WAREHOUSE</h4>
+                    <img className="warehouse-list__sort" src={sort} alt="sort" />
+                </div>
+                <div className="warehouse-list__title">
+                    <h4 className="warehouse-list__title-text">ADDRESS</h4>
+                    <img className="warehouse-list__sort" src={sort} alt="sort" />
+                </div>
+                <div className="warehouse-list__title">
+                    <h4 className="warehouse-list__title-text">CONTACT NAME</h4>
+                    <img className="warehouse-list__sort" src={sort} alt="sort" />
+                </div>
+                <div className="warehouse-list__title">
+                    <h4 className="warehouse-list__title-text">CONTACT INFORMATION</h4>
+                    <img className="warehouse-list__sort" src={sort} alt="sort" />
+                </div>
+                <h4 className="warehouse-list__title-text">ACTIONS</h4>
             </div>
 
             <div className="warehouse-list__container">
