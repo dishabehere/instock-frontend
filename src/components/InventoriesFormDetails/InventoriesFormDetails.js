@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { fetchInventoryItem } from "../../utils/inventoryUtils";
 
 function InventoriesFormDetails({ id }) {
   const [inventory, setInventory] = useState({
@@ -9,20 +9,17 @@ function InventoriesFormDetails({ id }) {
   });
 
   useEffect(() => {
-    fetchInventoryId();
+    fetchInventoryData();
   }, [id]);
 
-  async function fetchInventoryId() {
+  async function fetchInventoryData() {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/inventories/${id}`
-      );
+      const data = await fetchInventoryItem(id);
       setInventory(data);
     } catch (error) {
       console.error(error);
     }
   }
-
   return (
     <form>
       <div className="details">
