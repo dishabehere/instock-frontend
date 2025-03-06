@@ -45,14 +45,14 @@ header {
 
       &:hover {
         .nav-bar__title {
-          color: $global-white-color;
+          color: $global-color;
           text-decoration: underline;
         }
       }
 
       &--warehouse-active , &--inventory-active {
         .nav-bar__title {
-          color: $global-white-color;
+          color: $global-color;
           background-color: $global-text-color;
           border-radius: 1.25rem;
           min-height: 2.25rem;
