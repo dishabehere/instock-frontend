@@ -5,9 +5,9 @@
 @mixin responsive($breakpoints...) {
     @each $breakpoint in $breakpoints {
       @if $breakpoint == tablet {
-        @media (min-width: 768px) { @content; }
+        @media (min-width: $tablet-breakpoint) { @content; }
       } @else if $breakpoint == desktop {
-        @media (min-width: 1024px) { @content; }
+        @media (min-width: $desktop-breakpoint) { @content; }
       }
     }
 }
