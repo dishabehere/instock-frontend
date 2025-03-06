@@ -3,6 +3,7 @@ import axios from "axios";
 import searchIcon from "../../assets/icons/search-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
+import chevron from "../../assets/icons/chevron_right-24px.svg";
 import "./WarehouseList.scss";
 
 function WarehouseList() {
@@ -49,21 +50,35 @@ function WarehouseList() {
                 {warehouses.map((warehouse) => (
                     <div key={warehouse.id} className="warehouse-list__item">
                         <div className="warehouse-list__details">
-                            <div className="warehouse-list__column">
-                                <h4 className="warehouse-list__label">WAREHOUSE</h4>
-                                <p className="warehouse-list__name">{warehouse.warehouse_name} &gt;</p>
-                                <h4 className="warehouse-list__label">ADDRESS</h4>
-                                <p className="warehouse-list__address">{warehouse.address}</p>
+                            <div className="warehouse-list__content">
+                                <div className="warehouse-list__info"> 
+                                    <h4 className="warehouse-list__label">WAREHOUSE</h4>
+                                    <div className="warehouse-list__name">
+                                        <p className="warehouse-list__text warehouse-list__text--name">{warehouse.warehouse_name}</p>   
+                                        <img className="warehouse-list__chevron" src={chevron} alt="chevron" />
+                                    </div>
+                                </div>
+                                <div className="warehouse-list__info"> 
+                                    <h4 className="warehouse-list__label">ADDRESS</h4>
+                                    <p className="warehouse-list__text">{warehouse.address}, </p>
+                                    <p className="warehouse-list__text">{warehouse.city}</p>
+                                </div>
                             </div>
 
-                            <div className="warehouse-list__column">
-                                <h4 className="warehouse-list__label">CONTACT NAME</h4>
-                                <p className="warehouse-list__contact">{warehouse.contactName}</p>
-                                <h4 className="warehouse-list__label">CONTACT INFORMATION</h4>
-                                <p className="warehouse-list__info">{warehouse.contactInfo}</p>
+                            <div className="warehouse-list__content">
+                                <div className="warehouse-list__info">
+                                    <h4 className="warehouse-list__label">CONTACT NAME</h4>
+                                    <p className="warehouse-list__text">{warehouse.contact_name}</p>
+                                </div>
+                                <div className="warehouse-list__info">
+                                    <h4 className="warehouse-list__label">CONTACT INFORMATION</h4>
+                                    <p className="warehouse-list__text">{warehouse.contact_phone}</p>
+                                    <p className="warehouse-list__text">{warehouse.contact_email}</p>
+                                </div>
                             </div>
                         </div>
 
+                        {/* Actions row placed below details */}
                         <div className="warehouse-list__actions">
                             <img className="warehouse-list__icon" src={deleteIcon} alt="Delete" />
                             <img className="warehouse-list__icon" src={editIcon} alt="Edit" />
@@ -71,6 +86,7 @@ function WarehouseList() {
                     </div>
                 ))}
             </div>
+
         </section>
     );
 }
