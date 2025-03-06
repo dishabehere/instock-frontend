@@ -1,11 +1,12 @@
-import "./Homepage.scss";
+import WarehouseList from "../../components/WarehouseList/WarehouseList";
+import "./HomePage.scss";
 
 function HomePage() {
-
-  return (
-    <div>
-    </div>
-  );
+return (
+    <>
+        <WarehouseList />
+    </>
+);
 }
 
 export default HomePage;
