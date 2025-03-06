@@ -50,9 +50,8 @@ function InventoriesFormStock() {
       <p className="stock__label">Warehouse</p>
       <label className="stock__field">
         <select
-          name="warehouse"
+          name="warehouse-location"
           className="stock__locations"
-          placeholder="Please Select"
         ></select>
       </label>
       <div>Cancel</div>
