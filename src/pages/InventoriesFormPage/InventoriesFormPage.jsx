@@ -1,5 +1,5 @@
 import InventoriesFormDetails from "../../components/InventoriesFormDetails/InventoriesFormDetails";
-import InventoriesFormStock from "../../components/InventoriesFormStock/InventoiresFormStock";
+import InventoriesFormStock from "../../components/InventoriesFormStock/InventoriesFormStock";
 import InventoriesFormHeader from "../../components/InventoriesFormHeader/InventoriesFormHeader";
 
 export default function InventoriesFormPage() {
