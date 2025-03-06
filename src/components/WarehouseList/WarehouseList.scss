@@ -1,7 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 .warehouse-list {
-    background-color: $global-white-color;
+    background-color: $global-color;
     margin: 8.5rem 1rem .3125rem;
     border-radius: .1875rem;
     box-shadow: 0 .125rem .3125rem rgba(19, 24, 44, 0.1);
@@ -45,7 +45,7 @@
     &__search-bar {
         display: flex;
         align-items: center;
-        background: $global-white-color;
+        background: $global-color;
         border-radius: 1.25rem;
         padding: .5rem .75rem;
         width: 100%;
@@ -74,7 +74,7 @@
 
     &__button {
         background-color: $interactive-color;
-        color: $global-white-color;
+        color: $global-color;
         @include text-style(.8125rem, 1.25rem, 600, normal);
         height: 2.25rem;
         width: 100%;
@@ -116,6 +116,7 @@
 
             &-text{
                 color: $table-text-color;
+                text-transform: uppercase;
             }
 
         }
@@ -226,7 +227,12 @@
         align-items: center;
         justify-content: space-between;
 
-        @include responsive(tablet, desktop) {
+        @include responsive(tablet) {
+            justify-content: unset;
+            gap: 1rem;
+        }
+
+        @include responsive(desktop) {
             gap: 1rem;
         }
     }

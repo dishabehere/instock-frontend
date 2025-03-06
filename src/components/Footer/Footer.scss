@@ -12,6 +12,10 @@
         @include responsive (tablet) {
             padding: 3.5rem 0 2.5rem 0;
         }
+
+        @include responsive (desktop) {
+            margin-top: 2rem;
+        }
     }
     &__text {
         color: $table-text-color;

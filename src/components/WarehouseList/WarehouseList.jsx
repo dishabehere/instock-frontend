@@ -15,7 +15,6 @@ function WarehouseList() {
         const fetchWarehouses = async () => {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses`);
-                console.log(response.data);
                 setWarehouses(response.data);
             } catch (error) {
                 console.error("Error fetching warehouses:", error);
@@ -51,22 +50,22 @@ function WarehouseList() {
 
             <div className="warehouse-list__index">
                 <div className="warehouse-list__title">
-                    <h4 className="warehouse-list__title-text">WAREHOUSE</h4>
+                    <h4 className="warehouse-list__title-text">Warehouse</h4>
                     <img className="warehouse-list__sort" src={sort} alt="sort" />
                 </div>
                 <div className="warehouse-list__title">
-                    <h4 className="warehouse-list__title-text">ADDRESS</h4>
+                    <h4 className="warehouse-list__title-text">Address</h4>
                     <img className="warehouse-list__sort" src={sort} alt="sort" />
                 </div>
                 <div className="warehouse-list__title">
-                    <h4 className="warehouse-list__title-text">CONTACT NAME</h4>
+                    <h4 className="warehouse-list__title-text">Contact Name</h4>
                     <img className="warehouse-list__sort" src={sort} alt="sort" />
                 </div>
                 <div className="warehouse-list__title">
-                    <h4 className="warehouse-list__title-text">CONTACT INFORMATION</h4>
+                    <h4 className="warehouse-list__title-text">Contact Information</h4>
                     <img className="warehouse-list__sort" src={sort} alt="sort" />
                 </div>
-                <h4 className="warehouse-list__title-text">ACTIONS</h4>
+                <h4 className="warehouse-list__title-text">Actions</h4>
             </div>
 
             <div className="warehouse-list__container">
@@ -75,25 +74,25 @@ function WarehouseList() {
                         <div className="warehouse-list__details">
                             <div className="warehouse-list__content">
                                 <div className="warehouse-list__info"> 
-                                    <h4 className="warehouse-list__label">WAREHOUSE</h4>
+                                    <h4 className="warehouse-list__label">Warehouse</h4>
                                     <div className="warehouse-list__name">
                                         <p className="warehouse-list__text warehouse-list__text--name">{warehouse.warehouse_name}</p>   
-                                        <img className="warehouse-list__chevron" src={chevron} alt="chevron" />
+                                        <img className="warehouse-list__chevron" src={chevron} alt="Chevron Icon" />
                                     </div>
                                 </div>
                                 <div className="warehouse-list__info"> 
-                                    <h4 className="warehouse-list__label">ADDRESS</h4>
+                                    <h4 className="warehouse-list__label">Address</h4>
                                     <p className="warehouse-list__text warehouse-list__text--address">{warehouse.address}, {warehouse.city}, {warehouse.country}</p>
                                 </div>
                             </div>
 
                             <div className="warehouse-list__content warehouse-list__content--contact">
                                 <div className="warehouse-list__info">
-                                    <h4 className="warehouse-list__label">CONTACT NAME</h4>
+                                    <h4 className="warehouse-list__label">Contact Name</h4>
                                     <p className="warehouse-list__text">{warehouse.contact_name}</p>
                                 </div>
                                 <div className="warehouse-list__info">
-                                    <h4 className="warehouse-list__label">CONTACT INFORMATION</h4>
+                                    <h4 className="warehouse-list__label">Contact Information</h4>
                                     <p className="warehouse-list__text">{warehouse.contact_phone}</p>
                                     <p className="warehouse-list__text">{warehouse.contact_email}</p>
                                 </div>
@@ -102,8 +101,8 @@ function WarehouseList() {
 
                         {/* Actions row placed below details */}
                         <div className="warehouse-list__actions">
-                            <img className="warehouse-list__icon" src={deleteIcon} alt="Delete" />
-                            <img className="warehouse-list__icon" src={editIcon} alt="Edit" />
+                            <img className="warehouse-list__icon" src={deleteIcon} alt="Delete icon" />
+                            <img className="warehouse-list__icon" src={editIcon} alt="Edit icon" />
                         </div>
                     </div>
                 ))}
