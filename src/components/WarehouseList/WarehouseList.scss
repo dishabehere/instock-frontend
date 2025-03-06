@@ -3,6 +3,8 @@
 .warehouse-list {
     background-color: $global-white-color;
     margin: 8.5rem 1rem 0;
+    border-radius: .1875rem;
+    box-shadow: 0 .125rem .3125rem rgba(19, 24, 44, 0.1);
 
     &__header {
         padding: 0 1.5rem;
