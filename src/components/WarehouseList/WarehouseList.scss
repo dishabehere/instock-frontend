@@ -10,6 +10,10 @@
         margin: 5.75rem 2rem .3125rem;
     }
 
+    @include responsive(desktop){
+        margin: 5.75rem 5rem .3125rem;
+    }
+
     &__header {
         padding: 2rem 1.5rem 1.5rem;
         display: flex;
@@ -142,10 +146,6 @@
         border-top: .0625rem solid $table-border-color;
 
         @include responsive(tablet){
-            // display: flex;
-            // flex-direction: row;
-            
-            // justify-content: space-between;
             display: grid;
             grid-template-columns: 1.8fr 2fr 0.5fr;
             padding: 2rem;
@@ -172,7 +172,10 @@
         }
 
         &--contact {
-            grid-template-columns: 0.9fr 1fr;
+            @include responsive(tablet){
+                grid-template-columns: 1fr 1.2fr;
+                gap: 1rem;
+            }
         }
     }
 
@@ -192,6 +195,13 @@
 
         @include responsive(tablet){
             @include text-style(.875rem, 1.375rem, 400, normal);
+        }
+
+        &--address {
+            padding-right: 2.5rem;
+            @include responsive(tablet) {
+                padding-right: 1rem;
+            }
         }
 
         &--name {
@@ -215,6 +225,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        @include responsive(tablet, desktop) {
+            gap: 1rem;
+        }
     }
 
     &__icon {

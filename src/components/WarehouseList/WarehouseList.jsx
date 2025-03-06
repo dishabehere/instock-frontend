@@ -83,8 +83,7 @@ function WarehouseList() {
                                 </div>
                                 <div className="warehouse-list__info"> 
                                     <h4 className="warehouse-list__label">ADDRESS</h4>
-                                    <p className="warehouse-list__text">{warehouse.address}, </p>
-                                    <p className="warehouse-list__text">{warehouse.city}</p>
+                                    <p className="warehouse-list__text warehouse-list__text--address">{warehouse.address}, {warehouse.city}, {warehouse.country}</p>
                                 </div>
                             </div>
 
