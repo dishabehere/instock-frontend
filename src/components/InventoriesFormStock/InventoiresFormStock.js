@@ -12,7 +12,7 @@ function InventoriesFormStock() {
 
   return (
     <form>
-      <div className="stock__stock">
+      <div className="stock">
         <h2 className="stock__availability">Item Availability</h2>
         <p className="stock__label">Status</p>
         <label className="stock__selector">
