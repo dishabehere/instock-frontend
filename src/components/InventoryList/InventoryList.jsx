@@ -43,7 +43,9 @@ function InventoryList() {
               alt="Search"
             />
           </div>
-          <Link to={`/inventories/add`}><button className="inventory-list__button">+ Add New Item</button></Link>
+          <Link to={`/inventories/add`}>
+            <button className="inventory-list__button">+ Add New Item</button>
+          </Link>
         </div>
       </div>
 
@@ -101,6 +103,7 @@ function InventoryList() {
               <div className="inventory-list__content inventory-list__content--status">
                 <div className="inventory-list__info">
                   <h4 className="inventory-list__label">Status</h4>
+
                   <p
                     className={`inventory-list__text ${
                       inventory.status === "In Stock"
@@ -145,4 +148,4 @@ function InventoryList() {
   );
 }
 
-export default InventoryList
+export default InventoryList;
