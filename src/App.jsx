@@ -8,18 +8,24 @@ import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <Router>
-      <Header/>
+      <Header />
       <Routes>
         {/* <Route path="/" element={<HomePage />} />
-        <Route path="/warehouses/:warehouseId" element={<WarehouseDetailsPage />} />
+        <Route
+          path="/warehouses/:warehouseId"
+          element={<WarehouseDetailsPage />}
+        />
         <Route path="/warehouses/add" element={<WarehouseFormPage />} />
         <Route path="/warehouses/edit" element={<WarehouseFormPage />} /> */}
         <Route path="/inventories" element={<InventoriesListPage />} />
-        {/* <Route path="/inventories/:inventoryId" element={<InventoryDetailsPage />} />
+        {/* <Route
+          path="/inventories/:inventoryId"
+          element={<InventoryDetailsPage />}
+        />
         <Route path="/inventories/add" element={<InventoriesFormPage />} />
-        <Route path="/inventories/edit" element={<InventoriesFormPage />} /> */}
+        <Route path="/inventories/:inventoryId/edit" element={<InventoriesFormPage />} /> */}
       </Routes>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }
