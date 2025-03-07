@@ -26,3 +26,25 @@ function InventoryList() {
     fetchInventories();
   }, []);
 
+  return (
+    <section className="inventory-list">
+      <div className="inventory-list__header">
+        <h1 className="inventory-list__heading">Inventory</h1>
+        <div className="inventory-list__buttons">
+          <div className="inventory-list__search-bar">
+            <input
+              className="inventory-list__search-text"
+              type="text"
+              placeholder="Search..."
+            />
+            <img
+              className="inventory-list__search-icon"
+              src={searchIcon}
+              alt="Search"
+            />
+          </div>
+          <button className="inventory-list__button">+ Add New Item</button>
+        </div>
+      </div>
+      </section>
+  )}
