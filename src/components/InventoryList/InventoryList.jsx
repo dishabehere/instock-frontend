@@ -102,10 +102,10 @@ function InventoryList() {
                 <div className="inventory-list__info">
                   <h4 className="inventory-list__label">Status</h4>
                   <p
-                    className={`inventory-list__text--status ${
+                    className={`inventory-list__text ${
                       inventory.status === "In Stock"
-                        ? "in-stock"
-                        : "out-of-stock"
+                        ? "inventory-list__text--instock"
+                        : "inventory-list__text--outofstock"
                     }`}
                   >
                     {inventory.status}
@@ -144,3 +144,5 @@ function InventoryList() {
     </section>
   );
 }
+
+export default InventoryList
