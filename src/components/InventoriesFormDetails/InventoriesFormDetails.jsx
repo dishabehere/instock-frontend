@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./InventoriesFormDetails.scss"
 
 function InventoriesFormDetails({ id }) {  
   const [inventory, setInventory] = useState({
@@ -44,10 +45,10 @@ function InventoriesFormDetails({ id }) {
   }
 
   return (
-    <form>
-      <div className="details">
+    <form className="details">
+      <div className="details__section">
         <h3 className="details__header">Item Details</h3>
-        <p className="details__label">Item Name</p>
+        <h4 className="details__label">Item Name</h4>
         <label className="details__fields">
           <input
             type="text"
@@ -57,7 +58,7 @@ function InventoriesFormDetails({ id }) {
             readOnly
           />
         </label>
-        <p className="details__label">Description</p>
+        <h4 className="details__label">Description</h4>
         <label className="details__fields">
           <textarea
             name="description"
@@ -66,7 +67,7 @@ function InventoriesFormDetails({ id }) {
             readOnly
           />
         </label>
-        <p className="details__label">Category</p>
+        <h4 className="details__label">Category</h4>
         <div>
           <label className="details__dropdown">
             <select 
