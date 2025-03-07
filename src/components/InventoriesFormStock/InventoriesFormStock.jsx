@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function InventoriesFormStock(id) {
+function InventoriesFormStock({id}) {
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
   const [stockStatus, setStockStatus] = useState("instock");
@@ -21,44 +21,37 @@ function InventoriesFormStock(id) {
     setInventory((prev) => ({ ...prev, [name]: value }));
   };
 
-  const fetchInventories = async () => {
+  useEffect(() => {
+    fetchWarehouses();
+    if (id) fetchInventoryItem(id);
+  }, [id]);
+
+  async function fetchWarehouses() {
     try {
       const { data } = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/inventories`
       );
-      return data;
+      const extractedWarehouses = data.map(
+        (inventory) => inventory.warehouse_name
+      );
+      const uniqueWarehouses = [...new Set(extractedWarehouses)];
+
+      setWarehouses(uniqueWarehouses);
     } catch (error) {
-      console.error("Error fetching inventories:", error);
-      return [];
+      console.error("Error fetching warehouses:", error);
     }
-  };
+  }
 
-  const getWarehouses = (inventories) => {
-    const warehouseNames = inventories.map(
-      (inventory) => inventory.warehouse_name
-    );
-    return [...new Set(warehouseNames)];
-  };
-
-  useEffect(() => {
-    const loadData = async () => {
-      const inventories = await fetchInventories();
-      const warehouses = getWarehouses(inventories);
-      setWarehouses(warehouses);
-
-      if (id) {
-        const selectedInventory = inventories.find(
-          (inventory) => inventory.id === id
-        );
-        if (selectedInventory) {
-          setInventory(selectedInventory);
-        }
-      }
-    };
-
-    loadData();
-  }, [id]);
-
+  async function fetchInventoryItem(id) {
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/inventories/${id}`
+      );
+      setInventory(data);
+    } catch (error) {
+      console.error("Error fetching inventory item:", error);
+    }
+  }
   return (
     <form>
       <div className="stock">
@@ -119,12 +112,12 @@ function InventoriesFormStock(id) {
           ))}
         </select>
       </label>
-      <div>Cancel</div>
+      <button>Cancel</button>
       <div className="stock__submit">
         {isEditPage ? (
-          <div className="stock__save">Save</div>
+          <button type="submit" className="stock__save">Save</button>
         ) : (
-          <div className="stock__add">+ Add Item</div>
+          <button type="submit" className="stock__add">+ Add Item</button>
         )}
       </div>
     </form>
