@@ -43,7 +43,7 @@ function InventoryList() {
               alt="Search"
             />
           </div>
-          <button className="inventory-list__button">+ Add New Item</button>
+          <Link to={`/inventories/add`}><button className="inventory-list__button">+ Add New Item</button></Link>
         </div>
       </div>
 
