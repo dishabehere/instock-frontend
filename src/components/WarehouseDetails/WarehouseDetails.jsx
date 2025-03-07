@@ -1,12 +1,13 @@
 import "./WarehouseDetails.scss";
 
 
+
 function WarehouseDetails({ warehouse }) {
   return (
     <div className="warehouse-details">
       <div className="warehouse-details__info">
         <h4 className="warehouse-details__label">Warehouse Address:</h4>
-        {/* <p className="warehouse-details__label">{warehouse.address}</p> */}
+        <p className="warehouse-details__label">{warehouse.address}</p>
         <p className="warehouse-details__label">
           {warehouse.city}
           {warehouse.country}
