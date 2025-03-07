@@ -6,7 +6,7 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
-// import WarehouseModal from "../WarehouseModal/WarehouseModal";
+import WarehouseModal from "../WarehouseModal/WarehouseModal";
 import Modal from 'react-modal';
 import React from "react";
 import closeIcon from "../../assets/icons/close-24px.svg";
@@ -18,8 +18,7 @@ function WarehouseList() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [warehouseToDelete, setWarehouseToDelete] = useState(null);
 
-    useEffect(() => {
-        const fetchWarehouses = async () => {
+    const fetchWarehouses = async () => {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses`);
                 setWarehouses(response.data);
@@ -27,6 +26,8 @@ function WarehouseList() {
                 console.error("Error fetching warehouses:", error);
             }
         };
+
+    useEffect(() => {
 
         fetchWarehouses();
     }, []);
@@ -45,8 +46,10 @@ function WarehouseList() {
     const handleDelete = async () => {
         try {
             await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseToDelete.id}`);
-            setWarehouses(currentWarehouses => currentWarehouses.filter(warehouse => warehouse.id !== deletedWarehouseId));
-            console.log(`Deleted warehouse: ${warehouseToDelete.warehouse_name}`);
+            fetchWarehouses()
+            // (currentWarehouses => currentWarehouses.filter(warehouse => warehouse.id !== warehouseToDelete.id));
+            // console.log(warehouseToDelete.id);
+            // console.log(`Deleted warehouse: ${warehouseToDelete.warehouse_name}`);
             closeModal();
         } catch (error) {
             console.error("Error deleting warehouse:", error);
@@ -140,31 +143,14 @@ function WarehouseList() {
                 ))}
             </div>
             {/* added modal */}
-                 <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                className="warehouse_modal__container"
-                contentLabel="Delete Warehouse Confirmation"
-            >
-                <div className="warehouse_modal__container-close-button">
-                    <div onClick={closeModal} className="warehouse_modal__close-button">
-                        <img src={closeIcon} alt="Close Icon" />
-                    </div>
-                </div>
-                <h2>Delete {warehouseToDelete?.warehouse_name} warehouse?</h2>
-                <p>Please confirm that you’d like to delete the Washington from the list of warehouses. You won’t be able to undo this action.</p>
-                <div className="warehouse-modal__container-button">
-                    <button className="warehouse-modal__cancel-button" onClick={closeModal}>Cancel</button>
-                    <button className="warehouse-modal__delete-button" onClick={handleDelete}>Delete</button>
-                </div>
-                {/* <button onClick={handleDelete0Delete</button> */}
-               </Modal>
-               {/* <WarehouseModal
+               <WarehouseModal
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
-                warehouseToDelete={warehouseToDelete}
                 handleDelete={handleDelete}
-            /> */}
+                itemName={warehouseToDelete?.warehouse_name}
+                itemType="warehouse"
+                itemListType="warehouses"
+            />
         </section>
     );
 }

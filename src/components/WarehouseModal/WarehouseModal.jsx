@@ -1,26 +1,46 @@
-// import Modal from 'react-modal';
-// import React from "react";
-// import closeIcon from "../../assets/icons/close-24px.svg";
-// import './WarehouseModal.scss';
+import Modal from "react-modal";
+import React from "react";
+import closeIcon from "../../assets/icons/close-24px.svg";
+import "./WarehouseModal.scss";
 
+const WarehouseModal = ({
+  modalIsOpen,
+  closeModal,
+  itemName,
+  itemType,
+  itemListType,
+  handleDelete,
+}) => {
+  return (
+    <Modal
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      className="warehouse_modal__container"
+      contentLabel="Delete Warehouse Confirmation"
+    >
+      <div className="warehouse_modal__container-close-button">
+        <div onClick={closeModal} className="warehouse_modal__close-button">
+          <img src={closeIcon} alt="Close Icon" />
+        </div>
+      </div>
+      <h2>{`Delete ${itemName} ${itemType}?`}</h2>
+      <p>
+        {`Please confirm that you’d like to delete the ${itemName} from the
+        list of ${itemListType}. You won’t be able to undo this action.`}
+      </p>
+      <div className="warehouse-modal__container-button">
+        <button className="warehouse-modal__cancel-button" onClick={closeModal}>
+          Cancel
+        </button>
+        <button
+          className="warehouse-modal__delete-button"
+          onClick={handleDelete}
+        >
+          Delete
+        </button>
+      </div>
+    </Modal>
+  );
+};
 
-// const WarehouseModal = ({ modalIsOpen, closeModal, warehouseToDelete, handleDelete }) => {
-//     return (
-//         <Modal
-//         isOpen={modalIsOpen}
-//         onRequestClose={closeModal}
-//         contentLabel="Delete Warehouse Confirmation"
-//     >
-//          <button onClick={closeModal} className="modal__close-button">
-//             <img src={closeIcon} alt="Close Icon" />
-//         </button>
-//         <h2>Delete {warehouseToDelete?.warehouse_name} warehouse?</h2>
-//         <p>Please confirm that you’d like to delete the Washington from the list of warehouses. You won’t be able to undo this action.</p>
-//         <button onClick={closeModal}>Cancel</button>
-//         <button onClick={handleDelete}>Delete</button>
-//        </Modal>
-       
-//     );
-// };
-
-// export default WarehouseModal;
+export default WarehouseModal;
