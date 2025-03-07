@@ -4,7 +4,11 @@
 input,
 textarea,
 option{
-  @include text-style(13px, 20px, 400);
+    @include text-style(11px, 16px, 400);
+    @include responsive(tablet){
+        @include text-style(13px, 20px, 400);
+    }
+
 }
 
 .details {
