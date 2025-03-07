@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+import WarehouseInventoryList from "../../components/WarehouseInventoryList/WarehouseInventoryList";
 
 function WarehouseDetailsPage() {
     const { warehouseId } = useParams();
@@ -27,6 +28,7 @@ function WarehouseDetailsPage() {
     return (
         <div>
             <WarehouseDetails warehouse={warehouse} /> 
+            <WarehouseInventoryList warehouse={warehouse}/>
         </div>
     );
 }
