@@ -79,7 +79,7 @@ function InventoryList() {
                   <h4 className="inventory-list__label">Inventory Item</h4>
                   <div className="inventory-list__name">
                     <p className="inventory-list__text inventory-list__text--name">
-                      <Link to={`/api/inventories/${inventory.id}`}>
+                      <Link to={`/inventories/${inventory.id}`}>
                         {inventory.item_name}{" "}
                       </Link>
                     </p>
@@ -130,7 +130,7 @@ function InventoryList() {
                 src={deleteIcon}
                 alt="Delete icon"
               />
-              <Link to={`/api/inventories/${inventory.id}`}>
+              <Link to={`/inventories/${inventory.id}/edit`}>
                 <img
                   className="inventory-list__icon"
                   src={editIcon}
