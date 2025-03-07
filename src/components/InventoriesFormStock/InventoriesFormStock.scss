@@ -21,9 +21,11 @@ select {
 
   &__container {
     padding: 16px;
+    border-top: 1px solid $table-border-color; 
 
     @include responsive(tablet){
         padding:0 24px 24px; 
+        border-top:none; 
     }
   }
 
