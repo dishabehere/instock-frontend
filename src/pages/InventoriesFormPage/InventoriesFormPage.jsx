@@ -3,18 +3,19 @@ import InventoriesFormStock from "../../components/InventoriesFormStock/Inventor
 import InventoriesFormTitle from "../../components/InventoriesFormTitle/InventoriesFormTitle";
 import InventoriesFormButtons from "../../components/InventoriesFormButtons/InventoriesFormButtons";
 import { useParams } from "react-router-dom";
-import "./InventoriesFormPage.scss"
+import "./InventoriesFormPage.scss";
 
 export default function InventoriesFormPage() {
   const { id } = useParams();
+
   return (
     <section className="inventoryForm">
       <InventoriesFormTitle />
-      <div className= "inventoryForm__main">
-      <InventoriesFormDetails id={id} />
-      <InventoriesFormStock id={id}/>
+      <div className="inventoryForm__main">
+        <InventoriesFormDetails id={id} />
+        <InventoriesFormStock id={id} />
       </div>
       <InventoriesFormButtons />
-      </section>
+    </section>
   );
 }
