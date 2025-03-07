@@ -154,8 +154,8 @@ function WarehouseList() {
                 <h2>Delete {warehouseToDelete?.warehouse_name} warehouse?</h2>
                 <p>Please confirm that you’d like to delete the Washington from the list of warehouses. You won’t be able to undo this action.</p>
                 <div className="warehouse-modal__container-button">
-                    <div className="warehouse-modal__cancel-button" onClick={closeModal}>Cancel</div>
-                    <div className="warehouse-modal__delete-button" onClick={handleDelete}>Delete</div>
+                    <button className="warehouse-modal__cancel-button" onClick={closeModal}>Cancel</button>
+                    <button className="warehouse-modal__delete-button" onClick={handleDelete}>Delete</button>
                 </div>
                 {/* <button onClick={handleDelete0Delete</button> */}
                </Modal>
