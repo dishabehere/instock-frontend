@@ -100,5 +100,57 @@
     &:hover {
       background-color: $secondary-background-color;
     }
-
-    
+    &__index {
+        display: none;
+  
+        @include responsive(tablet) {
+          display: grid;
+          grid-template-columns: 1.05fr 1.05fr 0.95fr 1.5fr 0.5fr;
+          padding: 0.75rem 2rem;
+          background-color: $primary-background-color;
+          text-align: center;
+        }
+      }
+  
+      &__title {
+        @include responsive(tablet) {
+          display: flex;
+          flex-direction: row;
+          text-align: center;
+          gap: 0.125rem;
+  
+          &-text {
+            color: $table-text-color;
+            text-transform: uppercase;
+          }
+        }
+      }
+  
+      &__sort {
+        @include responsive(tablet) {
+          height: 1rem;
+          width: 1rem;
+          margin: auto 0;
+        }
+      }
+    }
+  
+    &__actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  
+      @include responsive(tablet) {
+        justify-content: unset;
+        gap: 1rem;
+      }
+  
+      @include responsive(desktop) {
+        gap: 1rem;
+      }
+    }
+  
+    &__icon {
+      cursor: pointer;
+    }
+  
