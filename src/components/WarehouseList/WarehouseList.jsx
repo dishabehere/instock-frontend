@@ -7,11 +7,10 @@ import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
 import WarehouseModal from "../WarehouseModal/WarehouseModal";
-import Modal from 'react-modal';
 import React from "react";
-import closeIcon from "../../assets/icons/close-24px.svg";
 
-//added consts here
+
+
 function WarehouseList() {
     const [warehouses, setWarehouses] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -47,9 +46,6 @@ function WarehouseList() {
         try {
             await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseToDelete.id}`);
             fetchWarehouses()
-            // (currentWarehouses => currentWarehouses.filter(warehouse => warehouse.id !== warehouseToDelete.id));
-            // console.log(warehouseToDelete.id);
-            // console.log(`Deleted warehouse: ${warehouseToDelete.warehouse_name}`);
             closeModal();
         } catch (error) {
             console.error("Error deleting warehouse:", error);

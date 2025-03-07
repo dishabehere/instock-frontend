@@ -1,3 +1,6 @@
+@use "/src/styles/partials/_global.scss" as *;
+@use "/src/styles/partials/_mixins.scss" as *;
+@use "/src/styles/partials/_variables.scss" as *;
 
 // export this later
 
@@ -36,6 +39,7 @@
     .ReactModal__Overlay , .ReactModal__Overlay--after-open {
     height: 100vh;
     padding: 1rem;
-    background-color: red !important;
+    background-color: $global-color !important;
+    border: none;
     }
 }
