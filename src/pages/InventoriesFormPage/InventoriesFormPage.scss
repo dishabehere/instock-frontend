@@ -15,4 +15,11 @@
         margin: 5.75rem 8.125rem .3125rem;
     }
 
+    &__main{
+        @include responsive(tablet){
+            display:flex; 
+            margin:24px;
+        }
+    }
+
 }
