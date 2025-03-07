@@ -3,16 +3,18 @@
 
 .inventoryForm{
     background-color: $global-color;
-    margin:5rem 1rem .3125rem;
+    margin: 0 1rem .3125rem;
     border-radius: .1875rem;
     box-shadow: 0 .125rem .3125rem $box-shadow;
+    position:relative; 
+    bottom:80px;
 
     @include responsive(tablet){
-        margin: 5.75rem 2rem .3125rem;
+        margin: 0 2rem .3125rem;
     }
 
     @include responsive(desktop){
-        margin: 5.75rem 8.125rem .3125rem;
+        margin: 0 8.125rem .3125rem;
     }
 
     &__main{
