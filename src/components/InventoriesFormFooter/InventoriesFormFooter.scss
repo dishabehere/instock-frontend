@@ -1,0 +1,46 @@
+@use "../../styles/partials/mixins" as *; 
+@use "../../styles/partials/variables" as *; 
+
+button {
+  all: unset;
+  border-radius: 20px;
+}
+
+.buttons {
+    display: flex;
+    padding: 16px 16px;
+    gap: 10px;
+    justify-content: flex-end;
+    background-color: $primary-background-color;
+
+  &__cancel,
+  &__save {
+    height: 36px;
+    padding: 0 45px;
+    @include text-style(13px, 20px, 600);
+
+    @include responsive(tablet) {
+      padding: 0 16px;
+    }
+  }
+
+  &__cancel {
+    color: $table-text-color;
+    border: 1px solid $table-border-color;
+    background-color: $global-color;
+    &:hover {
+      color: $interactive-color;
+      border: 1px solid $interactive-color;
+    }
+  }
+
+  &__save {
+    background-color: $interactive-color;
+    color: $global-color;
+    border: 1px solid $interactive-color;
+    &:hover {
+      background-color: $secondary-background-color;
+      border: 1px solid $secondary-background-color;
+    }
+  }
+}
