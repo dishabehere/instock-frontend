@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import "./InventoriesFormFooter.scss"
+import "./InventoriesFormButtons.scss"
 
 function InventoriesFormFooter() {
   const location = useLocation();
