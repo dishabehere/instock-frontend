@@ -5,7 +5,6 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 
 function WarehouseDetails({ warehouse }) {
   return (
-    <section className="warehouse-list">
       <div className="warehouse-details">
         <div className="warehouse-list__name">
           <Link to="/">
@@ -17,10 +16,7 @@ function WarehouseDetails({ warehouse }) {
 
         <div className="warehouse-details__info">
           <h4 className="warehouse-details__label">Warehouse Address:</h4>
-          <p className="warehouse-details__label">{warehouse.address}</p>
-          <p className="warehouse-details__label">
-            {warehouse.city}, {warehouse.country}
-          </p>
+          <p className="warehouse-details__label">{warehouse.address} , {warehouse.city}, {warehouse.country}</p>
         </div>
 
         <div className="warehouse-details__content warehouse-details__content--contact">
@@ -37,7 +33,6 @@ function WarehouseDetails({ warehouse }) {
           </div>
         </div>
       </div>
-    </section>
   );
 }
 
