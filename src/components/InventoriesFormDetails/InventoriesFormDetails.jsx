@@ -75,7 +75,7 @@ function InventoriesFormDetails({ id }) {
               value={inventory.category}
               onChange={handleCategoryChange}
             >
-              <option value="">Select a category</option>
+              <option value="">Please Select</option>
               {categories.map((category, index) => (
                 <option key={index} value={category}>
                   {category}
