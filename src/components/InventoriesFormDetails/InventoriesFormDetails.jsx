@@ -78,7 +78,7 @@ function InventoriesFormDetails({ id }) {
             >
               <option value="">Please Select</option>
               {categories.map((category, index) => (
-                <option key={index} value={category}>
+                <option className="details__options" key={index} value={category}>
                   {category}
                 </option>
               ))}
