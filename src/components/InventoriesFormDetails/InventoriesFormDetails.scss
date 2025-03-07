@@ -2,8 +2,10 @@
 @use "../../styles/partials/mixins" as *; 
 
 .details{
-    padding:16px; 
-    border-top: 1px solid $table-border-color; 
+    padding: 16px;
+    @include responsive(tablet){
+        width:50%; 
+    }
 
     &__label{
         padding:16px 0 4px; 
