@@ -143,15 +143,20 @@ function WarehouseList() {
                  <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
+                className="warehouse_modal__container"
                 contentLabel="Delete Warehouse Confirmation"
             >
-                 <button onClick={closeModal} className="modal__close-button">
-                    <img src={closeIcon} alt="Close Icon" />
-                </button>
+                <div className="warehouse_modal__container-close-button">
+                    <div onClick={closeModal} className="warehouse_modal__close-button">
+                        <img src={closeIcon} alt="Close Icon" />
+                    </div>
+                </div>
                 <h2>Delete {warehouseToDelete?.warehouse_name} warehouse?</h2>
                 <p>Please confirm that you’d like to delete the Washington from the list of warehouses. You won’t be able to undo this action.</p>
-                <button onClick={closeModal}>Cancel</button>
-                <button onClick={handleDelete}>Delete</button>
+                <div className="warehouse-modal__container-button">
+                    <div className="warehouse-modal__cancel-button" onClick={closeModal}>Cancel</div>
+                    <div className="warehouse-modal__delete-button" onClick={handleDelete}>Delete</div>
+                </div>
                 {/* <button onClick={handleDelete0Delete</button> */}
                </Modal>
                {/* <WarehouseModal

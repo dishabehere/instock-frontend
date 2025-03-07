@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
 // import WarehouseModal from "../../components/WarehouseModal/WarehouseModal";
 import "./HomePage.scss";
