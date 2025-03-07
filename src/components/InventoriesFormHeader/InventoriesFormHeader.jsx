@@ -1,4 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
+import "./InventoriesFormHeader.scss"
 
 function InventoriesFormHeader() {
   const location = useLocation();
