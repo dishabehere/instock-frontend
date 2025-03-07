@@ -46,7 +46,7 @@ function InventoryList() {
           <button className="inventory-list__button">+ Add New Item</button>
         </div>
       </div>
-      
+
       <div className="inventory-list__index">
         <div className="inventory-list__title">
           <h4 className="inventory-list__title-text">Inventory Item</h4>
@@ -89,7 +89,7 @@ function InventoryList() {
                       alt="Chevron Icon"
                     />
                   </div>
-                  </div>
+                </div>
                 <div className="inventory-list__info">
                   <h4 className="inventory-list__label">Category</h4>
                   <p className="inventory-list__text inventory-list__text--category">
@@ -123,6 +123,24 @@ function InventoryList() {
                 </div>
               </div>
             </div>
-
-      </section>
-  )}
+            {/* Actions row placed below details */}
+            <div className="inventory-list__actions">
+              <img
+                className="inventory-list__icon"
+                src={deleteIcon}
+                alt="Delete icon"
+              />
+              <Link to={`/api/inventories/${inventory.id}`}>
+                <img
+                  className="inventory-list__icon"
+                  src={editIcon}
+                  alt="Edit icon"
+                />{" "}
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
