@@ -1,0 +1,83 @@
+@use "/src/styles/partials/_mixins.scss" as *;
+@use "/src/styles/partials/_variables.scss" as *;
+
+header {
+  background-color: $secondary-background-color;
+  min-width: 23.4375rem;
+  width: 100%;
+  height: 12.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 16px 0 1rem;
+  @include responsive(tablet , desktop) {
+    height: 11.625rem;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem;
+    align-items: flex-start;
+  }
+  @include responsive(desktop) {
+    padding: 0 8.125rem;
+  }
+
+  .header__logo {
+    width: 8.0369rem;
+    @include responsive(tablet) {
+      padding-top: 2rem;
+    }
+  }
+
+  .nav-bar {
+    &__container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      @include responsive(tablet) {
+        width: 30%;
+      }
+    }
+    &__link {
+      text-decoration: none;
+      width: 90%;
+      display: flex;
+      justify-content: center;
+
+      &:hover {
+        .nav-bar__title {
+          color: $global-color;
+          text-decoration: underline;
+        }
+      }
+
+      &--warehouse-active , &--inventory-active {
+        .nav-bar__title {
+          color: $global-color;
+          background-color: $global-text-color;
+          border-radius: 1.25rem;
+          min-height: 2.25rem;
+          padding: 1rem 1.5rem;
+          width: 95%;
+          @include responsive(tablet) {
+            padding: 0.5rem 1.5rem;
+            width: 10.25rem;
+          }
+        }
+      }
+    }
+    &__title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $table-border-color;
+      margin-top: 1.5rem;
+      height: 2.375rem;
+      @include text-style(0.8125rem, 1.25rem, 600);
+      @include responsive(tablet) {
+        margin-top: 1.6875rem;
+        @include text-style(0.875rem, 1.375rem, 600);
+      }
+    }
+  }
+}
