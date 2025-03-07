@@ -6,6 +6,7 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
+import { Link } from "react-router-dom";
 
 function WarehouseList() {
     const [warehouses, setWarehouses] = useState([]);
@@ -44,7 +45,9 @@ function WarehouseList() {
                         />
                         <img className="warehouse-list__search-icon" src={searchIcon} alt="Search" />
                     </div>
-                    <button className="warehouse-list__button">+ Add New Warehouse</button>
+                    <Link to={`/warehouses/add`} className="warehouse-list__link">
+                        <button className="warehouse-list__button">+ Add New Warehouse</button>
+                    </Link>
                 </div>
             </div>
 
