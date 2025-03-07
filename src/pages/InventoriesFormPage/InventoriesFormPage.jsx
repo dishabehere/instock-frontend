@@ -9,7 +9,7 @@ export default function InventoriesFormPage() {
     <>
       <InventoriesFormHeader />
       <InventoriesFormDetails id={id} />
-      <InventoriesFormStock />
+      <InventoriesFormStock id={id}/>
     </>
   );
 }

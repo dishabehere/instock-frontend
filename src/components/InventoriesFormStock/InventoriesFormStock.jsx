@@ -1,14 +1,63 @@
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-function InventoriesFormStock() {
+function InventoriesFormStock(id) {
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
   const [stockStatus, setStockStatus] = useState("instock");
+  const [warehouses, setWarehouses] = useState([]);
+  const [inventory, setInventory] = useState({
+    warehouse_name: "",
+    quantity: "",
+  });
 
   const handleStatusChange = (event) => {
     setStockStatus(event.target.value);
   };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setInventory((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const fetchInventories = async () => {
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/inventories`
+      );
+      return data;
+    } catch (error) {
+      console.error("Error fetching inventories:", error);
+      return [];
+    }
+  };
+
+  const getWarehouses = (inventories) => {
+    const warehouseNames = inventories.map(
+      (inventory) => inventory.warehouse_name
+    );
+    return [...new Set(warehouseNames)];
+  };
+
+  useEffect(() => {
+    const loadData = async () => {
+      const inventories = await fetchInventories();
+      const warehouses = getWarehouses(inventories);
+      setWarehouses(warehouses);
+
+      if (id) {
+        const selectedInventory = inventories.find(
+          (inventory) => inventory.id === id
+        );
+        if (selectedInventory) {
+          setInventory(selectedInventory);
+        }
+      }
+    };
+
+    loadData();
+  }, [id]);
 
   return (
     <form>
@@ -42,7 +91,14 @@ function InventoriesFormStock() {
         <>
           <p className="stock__quantity">Quantity</p>
           <label className="stock__field">
-            <input type="text" name="quantity" className="stock__number" />
+            <input
+              type="number"
+              name="quantity"
+              className="stock__number"
+              value={inventory.quantity}
+              onChange={handleInputChange}
+              min="1"
+            />
           </label>
         </>
       )}
@@ -50,9 +106,18 @@ function InventoriesFormStock() {
       <p className="stock__label">Warehouse</p>
       <label className="stock__field">
         <select
-          name="warehouse-location"
+          name="warehouse_name"
           className="stock__locations"
-        ></select>
+          value={inventory.warehouse_name}
+          onChange={handleInputChange}
+        >
+          <option value="">Please select</option>
+          {warehouses.map((warehouse, index) => (
+            <option key={index} value={warehouse}>
+              {warehouse}
+            </option>
+          ))}
+        </select>
       </label>
       <div>Cancel</div>
       <div className="stock__submit">
