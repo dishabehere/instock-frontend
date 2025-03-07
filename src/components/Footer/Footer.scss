@@ -9,18 +9,13 @@
         background-color: $primary-background-color;
         min-width: 9.8125rem;
         padding: 2.5rem 0;
-        // position: relative;
-        // top: 107rem;
-        // top:80%;
 
         @include responsive (tablet) {
             padding: 3.5rem 0 2.5rem 0;
-            // top: 60.375rem;
         }
 
         @include responsive (desktop) {
             margin-top: 2rem;
-            // top: 53.6875rem
         }
     }
     &__text {
