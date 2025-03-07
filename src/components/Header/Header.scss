@@ -9,8 +9,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: absolute;
-  z-index: -1;
+  padding: 1.5rem 16px 0 1rem;
   @include responsive(tablet , desktop) {
     height: 11.625rem;
     flex-direction: row;
@@ -23,7 +22,6 @@ header {
   }
 
   .header__logo {
-    padding-top: 1.5rem;
     width: 8.0369rem;
     @include responsive(tablet) {
       padding-top: 2rem;
@@ -34,14 +32,15 @@ header {
     &__container {
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      gap: 1rem;
       @include responsive(tablet) {
         width: 30%;
       }
     }
     &__link {
       text-decoration: none;
-      width: 50%;
+      width: 90%;
       display: flex;
       justify-content: center;
 
@@ -58,9 +57,11 @@ header {
           background-color: $global-text-color;
           border-radius: 1.25rem;
           min-height: 2.25rem;
-          padding: 0.5rem 1.5rem;
+          padding: 1rem 1.5rem;
+          width: 95%;
           @include responsive(tablet) {
             padding: 0.5rem 1.5rem;
+            width: 10.25rem;
           }
         }
       }

@@ -5,15 +5,18 @@
     margin: 0 1rem .3125rem;
     border-radius: .1875rem;
     box-shadow: 0 .125rem .3125rem $box-shadow;
-    position: relative;
     top: 8.5rem;
+    position: absolute;
+    right: 0;
+    left: 0;
 
     @include responsive(tablet){
-        margin: 5.75rem 2rem .3125rem;
+        margin: 0 2rem .3125rem;
+        top: 5.1rem;
     }
 
     @include responsive(desktop){
-        margin: 5.75rem 8.125rem .3125rem;
+        margin: 0 8.125rem .3125rem;
     }
 
     &__header {

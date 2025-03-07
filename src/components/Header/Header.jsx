@@ -1,15 +1,16 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 
 function Header() {
   return (
     <header className="header__container">
-      <img
-        className="header__logo"
-        src="../src/assets/logo/InStock-Logo.svg"
-        alt="header logo of two arrows in opposite directions"
-      ></img>
+      <NavLink to="/">
+        <img
+          className="header__logo"
+          src="../src/assets/logo/InStock-Logo.svg"
+          alt="header logo of two arrows in opposite directions"
+        ></img>
+      </NavLink>
       <nav className="nav-bar__container">
         <NavLink
           className={({ isActive }) =>
