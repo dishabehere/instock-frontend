@@ -59,7 +59,7 @@ function InventoriesFormStock({id}) {
         <h3 className="stock__availability">Item Availability</h3>
         <h4 className="stock__label">Status</h4>
         <div className="stock__statuses">
-        <label className="stock__selector">
+        <label className={`stock__selector ${stockStatus === "instock" ? "stock__selector--selected" : ""}`}>
           <input
             type="radio"
             name="status"
@@ -70,7 +70,7 @@ function InventoriesFormStock({id}) {
           />
           In stock
         </label>
-        <label className="stock__selector">
+        <label className={`stock__selector ${stockStatus === "outofstock" ? "stock__selector--selected" : ""}`}>
           <input
             type="radio"
             name="status"
