@@ -6,7 +6,10 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
+// import WarehouseModal from "../WarehouseModal/WarehouseModal";
 import Modal from 'react-modal';
+import React from "react";
+import closeIcon from "../../assets/icons/close-24px.svg";
 
 //added consts here
 function WarehouseList() {
@@ -42,7 +45,6 @@ function WarehouseList() {
     const handleDelete = async () => {
         try {
             await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseToDelete.id}`);
-            // setWarehouses(warehouses.filter(w => w.id !== warehouseToDelete.id));
             setWarehouses(currentWarehouses => currentWarehouses.filter(warehouse => warehouse.id !== deletedWarehouseId));
             console.log(`Deleted warehouse: ${warehouseToDelete.warehouse_name}`);
             closeModal();
@@ -131,7 +133,7 @@ function WarehouseList() {
                         {/* Actions row placed below details */}
                         <div className="warehouse-list__actions">
                             <img className="warehouse-list__icon" src={deleteIcon} alt="Delete icon" onClick={() => openDeleteModal(warehouse)}/>
-                            {/* added onlick */}
+                            {/* added onlick for Modal */}
                             <img className="warehouse-list__icon" src={editIcon} alt="Edit icon" />
                         </div>
                     </div>
@@ -143,11 +145,21 @@ function WarehouseList() {
                 onRequestClose={closeModal}
                 contentLabel="Delete Warehouse Confirmation"
             >
-                <h2>Delete {warehouseToDelete?.warehouse_name}</h2>
-                <p>Are you sure you want to delete this warehouse?</p>
+                 <button onClick={closeModal} className="modal__close-button">
+                    <img src={closeIcon} alt="Close Icon" />
+                </button>
+                <h2>Delete {warehouseToDelete?.warehouse_name} warehouse?</h2>
+                <p>Please confirm that you’d like to delete the Washington from the list of warehouses. You won’t be able to undo this action.</p>
                 <button onClick={closeModal}>Cancel</button>
                 <button onClick={handleDelete}>Delete</button>
+                {/* <button onClick={handleDelete0Delete</button> */}
                </Modal>
+               {/* <WarehouseModal
+                modalIsOpen={modalIsOpen}
+                closeModal={closeModal}
+                warehouseToDelete={warehouseToDelete}
+                handleDelete={handleDelete}
+            /> */}
         </section>
     );
 }
