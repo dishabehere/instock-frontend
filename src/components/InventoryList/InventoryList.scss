@@ -209,7 +209,7 @@ a{
     
         &--status {
           @include responsive(tablet) {
-            grid-template-columns: 1.1fr 1.6fr;
+            grid-template-columns:  0.85fr 0.5fr 0.75fr;
           }
         }
       }
@@ -248,15 +248,23 @@ a{
             @include responsive(tablet) {
               padding-right:0;
             }
+            &:hover{
+              text-decoration:underline;
+            }
           }
 
-        &--instock, &--outofstock{
-            padding: 4px;
-            height: 26px;
+        &--instock, &--outofstock{          
+            padding: 6px 10px;
             border-radius: 20px;
             text-transform: uppercase;
             margin-top: 0.25rem;
             @include text-style(13px,20px,600);
+            display:inline-block; 
+
+            @include responsive (tablet){
+              padding:8px 12px;
+            }
+
         }
 
         &--instock{
