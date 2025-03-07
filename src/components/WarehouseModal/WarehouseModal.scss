@@ -2,7 +2,6 @@
 @use "/src/styles/partials/_mixins.scss" as *;
 @use "/src/styles/partials/_variables.scss" as *;
 
-// export this later
 
 .warehouse-modal__cancel-button , .warehouse-modal__delete-button {
     width: 10rem;
@@ -10,7 +9,15 @@
     justify-content: center;
     cursor: pointer;
     border-radius: 20px;
-    // grid-template-column: 1fr 1fr;
+}
+.warehouse-modal__cancel-button {
+    background-color: $global-color;
+
+}
+.warehouse-modal__delete-button {
+    background-color: $error-state-color;
+    border:none;
+    color: $global-color;
 }
 .warehouse-modal__container-button {
     width: 100%;
@@ -20,19 +27,14 @@
     justify-content: space-around;
 }
 .warehouse-modal__container {
-    display: grid;
-    // grid-template-columns: 1fr; 
-    grid-template-rows: 1fr  1fr 1fr ; 
-    gap: 20px;
-    padding: 20px;
-    position: relative;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
 }
-.warehouse_modal__container-close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 2;
+.warehouse_modal__container-close-button  {
+    display: flex;
+    justify-content: end;
     cursor: pointer;
 }
 .ReactModalPortal {

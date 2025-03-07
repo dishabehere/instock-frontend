@@ -15,11 +15,11 @@ const WarehouseModal = ({
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      className="warehouse_modal__container"
+      className="warehouse-modal__container"
       contentLabel="Delete Warehouse Confirmation"
     >
-      <div className="warehouse_modal__container-close-button">
-        <div onClick={closeModal} className="warehouse_modal__close-button">
+      <div className="warehouse-modal__container-close-button">
+        <div onClick={closeModal} className="warehouse-modal__close-button">
           <img src={closeIcon} alt="Close Icon" />
         </div>
       </div>
