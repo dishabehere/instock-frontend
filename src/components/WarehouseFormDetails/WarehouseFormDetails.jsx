@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./WarehouseFormDetails.scss";
@@ -19,6 +19,7 @@ function WarehouseFormDetails() {
   });
   
   const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   const validate = () => {
     let newErrors = {};
@@ -44,67 +45,94 @@ function WarehouseFormDetails() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    const submitWarehouse = async () => {
-      if (validate()) {
-        try {
-          const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/api/warehouses`, formData);
-          console.log("Form submitted successfully", response.data);
-        } catch (error) {
-          console.error("Error submitting form", error);
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    if (validate()) {
+      try {
+        await axios.post(`${import.meta.env.VITE_BASE_URL}/api/warehouses`, formData);
+        setFormData({
+          warehouseName: "",
+          streetAddress: "",
+          city: "",
+          country: "",
+          contactName: "",
+          position: "",
+          phoneNumber: "",
+          email: "",
+        });
+        setSubmitted(false);
+      } catch (error) {
+        console.error("Error submitting form", error);
       }
-    };
-
-    if (Object.keys(errors).length === 0 && Object.values(formData).some(value => value.trim() !== "")) {
-      submitWarehouse();
     }
-  }, [formData]);
+  };
+
+  const handleCancel = () => {
+    setFormData({
+      warehouseName: "",
+      streetAddress: "",
+      city: "",
+      country: "",
+      contactName: "",
+      position: "",
+      phoneNumber: "",
+      email: "",
+    });
+    setErrors({});
+    setSubmitted(false);
+  };
 
   return (
     <section className="form">
-      <h2>{isAddPage ? "Add New Warehouse" : "Edit Warehouse"}</h2>
-      <form onSubmit={(e) => e.preventDefault()} noValidate>
-        <div className="form__fields">
-          <label>Warehouse Name</label>
-          <input type="text" name="warehouseName" value={formData.warehouseName} onChange={handleChange} />
-          {errors.warehouseName && <span className="error">{errors.warehouseName}</span>}
-          
-          <label>Street Address</label>
-          <input type="text" name="streetAddress" value={formData.streetAddress} onChange={handleChange} />
-          {errors.streetAddress && <span className="error">{errors.streetAddress}</span>}
-          
-          <label>City</label>
-          <input type="text" name="city" value={formData.city} onChange={handleChange} />
-          {errors.city && <span className="error">{errors.city}</span>}
-          
-          <label>Country</label>
-          <input type="text" name="country" value={formData.country} onChange={handleChange} />
-          {errors.country && <span className="error">{errors.country}</span>}
+      <form onSubmit={handleSubmit} noValidate className="form__form"> 
+        <div className="form__details">
+            <div className="form__fields form__fields--modified">  
+                <h2 className="form__heading">Warehouse Details</h2>
+                <div className="form__field">
+                    <h3 className="form__label">Warehouse Name</h3>
+                    <input className="form__input" placeholder="Warehouse Name" type="text" name="warehouseName" value={formData.warehouseName} onChange={handleChange} />
+                    {submitted && errors.warehouseName && <span className="error">{errors.warehouseName}</span>}
+                    
+                    <h3 className="form__label">Street Address</h3>
+                    <input className="form__input" placeholder="Street Address" type="text" name="streetAddress" value={formData.streetAddress} onChange={handleChange} />
+                    {submitted && errors.streetAddress && <span className="error">{errors.streetAddress}</span>}
+                    
+                    <h3 className="form__label">City</h3>
+                    <input className="form__input" placeholder="City" type="text" name="city" value={formData.city} onChange={handleChange} />
+                    {submitted && errors.city && <span className="error">{errors.city}</span>}
+                
+                    <h3 className="form__label">Country</h3>
+                    <input className="form__input" placeholder="Country" type="text" name="country" value={formData.country} onChange={handleChange} />
+                    {submitted && errors.country && <span className="error">{errors.country}</span>}
+                </div>
+            </div>
+
+            <div className="form__fields">
+                <h2 className="form__heading">Contact Details</h2>
+                <div className="form__field">
+                    <h3 className="form__label">Contact Name</h3>
+                    <input className="form__input" placeholder="Contact Name" type="text" name="contactName" value={formData.contactName} onChange={handleChange} />
+                    {submitted && errors.contactName && <span className="error">{errors.contactName}</span>}
+                    
+                    <h3 className="form__label">Position</h3>
+                    <input className="form__input" placeholder="Position" type="text" name="position" value={formData.position} onChange={handleChange} />
+                    {submitted && errors.position && <span className="error">{errors.position}</span>}
+                    
+                    <h3 className="form__label">Phone Number</h3>
+                    <input className="form__input" placeholder="Phone Number" type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+                    {submitted && errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
+                    
+                    <h3 className="form__label">Email</h3>
+                    <input className="form__input" placeholder="Email" type="email" name="email" value={formData.email} onChange={handleChange} />
+                    {submitted && errors.email && <span className="error">{errors.email}</span>}
+                </div>
+            </div>
         </div>
 
-        <div className="form__fields">
-          <h3>Contact Details</h3>
-          <label>Contact Name</label>
-          <input type="text" name="contactName" value={formData.contactName} onChange={handleChange} />
-          {errors.contactName && <span className="error">{errors.contactName}</span>}
-          
-          <label>Position</label>
-          <input type="text" name="position" value={formData.position} onChange={handleChange} />
-          {errors.position && <span className="error">{errors.position}</span>}
-          
-          <label>Phone Number</label>
-          <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
-          {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
-          
-          <label>Email</label>
-          <input type="email" name="email" value={formData.email} onChange={handleChange} />
-          {errors.email && <span className="error">{errors.email}</span>}
-        </div>
-        
         <div className="form__buttons">
-          <button type="button" className="cancel">Cancel</button>
-          <button type="submit" className="submit">+ Add Warehouse</button>
+          <button type="button" className="form__button form__button--cancel" onClick={handleCancel}>Cancel</button>
+          <button type="submit" className="form__button form__button--submit">+ Add Warehouse</button>
         </div>
       </form>
     </section>
