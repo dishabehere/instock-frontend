@@ -1,68 +1,116 @@
-// import "./WarehouseDetailsPage.scss";
-// import { useParams } from "react-router-dom";
-// import { useState, useEffect } from "react";
-// import axios from "axios";
-// import WarehouseDetailsList from "../../components/WarehouseDetailsList/WarehouseDetailsList";
-
-
-// function WarehouseDetailsPage() {
-//     // const [inventories, setInventories] = useState([]);
-  
-    // useEffect(() => {
-    //   const API_URL = import.meta.env.VITE_API_URL;
-    //   const { id } = useParams();
-  
-    //   const getInventories = async () => {
-    //     try {
-    //       const { data } = await axios.get(`${API_URL}/api/warehouses/${id}/inventories`);
-    //       setInventories(data);
-    //     } catch (error) {
-    //       console.error("Error fetching inventories:", error);
-    //     }
-    //   };
-  
-    //   getInventories();
-    // }, []);
-  
-//     return (
-//       <>
-//         <WarehouseDetailsList inventories={inventories} />
-//       </>
-//     );
-//   }
-//  export default WarehouseDetailsPage;
-
-
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
 import WarehouseDetailsList from "../../components/WarehouseDetailsList/WarehouseDetailsList";
-import "./WarehouseDetailsPage.scss";
+import InventoriesListPage from "../InventoriesListPage/InventoriesListPage";
 
 function WarehouseDetailsPage() {
-  const { warehouseId } = useParams(); // Correctly destructure warehouseId
-  const [inventories, setInventories] = useState([]);
+    const { warehouseId } = useParams();
+    const [warehouse, setWarehouse] = useState(null);
+    const [inventories, setInventories] = useState(null);
+
+  //   useEffect(() => {
+  //       const fetchWarehouseDetails = async () => {
+  //           try {
+  //               const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`);
+  //               setWarehouse(response.data);
+  //           } catch (error) {
+  //               console.error("Error fetching warehouse details:", error);
+  //           }
+  //       };
+
+  //       fetchWarehouseDetails();
+  //   }, [warehouseId])
+
+  //   useEffect(() => {
+  //   const fetchInventories = async () => {
+  //     try {
+  //       const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}/inventories`);
+  //       setInventories(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching inventories:", error);
+  //     }
+  //   };
+  //   // console.log(setInventories)
+  //   fetchInventories();
+  // },);
 
   useEffect(() => {
-    const API_URL = import.meta.env.VITE_API_URL;
+    const fetchData = async () => {
+        try {
+            console.log("Fetching warehouse details...");
+            const warehouseResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`);
+            console.log("Warehouse response:", warehouseResponse.data);
+            setWarehouse(warehouseResponse.data);
 
-    const getInventories = async () => {
-      try {
-        const { data } = await axios.get(`${API_URL}/api/warehouses/${warehouseId}/inventories`);
-        setInventories(data);
-      } catch (error) {
-        console.error("Error fetching inventories:", error);
-      }
+            console.log("Fetching inventories...");
+            const inventoriesResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}/inventories`);
+            console.log("Inventories response:", inventoriesResponse.data);
+            setInventories(inventoriesResponse.data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
 
-    getInventories();
-  }, [warehouseId]);
+    fetchData();
+}, [warehouseId]);
 
-  return (
-    <>
-      <WarehouseDetailsList inventories={inventories} />
-    </>
-  );
+
+    if (!warehouse) {
+        return <div>Loading...</div>; 
+    }
+
+    return (
+        <div>
+            <WarehouseDetails warehouse={warehouse} /> 
+            <WarehouseDetailsList warehouse={warehouseId}/>
+        </div>
+    );
 }
 
 export default WarehouseDetailsPage;
+
+
+
+// import React, { useState, useEffect } from "react";
+// import { useParams } from "react-router-dom";
+// import axios from "axios";
+// import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+// import WarehouseDetailsList from "../../components/WarehouseDetailsList/WarehouseDetailsList";
+
+// function WarehouseDetailsPage() {
+//     const { warehouseId } = useParams();
+//     const [warehouse, setWarehouse] = useState(null);
+//     const [inventories, setInventories] = useState([]);
+
+//     useEffect(() => {
+//         const fetchWarehouseDetails = async () => {
+//             try {
+//                 const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`);
+//                 setWarehouse(response.data);
+//                     const inventoriesResponse = await axios.get(
+//                         `${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}/inventories`
+//                       );
+//                       setInventories(inventoriesResponse.data);
+//             } catch (error) {
+//                 console.error("Error fetching warehouse details:", error);
+//             }
+//         };
+
+//         fetchWarehouseDetails();
+//     }, [warehouseId]);
+
+//     if (!warehouse) {
+//         return <div>Loading...</div>;
+//     }
+
+//     return (
+//         <div>
+//             <WarehouseDetails warehouse={warehouse} />
+//             <WarehouseDetailsList inventories={inventories} />
+//         </div>
+//     );
+// }
+
+// export default WarehouseDetailsPage;
