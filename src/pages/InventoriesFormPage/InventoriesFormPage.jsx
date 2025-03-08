@@ -67,6 +67,10 @@ export default function InventoriesFormPage() {
     }
   };
 
+  const handleCancel = () => {
+    navigate("/inventory");
+  }
+  
   return (
     <section className="inventoryForm">
       <InventoriesFormTitle />

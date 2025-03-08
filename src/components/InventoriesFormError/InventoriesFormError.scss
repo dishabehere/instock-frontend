@@ -3,15 +3,16 @@
 
 .error{
     display:flex; 
-    gap:4px;
+    gap:0.125rem;
 
     &__text{
         @include text-style(0.6875rem,1rem,400); 
-        padding-top:4px;
+        padding-top:0.25rem;
         color:$error-state-color; 
     }
 
     &__img{
-        height:13px; 
+        height:0.8125rem; 
+        margin:0.25rem;
     }
 }
