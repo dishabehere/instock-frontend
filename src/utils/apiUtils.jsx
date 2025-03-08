@@ -8,7 +8,6 @@ export const getInventoryItem = async (id) => {
     return response.data;
   } catch (error) {
     console.error('Error fetching inventory item:', error);
-    throw error;
   }
 };
 
@@ -18,7 +17,6 @@ export const getAllInventories = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching all inventories:', error);
-    throw error;
   }
 };
 
@@ -28,7 +26,6 @@ export const createInventoryItem = async (itemData) => {
     return response.data;
   } catch (error) {
     console.error('Error creating inventory item:', error);
-    throw error;
   }
 };
 
@@ -38,6 +35,5 @@ export const updateInventoryItem = async (id, itemData) => {
     return response.data;
   } catch (error) {
     console.error('Error updating inventory item:', error);
-    throw error;
   }
 };

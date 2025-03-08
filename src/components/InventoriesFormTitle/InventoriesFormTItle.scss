@@ -11,13 +11,9 @@
     }
 
     &__img{
-        height:16px; 
+        height:20px; 
         display:flex;
         align-items:center;
-
-        @include responsive(tablet){
-            height:20px;
-        }
     }
 }
 
