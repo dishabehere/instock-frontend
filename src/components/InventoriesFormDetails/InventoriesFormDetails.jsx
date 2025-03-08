@@ -1,22 +1,13 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import "./InventoriesFormDetails.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
-import { getInventoryItem } from "../../utils/apiUtils";
+import { getInventoryItem , getAllInventories } from "../../utils/apiUtils";
 
-function InventoriesFormDetails({ id, handleInputChange, errors }) {
+function InventoriesFormDetails({  id, formData, setFormData, handleInputChange, errors }) {
   const [categories, setCategories] = useState([]);
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
-  const [formData, setFormData] = useState({
-    item_name: "",
-    description: "",
-    category: "",
-    status: "instock",
-    quantity: "",
-    warehouse_name: "",
-  });
 
   useEffect(() => {
     fetchCategories();
@@ -24,9 +15,7 @@ function InventoriesFormDetails({ id, handleInputChange, errors }) {
 
   async function fetchCategories() {
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/inventories`
-      );
+      const data = await getAllInventories();
       const extractedCategories = data.map((inventory) => inventory.category);
       const uniqueCategories = [...new Set(extractedCategories)];
       setCategories(uniqueCategories);
