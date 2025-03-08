@@ -14,15 +14,20 @@ function WarehouseDetails({ warehouse }) {
             <h1 className="warehouse-details__name">{warehouse.warehouse_name}</h1>
           </div>
           <div className="warehouse-details__edit-container">
+            <Link className="warehouse-details__edit-link" to={`/warehouses/${warehouse.warehouse_id}/edit`}>
             <img className="warehouse-details__edit-image" src={editIcon} alt="Edit Icon" />
             <p className="warehouse-details__edit-text">Edit</p>
+            </Link>
           </div>
         </div>
 
       <div className="warehouse-details__container">
         <div className="warehouse-details__info">
           <h4 className="warehouse-details__label">Warehouse Address:</h4>
-          <p className="warehouse-details__text-address">{warehouse.address}, {warehouse.city}, {warehouse.country}</p>
+          <p className="warehouse-details__text">
+            <span className="warehouse-details__text-address">{warehouse.address},&nbsp;</span>
+            <span className="warehouse-details__text-address">{warehouse.city}, {warehouse.country}</span>
+          </p>
         </div>
 
         <div className="warehouse-details__content warehouse-details__content--contact">
