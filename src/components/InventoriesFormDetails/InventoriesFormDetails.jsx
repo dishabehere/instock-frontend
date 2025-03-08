@@ -3,12 +3,20 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./InventoriesFormDetails.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
+import { getInventoryItem } from "../../utils/apiUtils";
 
-function InventoriesFormDetails({ id, formData, handleInputChange, errors }) {
+function InventoriesFormDetails({ id, handleInputChange, errors }) {
   const [categories, setCategories] = useState([]);
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
-
+  const [formData, setFormData] = useState({
+    item_name: "",
+    description: "",
+    category: "",
+    status: "instock",
+    quantity: "",
+    warehouse_name: "",
+  });
 
   useEffect(() => {
     fetchCategories();
@@ -27,9 +35,26 @@ function InventoriesFormDetails({ id, formData, handleInputChange, errors }) {
     }
   }
 
+  useEffect(() => {
+    if (isEditPage && id) {
+      fetchInventoryItem(id);
+    }
+  }, [isEditPage, id]);
+
+  const fetchInventoryItem = async (id) => {
+    try {
+      const data = await getInventoryItem(id);
+      setFormData(data);
+    } catch (error) {
+      console.error("Error fetching inventory item:", error);
+    }
+  };
+
   return (
     <div className="details">
       <h2 className="details__header">Item Details</h2>
+
+      {/* Item Name */}
       <h4 className="details__label">Item Name</h4>
       <label className="details__fields">
         <input
@@ -38,18 +63,21 @@ function InventoriesFormDetails({ id, formData, handleInputChange, errors }) {
           className={`details__name ${
             errors.item_name ? "details__name--invalid" : ""
           }`}
-          value={isEditPage ? formData.item_name : ""}
-          placeholder={isEditPage ? "" : "Item Name"}
+          value={formData.item_name}
+          placeholder={!isEditPage ? "Item Name" : ""}
           onChange={handleInputChange}
         />
         {errors.item_name && <InventoriesFormError />}
       </label>
+
       <h4 className="details__label">Description</h4>
       <label className="details__fields">
         <textarea
           name="description"
-          value={isEditPage ? formData.descriptioin : ""}
-          placeholder={isEditPage ? "" : "Please enter a brief item description..."}
+          value={formData.description}
+          placeholder={
+            !isEditPage ? "Please enter a brief item description..." : ""
+          }
           className={`details__description ${
             errors.description ? "details__description--invalid" : ""
           }`}
@@ -57,6 +85,7 @@ function InventoriesFormDetails({ id, formData, handleInputChange, errors }) {
         />
         {errors.description && <InventoriesFormError />}
       </label>
+
       <h4 className="details__label">Category</h4>
       <div>
         <label className="details__dropdown">
