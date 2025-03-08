@@ -1,11 +1,15 @@
 import { useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import axios from "axios";
 import InventoriesFormDetails from "../../components/InventoriesFormDetails/InventoriesFormDetails";
 import InventoriesFormStock from "../../components/InventoriesFormStock/InventoriesFormStock";
 import InventoriesFormTitle from "../../components/InventoriesFormTitle/InventoriesFormTitle";
 import InventoriesFormButtons from "../../components/InventoriesFormButtons/InventoriesFormButtons";
 import "./InventoriesFormPage.scss";
+import {
+  createInventoryItem,
+  updateInventoryItem,
+} from "../../utils/apiUtils";
+("../../utils/apiUtils");
 
 export default function InventoriesFormPage() {
   const { id } = useParams();
@@ -20,6 +24,8 @@ export default function InventoriesFormPage() {
     warehouse_name: "",
   });
   const [errors, setErrors] = useState({});
+
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -50,15 +56,9 @@ export default function InventoriesFormPage() {
 
     try {
       if (location.pathname.includes("/add")) {
-        await axios.post(
-          `${import.meta.env.VITE_BASE_URL}/api/inventories`,
-          formData
-        );
+        await createInventoryItem(formData);
       } else {
-        await axios.put(
-          `${import.meta.env.VITE_BASE_URL}/api/inventories/${id}`,
-          formData
-        );
+        await updateInventoryItem(id, formData);
       }
       navigate("/inventories");
     } catch (error) {
@@ -68,7 +68,7 @@ export default function InventoriesFormPage() {
 
   const handleCancel = () => {
     navigate("/inventories");
-  }
+  };
 
   return (
     <section className="inventoryForm">
