@@ -4,9 +4,7 @@ import "./WarehouseFormPage.scss";
 
 function warehouseFormPage() {
     return(
-
             <WarehouseForm />
-
     );
 }
 
