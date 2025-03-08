@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getInventoryItem, getAllInventories } from "../../utils/apiUtils";
 
-function InventoriesFormStock({ formData, handleInputChange, errors }) {
+function InventoriesFormStock({ formData, handleInputChange,  setFormData, errors }) {
   const [warehouseName, setWarehouseName] = useState([]);
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
