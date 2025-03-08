@@ -5,7 +5,7 @@ function InventoriesFormError() {
     <div className="error">
       <img
         className="error__img"
-        src="../src/assets/icons/error-24px.svg"
+        src="../../src/assets/icons/error-24px.svg"
         alt="error icon"
       />
 

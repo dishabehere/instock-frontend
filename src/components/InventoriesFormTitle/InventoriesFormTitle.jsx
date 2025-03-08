@@ -14,9 +14,9 @@ function InventoriesFormHeader() {
           alt="arrow-icon"
         />
       </Link>
-      <h2 className={`form__title ${isEditPage ? 'form__title--edit' : 'form__title--add'}`}>
+      <h1 className={`form__title ${isEditPage ? 'form__title--edit' : 'form__title--add'}`}>
         {isEditPage ? 'Edit Inventory Item' : 'Add New Inventory Item'}
-      </h2>
+      </h1>
     </section>
   );
 }
