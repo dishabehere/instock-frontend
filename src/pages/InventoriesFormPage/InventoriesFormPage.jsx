@@ -5,7 +5,6 @@ import InventoriesFormDetails from "../../components/InventoriesFormDetails/Inve
 import InventoriesFormStock from "../../components/InventoriesFormStock/InventoriesFormStock";
 import InventoriesFormTitle from "../../components/InventoriesFormTitle/InventoriesFormTitle";
 import InventoriesFormButtons from "../../components/InventoriesFormButtons/InventoriesFormButtons";
-import InventoriesFormError from "../../components/InventoriesFormError/InventoriesFormError";
 import "./InventoriesFormPage.scss";
 
 export default function InventoriesFormPage() {
@@ -70,7 +69,7 @@ export default function InventoriesFormPage() {
   const handleCancel = () => {
     navigate("/inventory");
   }
-  
+
   return (
     <section className="inventoryForm">
       <InventoriesFormTitle />
@@ -89,7 +88,7 @@ export default function InventoriesFormPage() {
             errors={errors}
           />
         </div>
-        <InventoriesFormButtons />
+        <InventoriesFormButtons handleCancel={handleCancel} />
       </form>
     </section>
   );
