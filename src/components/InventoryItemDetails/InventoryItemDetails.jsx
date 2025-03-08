@@ -7,6 +7,7 @@ import axios from "axios";
 function InventoryItemDetails() {
   const { id } = useParams();
   const [item, setItem] = useState("null");
+  
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -36,12 +37,13 @@ function InventoryItemDetails() {
             <h3 className="item__title">{item.item_name}</h3>
           </div>
         </Link>
-        <div>
-          <img
+        <div className="item__icon">
+          <Link to="/inventories"><img
             className="item__edit"
             src="../src/assets/icons/edit-white-24px.svg"
             alt="edit icon"
           />
+           </Link>
         </div>
       </div>
       <div className="item__details">
