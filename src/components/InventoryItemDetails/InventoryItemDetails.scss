@@ -1,11 +1,129 @@
-@use "../../styles/partials/mixins" as* ;
-@use "../../styles/partials/variables" as*; 
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
-.item{
-    &__edit{
-        background-color:$interactive-color; 
-        border-radius:50%;
-        padding: 6px; 
+h4 {
+  text-transform: uppercase;
+  color: $table-text-color;
+}
 
+.item {
+  background-color: $global-color;
+  margin: 0 1rem 0.3125rem;
+  border-radius: 0.1875rem;
+  box-shadow: 0 0.125rem 0.3125rem $box-shadow;
+  position: relative;
+  bottom: 50px;
+
+  @include responsive(tablet) {
+    margin: 0 2rem 0.3125rem;
+    bottom: 70px;
+  }
+
+  @include responsive(desktop) {
+    margin: 0 8.125rem 0.3125rem;
+  }
+  
+  &__header{
+    @include text-style(25px, 20px, 600);
+    color: $global-text-color;
+  }
+
+  &__container, &__wrapper{
+    display:flex; 
+    align-items:center; 
+  }
+
+  &__container{
+    justify-content:space-between;
+    border-bottom: 1px solid $table-border-color;
+    padding: 16px; 
+
+    @include responsive(tablet){
+        padding:16px 32px; 
     }
+  }
+
+  &__wrapper{
+    gap: 8px; 
+  }
+
+  &__details{
+    padding:0 16px 16px;
+    
+    @include responsive(tablet){
+        display:flex; 
+        gap: 24px; 
+        padding: 0 32px 32px;
+    }
+  }
+
+  &__img{
+    height: 20px;
+  }
+
+  &__descriptors{
+    display:flex; 
+    flex-direction:column; 
+  }
+
+  &__edit {
+    margin-top:5px;
+    background-color: $interactive-color;
+    height: 26px;
+    border-radius: 50%;
+    padding: 5px;
+  }
+
+  &__title{
+    padding-top: 16px; 
+  }
+  &__text {
+    padding-top:4px; 
+    @include text-style(11px, 16px, 400);
+
+    @include responsive(tablet) {
+      @include text-style(13px, 20px, 400);
+    }
+
+    &--instock,
+    &--outofstock {
+      padding: 5px;
+      border-radius: 1.25rem;
+      text-transform: uppercase;
+      margin-top: 4px;
+      @include text-style(11px, 1.25rem, 600);
+      display:inline-block;
+
+      @include responsive(tablet) {
+        margin-top:6px;
+      }
+    }
+
+    &--instock {
+      background-color: rgba(21, 138, 99, 0.07);
+      color: $instock-label-color;
+    }
+
+    &--outofstock {
+      background-color: rgba(201, 69, 21, 0.07);
+      color: $error-state-color;
+    }
+}
+
+&__amount{
+    display:flex;
+    gap: 50px;
+
+    @include responsive(tablet){
+        
+    }
+}
+
+&__quantities{
+    @include responsive(tablet){
+        padding:0px 24px 16px; 
+        border-left: 1px solid $table-border-color;
+    }
+}
+
 }
