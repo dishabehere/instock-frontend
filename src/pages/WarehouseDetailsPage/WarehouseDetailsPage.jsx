@@ -1,9 +1,7 @@
 // import { useState, useEffect } from "react";
 // import { useParams } from "react-router-dom";
-// import axios from "axios";
-// import WarehouseDetailsList from "../../components/WarehouseDetailsList/WarehouseDetailsList";
 
-function WarehouseDetailsPage() {
+// function WarehouseDetailsPage() {
 //     const { warehouseId } = useParams();
 //     const [warehouse, setWarehouse] = useState(null);
 
@@ -30,9 +28,9 @@ function WarehouseDetailsPage() {
 //             <WarehouseDetailsList warehouse={warehouse}/>
 //         </div>
 //     );
-}
+// }
 
-export default WarehouseDetailsPage;
+// export default WarehouseDetailsPage;
 
 
 
@@ -84,3 +82,65 @@ export default WarehouseDetailsPage;
 // }
 
 // export default WarehouseDetailsPage;
+
+
+
+
+
+import "./WarehouseDetailsPage.scss";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import WarehouseDetailsList from "../../components/WarehouseDetailsList/WarehouseDetailsList";
+
+function WarehouseDetailsPage() {
+  const { id } = useParams();
+  const [warehouse, setWarehouse] = useState(null);
+  const [inventories, setInventories] = useState([]);
+
+  useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    const getWarehouseDetails = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/api/warehouses/${id}`);
+        setWarehouse(data);
+      } catch (e) {
+        console.error("Error fetching warehouses:", e);
+      }
+    };
+
+    getWarehouseDetails();
+  }, [id]);
+
+
+  useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    const getInventories = async () => {
+      try {
+        const { data } = await axios.get(
+          `${API_URL}/api/warehouses/${id}/inventories`
+        );
+        setInventories(data);
+      } catch (e) {
+        console.error("Error fetching warehouses:", e);
+      }
+    };
+
+    getInventories();
+  }, [id, warehouse]);
+
+  if (!warehouse) {
+    return <>Loading...</>;
+  }
+
+  return (
+    <>
+    
+        {/* <WarehouseDetailsList inventories={inventories} /> */}
+    </>
+  );
+}
+
+export default WarehouseDetailsPage;
