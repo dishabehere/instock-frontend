@@ -37,7 +37,6 @@ export default function InventoriesFormPage() {
     }
   };
 
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -64,11 +63,43 @@ export default function InventoriesFormPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!validateForm()) return;
 
+  //   try {
+  //     const formattedData = {
+  //       item_name: formData.item_name.trim(),
+  //       description: formData.description.trim(),
+  //       category: formData.category.trim(),
+  //       status: formData.status.trim(),
+  //       quantity: formData.quantity,
+  //       warehouse_name: formData.warehouse_name.trim(),
+  //     };
+  //     if (location.pathname.includes("/add")) {
+  //       await createInventoryItem(formattedData);
+  //     } else {
+  //       await updateInventoryItem(id, formattedData);
+  //     }
+  //     navigate("/inventories");
+  //   } catch (error) {
+  //     console.error("Error submitting form:", error);
+  //   }
+  // };
+
+  const handleSubmit = async (e) => {
+    console.log("handleSubmit function called");
+    e.preventDefault();
+    console.log("Form data before validation:", formData);
+    
+    if (!validateForm()) {
+      console.log("Form validation failed");
+      return;
+    }
+    console.log("Form validation passed");
+  
     try {
+      console.log("Formatting data");
       const formattedData = {
         item_name: formData.item_name.trim(),
         description: formData.description.trim(),
@@ -77,14 +108,23 @@ export default function InventoriesFormPage() {
         quantity: formData.quantity,
         warehouse_name: formData.warehouse_name.trim(),
       };
+      console.log("Formatted data:", formattedData);
+  
       if (location.pathname.includes("/add")) {
-        await createInventoryItem(formattedData);
+        console.log("Adding new inventory item");
+        const result = await createInventoryItem(formattedData);
+        console.log("Create result:", result);
       } else {
-        await updateInventoryItem(id, formattedData);
+        console.log("Updating inventory item with id:", id);
+        const result = await updateInventoryItem( id, formattedData);
+        console.log("Update result:", result);
       }
+      
+      console.log("Operation successful, navigating to /inventories");
       navigate("/inventories");
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error in try block of handleSubmit:", error);
+      console.log("Error details:", error.response?.data);
     }
   };
 
