@@ -5,10 +5,7 @@ import InventoriesFormStock from "../../components/InventoriesFormStock/Inventor
 import InventoriesFormTitle from "../../components/InventoriesFormTitle/InventoriesFormTitle";
 import InventoriesFormButtons from "../../components/InventoriesFormButtons/InventoriesFormButtons";
 import "./InventoriesFormPage.scss";
-import {
-  createInventoryItem,
-  updateInventoryItem,
-} from "../../utils/apiUtils";
+import { createInventoryItem, updateInventoryItem } from "../../utils/apiUtils";
 ("../../utils/apiUtils");
 
 export default function InventoriesFormPage() {
@@ -25,8 +22,6 @@ export default function InventoriesFormPage() {
   });
   const [errors, setErrors] = useState({});
 
-
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -39,7 +34,7 @@ export default function InventoriesFormPage() {
     if (formData.category === "" || formData.category === "Please Select")
       newErrors.category = true;
     if (formData.status === "") newErrors.status = true;
-    if (formData.status === "instock" && formData.quantity === "")
+    if (formData.status === "instock" && formData.quantity === "" && formData.quantity <= 0)
       newErrors.quantity = true;
     if (
       formData.warehouse_name === "" ||
@@ -78,12 +73,14 @@ export default function InventoriesFormPage() {
           <InventoriesFormDetails
             id={id}
             formData={formData}
+            setFormData={setFormData} 
             handleInputChange={handleInputChange}
             errors={errors}
           />
           <InventoriesFormStock
             id={id}
             formData={formData}
+            setFormData={setFormData} 
             handleInputChange={handleInputChange}
             errors={errors}
           />
