@@ -1,9 +1,12 @@
 import "./InventoryItemDetails.scss";
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import {Link} from "react-router-dom";
+import axios from "axios";
 
 function InventoryItemDetails() {
   const { id } = useParams();
-  const [item, setItem] = useState([]);
+  const [item, setItem] = useState("null");
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -13,7 +16,7 @@ function InventoryItemDetails() {
         );
         setItem(response.data);
       } catch (error) {
-        console.error("Error fetching warehouses:", error);
+        console.error("Error fetching inventory items:", error);
       }
     };
 
@@ -52,8 +55,8 @@ function InventoryItemDetails() {
           <div className="item__amoount">
             <h3 className="item__status">Status</h3>
             <p className="item__stock">{item.stock}</p>
-            <h3 classname="item__quantity">Quantity</h3>
-            <p classname="item__text">{item.quantity}</p>
+            <h3 className="item__quantity">Quantity</h3>
+            <p className="item__text">{item.quantity}</p>
           </div>
           <h3 className="item__warehouse">Warehouse</h3>
           <p className="item__text">{item.warehouse_name}</p>
