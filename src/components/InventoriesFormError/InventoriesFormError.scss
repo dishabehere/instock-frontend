@@ -1,0 +1,12 @@
+@use "../../styles/partials/mixins" as*;
+@use"../../styles/partials/variables" as*; 
+
+.error{
+    display:flex; 
+    gap:4px;
+
+    &__text{
+        @include text-styles(0.6875rem,1rem,400);
+        color:$error-state-color; 
+    }
+}
