@@ -7,8 +7,90 @@ import "./WarehouseDetailsList.scss";
 import { Link } from "react-router-dom"; 
 
 
-function WarehouseDetailsList({ inventories }) {
+// function WarehouseDetailsList({ inventories }) {
 
+
+//     const { id } = useParams();
+//   const [warehouse, setWarehouse] = useState(null);
+//   const [inventories, setInventories] = useState([]);
+
+//   useEffect(() => {
+//     const API_URL = import.meta.env.VITE_API_URL;
+
+//     const getWarehouseDetails = async () => {
+//       try {
+//         const { data } = await axios.get(`${API_URL}/api/warehouses/${id}`);
+//         setWarehouse(data);
+//       } catch (e) {
+//         console.error("Error fetching warehouses:", e);
+//       }
+//     };
+
+//     getWarehouseDetails();
+//   }, [id]);
+
+
+//   useEffect(() => {
+//     const API_URL = import.meta.env.VITE_API_URL;
+
+//     const getInventories = async () => {
+//       try {
+//         const { data } = await axios.get(
+//           `${API_URL}/api/warehouses/${id}/inventories`
+//         );
+//         setInventories(data);
+//       } catch (error) {
+//         console.error("Error fetching warehouses:", error);
+//       }
+//     };
+
+//     getInventories();
+//   }, [id, warehouse]);
+
+//   if (!warehouse) {
+//     return <>Loading...</>;
+//   }
+
+// import React, { useState, useEffect } from 'react';
+// import { useParams, Link } from 'react-router-dom';
+// import axios from 'axios';
+// import "./WarehouseDetailsPage.scss";
+
+function WarehouseDetailsList() {
+  const { id } = useParams();
+  const [warehouse, setWarehouse] = useState(null);
+  const [inventories, setInventories] = useState([]);
+
+  useEffect(() => {
+    const API_URL = import.meta.env.VITE_API_URL;
+
+    const getWarehouseDetails = async () => {
+      try {
+        const { data } = await axios.get(`${API_URL}/api/warehouses/${id}`);
+        setWarehouse(data);
+      } catch (e) {
+        console.error("Error fetching warehouse:", e);
+      }
+    };
+
+    const getInventories = async () => {
+      try {
+        const { data } = await axios.get(
+          `${API_URL}/api/warehouses/${id}/inventories`
+        );
+        setInventories(data);
+      } catch (error) {
+        console.error("Error fetching inventories:", error);
+      }
+    };
+
+    getWarehouseDetails();
+    getInventories();
+  }, [id]);
+
+  if (!warehouse) {
+    return <div>Loading...</div>;
+  }
     return (
       <section className="inventory-list">
         <div className="inventory-list__index">

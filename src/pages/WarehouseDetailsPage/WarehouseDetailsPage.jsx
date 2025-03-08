@@ -93,54 +93,41 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import WarehouseDetailsList from "../../components/WarehouseDetailsList/WarehouseDetailsList";
 
-function WarehouseDetailsPage() {
-  const { id } = useParams();
-  const [warehouse, setWarehouse] = useState(null);
-  const [inventories, setInventories] = useState([]);
+// function WarehouseDetailsPage() {
 
-  useEffect(() => {
-    const API_URL = import.meta.env.VITE_API_URL;
-
-    const getWarehouseDetails = async () => {
-      try {
-        const { data } = await axios.get(`${API_URL}/api/warehouses/${id}`);
-        setWarehouse(data);
-      } catch (e) {
-        console.error("Error fetching warehouses:", e);
-      }
-    };
-
-    getWarehouseDetails();
-  }, [id]);
-
-
-  useEffect(() => {
-    const API_URL = import.meta.env.VITE_API_URL;
-
-    const getInventories = async () => {
-      try {
-        const { data } = await axios.get(
-          `${API_URL}/api/warehouses/${id}/inventories`
-        );
-        setInventories(data);
-      } catch (e) {
-        console.error("Error fetching warehouses:", e);
-      }
-    };
-
-    getInventories();
-  }, [id, warehouse]);
-
-  if (!warehouse) {
-    return <>Loading...</>;
-  }
-
-  return (
-    <>
+//   return (
+//     <>
     
-        {/* <WarehouseDetailsList inventories={inventories} /> */}
-    </>
-  );
-}
+//         <WarehouseDetailsList inventories={inventories} />
+//     </>
+//   );
+// }
 
-export default WarehouseDetailsPage;
+// export default WarehouseDetailsPage;
+
+
+function WarehouseDetailsPage() {
+    const [inventories, setInventories] = useState([]);
+  
+    useEffect(() => {
+      const API_URL = import.meta.env.VITE_API_URL;
+      const { id } = useParams();
+  
+      const getInventories = async () => {
+        try {
+          const { data } = await axios.get(`${API_URL}/api/warehouses/${id}/inventories`);
+          setInventories(data);
+        } catch (error) {
+          console.error("Error fetching inventories:", error);
+        }
+      };
+  
+      getInventories();
+    }, []);
+  
+    return (
+      <>
+        <WarehouseDetailsList inventories={inventories} />
+      </>
+    );
+  }
