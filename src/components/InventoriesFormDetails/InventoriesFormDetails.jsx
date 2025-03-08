@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./InventoriesFormDetails.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
 
 function InventoriesFormDetails({ id, formData, handleInputChange, errors }) {
   const [categories, setCategories] = useState([]);
+  const location = useLocation();
+  const isEditPage = location.pathname.includes("/edit");
+
 
   useEffect(() => {
     fetchCategories();
@@ -25,7 +29,7 @@ function InventoriesFormDetails({ id, formData, handleInputChange, errors }) {
 
   return (
     <div className="details">
-      <h3 className="details__header">Item Details</h3>
+      <h2 className="details__header">Item Details</h2>
       <h4 className="details__label">Item Name</h4>
       <label className="details__fields">
         <input
@@ -34,7 +38,8 @@ function InventoriesFormDetails({ id, formData, handleInputChange, errors }) {
           className={`details__name ${
             errors.item_name ? "details__name--invalid" : ""
           }`}
-          value={formData.item_name}
+          value={isEditPage ? formData.item_name : ""}
+          placeholder={isEditPage ? "" : "Item Name"}
           onChange={handleInputChange}
         />
         {errors.item_name && <InventoriesFormError />}
@@ -43,7 +48,8 @@ function InventoriesFormDetails({ id, formData, handleInputChange, errors }) {
       <label className="details__fields">
         <textarea
           name="description"
-          value={formData.description}
+          value={isEditPage ? formData.descriptioin : ""}
+          placeholder={isEditPage ? "" : "Please enter a brief item description..."}
           className={`details__description ${
             errors.description ? "details__description--invalid" : ""
           }`}

@@ -10,9 +10,22 @@ option {
   }
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("../src/assets/icons/arrow_drop_down-24px.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) center;
+  padding-right: 20px;
+  position: relative;
+}
+
 .details {
   padding: 16px;
   @include responsive(tablet) {
+    padding:0px; 
+    padding-right:24px;
     width: 50%;
   }
 
