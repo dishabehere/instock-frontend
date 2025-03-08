@@ -1,0 +1,47 @@
+@use "/src/styles/partials/_global.scss" as *;
+@use "/src/styles/partials/_mixins.scss" as *;
+@use "/src/styles/partials/_variables.scss" as *;
+
+
+.warehouse-modal__cancel-button , .warehouse-modal__delete-button {
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.warehouse-modal__cancel-button {
+    background-color: $global-color;
+
+}
+.warehouse-modal__delete-button {
+    background-color: $error-state-color;
+    border:none;
+    color: $global-color;
+}
+.warehouse-modal__container-button {
+    width: 100%;
+    gap: 10px; 
+    justify-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+.warehouse-modal__container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+}
+.warehouse_modal__container-close-button  {
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+}
+.ReactModalPortal {
+    .ReactModal__Overlay , .ReactModal__Overlay--after-open {
+    height: 100vh;
+    padding: 1rem;
+    background-color: $global-color !important;
+    border: none;
+    }
+}

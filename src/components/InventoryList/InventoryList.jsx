@@ -7,24 +7,49 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
+import WarehouseModal from "../WarehouseModal/WarehouseModal";
 
 function InventoryList() {
   const [inventories, setInventories] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [inventoryToDelete, setInventoryToDelete] = useState(null);
+
+  const fetchInventories = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/inventories`
+      );
+      setInventories(response.data);
+    } catch (error) {
+      console.error("Error fetching inventories:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchInventories = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/api/inventories`
-        );
-        setInventories(response.data);
-      } catch (error) {
-        console.error("Error fetching inventories:", error);
-      }
-    };
 
     fetchInventories();
   }, []);
+
+  const openDeleteModal = (inventory) => {
+    setInventoryToDelete(inventory);
+    setModalIsOpen(true);
+  };
+  
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setInventoryToDelete(null);
+  };
+  
+  const handleDelete = async () => {
+    try {
+        // await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/inventories/${inventoryToDelete.id}`);
+        console.log('inventories delete')
+        fetchInventories()
+        closeModal();
+    } catch (error) {
+        console.error("Error deleting warehouse:", error);
+    }
+};
 
   return (
     <section className="inventory-list">
@@ -132,6 +157,7 @@ function InventoryList() {
                 className="inventory-list__icon"
                 src={deleteIcon}
                 alt="Delete icon"
+                onClick={() => openDeleteModal(inventory)}
               />
               <Link to={`/inventories/${inventory.id}/edit`}>
                 <img
@@ -144,6 +170,15 @@ function InventoryList() {
           </div>
         ))}
       </div>
+      {/* Modal */}
+      <WarehouseModal
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        handleDelete={handleDelete}
+        itemName={inventoryToDelete?.item_name}
+        itemType="inventory item"
+        itemListType="inventory"
+        />
     </section>
   );
 }
