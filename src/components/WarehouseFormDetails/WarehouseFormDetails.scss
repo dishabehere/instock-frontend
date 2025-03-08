@@ -6,23 +6,46 @@
     &__details{
         display: flex;
         flex-direction: column;
+
+        @include responsive(tablet) {
+            flex-direction: row;
+        }
     }
 
     &__fields{
         padding: 1.5rem;
 
+        @include responsive(tablet){
+            width: 100%;
+            padding: 0 2rem;
+        }
+
         &--modified{
             border-bottom: .0625rem solid $table-border-color;
+
+            @include responsive(tablet){
+                border-bottom: 0;
+                border-right: .0625rem solid $table-border-color;
+            }
         }
     }
 
     &__field{
         display: flex;
         flex-direction: column;
-        padding-top: 1.5rem;
+        padding-top: .5rem;
+    }
+
+    &__label {
+        padding-top: 1rem;
+
+        @include responsive (tablet) {
+            padding-top: 1.5rem;
+        }
     }
 
     &__input {
+        margin-top: .25rem;
         height: 2.25rem;
         border-radius: 1.25rem;
         border: .0625rem solid $table-border-color;
@@ -35,6 +58,11 @@
         display: flex;
         justify-content: space-around;
         gap: .625rem;
+
+        @include responsive(tablet) {
+            margin-top: 2rem;
+            justify-content: flex-end;
+        }
     }
 
     &__button {
@@ -42,6 +70,11 @@
         height: 2.25rem;
         border: 0;
         border-radius: 1.25rem;
+
+        @include responsive(tablet){
+            width: auto;
+            padding: .5rem 1rem;
+        }
 
         &--cancel {
             background-color: $global-color;
