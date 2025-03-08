@@ -37,20 +37,23 @@ function InventoryItemDetails() {
             <p className="item__header">{item.item_name}</p>
           </div>
         </Link>
-        <div className="item__icon">
-          <Link to="/inventories/${id}/edit">
+        <Link to="/inventories/${id}/edit">
+          <div className="item__icon">
             <img
               className="item__edit"
               src="../src/assets/icons/edit-white-24px.svg"
               alt="edit icon"
             />
-          </Link>
-        </div>
+            <p className="item__text-edit">Edit</p>
+          </div>
+        </Link>
       </div>
       <div className="item__details">
         <div className="item__descriptors">
-          <h4 className="item__title">Item title:</h4>
+          <div className="item__paragraph">
+          <h4 className="item__title">Item Description:</h4>
           <p className="item__text">{item.description}</p>
+          </div>
           <h4 className="item__title">Category:</h4>
           <p className="item__text">{item.category}</p>
         </div>
