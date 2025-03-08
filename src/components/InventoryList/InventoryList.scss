@@ -67,6 +67,9 @@ a {
       width: 11.5625rem;
       padding: 0.5rem 1rem;
     }
+    @include responsive (desktop){
+      width:17.125rem;
+    }
   }
 
   &__search-text {
@@ -113,6 +116,11 @@ a {
       padding: 0.75rem 2rem;
       background-color: $primary-background-color;
       text-align: center;
+    }
+
+    @include responsive(desktop){
+      display:grid; 
+      grid-template-columns: 2.3fr 1.9fr 1.9fr 1.1fr 2.3fr 0fr;
     }
   }
 
