@@ -66,4 +66,15 @@ select {
     border-radius: 20px;
     border: 1px solid $table-border-color;
   }
+
+  &__number, &__locations{
+    &:focus {
+      border: 1px solid $interactive-color;
+    }
+
+    &--invalid {
+      border: 1px solid $error-state-color;
+    }
+
+  }
 }
