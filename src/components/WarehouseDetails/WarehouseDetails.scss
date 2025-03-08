@@ -4,8 +4,11 @@
 
 .warehouse-list__name {
     border-bottom: 1px solid $table-border-color;
-    padding: 1.5rem;
+    padding: 1.5rem;;
     justify-content: space-between;
+    @include responsive (tablet) {
+        padding: 1.5rem 2.5rem;;
+    }
 }
 
 .warehouse-details {
@@ -29,8 +32,14 @@
         @include responsive (tablet) {
             display: flex;
             justify-content: space-between;
-            width: 90%;
+            padding: 1.5rem 2.5rem;
+            width: 95%;
         }
+
+        @include responsive (desktop) {
+            width: 80%;
+        }
+        
     }
 
     &__home {
@@ -44,10 +53,37 @@
         }
     }
 
-    // &__edit-image {
-    //     // background-color: $interactive-color;
-    //     fill: white;
-    // }
+    &__edit {
+        &-container {
+        background-color: $interactive-color;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include responsive (tablet) {
+            display: flex;
+            width: 5.5rem;
+            height: 2.5rem;
+            border-radius: 1.25rem;
+            padding: 8px 16px;
+        }
+        }
+        &-text {
+        display: none;
+        @include responsive (tablet) {
+            display: flex;
+            color: $global-color;
+            align-items: center;
+            margin-left: 8px;
+        }
+        }
+        &-image {
+        object-fit: none;
+        }
+
+    }
 
     &__content , &__content--contact {
         display: flex;
@@ -61,6 +97,10 @@
             width: 50%;
             border-left: 1px solid $table-border-color;
             padding-left: 1.5rem;
+        }
+
+        @include responsive (desktop) {
+            gap: 1.5rem;
         }
     }
 
