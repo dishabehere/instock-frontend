@@ -5,6 +5,8 @@ import WarehouseFormPage from "./pages/WarehouseFormPage/WarehouseFormPage"
 import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import WarehouseDetailsPage from "./pages/WarehouseDetailsPage/WarehouseDetailsPage";
+import WarehouseFormPage from "./pages/WarehouseFormPage/WarehouseFormPage";
 
 function App() {
   return (
@@ -12,11 +14,17 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/warehouses/:warehouseId" element={<WarehouseDetailsPage />}/> */}
-        <Route path="/warehouses/add" element={<WarehouseFormPage />} />
-        <Route path="/warehouses/:warehouseId/edit" element={<WarehouseFormPage />} />
+        <Route
+          path="/warehouses/:warehouseId"
+          element={<WarehouseDetailsPage />}
+        />
+        {/* <Route path="/warehouses/add" element={<WarehouseFormPage />} /> */}
+        <Route path="/warehouses/edit" element={<WarehouseFormPage />} />
         <Route path="/inventories" element={<InventoriesListPage />} />
-        {/* <Route path="/inventories/:inventoryId" element={<InventoryDetailsPage />}/>
+        <Route
+          path="/inventories/:inventoryId"
+          element={<InventoryDetailsPage />}
+        />
         <Route path="/inventories/add" element={<InventoriesFormPage />} />
         <Route path="/inventories/:inventoryId/edit" element={<InventoriesFormPage />} />  */}
       </Routes>
