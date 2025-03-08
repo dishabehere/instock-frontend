@@ -14,7 +14,7 @@
 
     &__fields{
         padding: 1.5rem;
-
+       
         @include responsive(tablet){
             width: 100%;
             padding: 0 2rem;
@@ -50,6 +50,29 @@
         border-radius: 1.25rem;
         border: .0625rem solid $table-border-color;
         padding: .5rem 1rem;
+
+        &:focus {
+            border: 0.125rem solid $interactive-color; 
+            outline: none;
+        }
+
+        &--error {
+            border: 0.125rem solid $error-state-color; 
+            color: $error-state-color;
+        }
+    }
+
+    &__error {
+        color: $error-state-color;
+        @include text-style(.75rem, 1.125rem, 400, normal);
+        margin-top: 0.25rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        &::before {
+            font-size: 1rem;
+        }
     }
 
     &__buttons {

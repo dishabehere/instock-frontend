@@ -1,17 +1,19 @@
     import { useState, useEffect } from "react";
-    import { useLocation } from "react-router-dom";
+    import { Link, useLocation, useNavigate } from "react-router-dom";
     import axios from "axios";
     import "./WarehouseFormDetails.scss";
+    import error from "../../assets/icons/error-24px.svg";
 
     function WarehouseFormDetails({warehouseId}) {
     const location = useLocation();
+    const navigate = useNavigate();
     const isAddPage = location.pathname.includes("/add");
     
     const [formData, setFormData] = useState({
         warehouseName: "",
         streetAddress: "",
         city: "",
-        country: "",
+        country: "",    
         contactName: "",
         position: "",
         phoneNumber: "",
@@ -23,7 +25,6 @@
           const fetchWarehouse = async () => {
             try {
               const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`);
-              console.log("API Response:", response.data); // Debugging step
               setFormData({
                 warehouseName: response.data.warehouse_name || "",
                 streetAddress: response.data.address || "",
@@ -73,12 +74,27 @@
         e.preventDefault();
         setSubmitted(true);
         if (validate()) {
+
+            const formattedData = {
+                warehouse_name: formData.warehouseName.trim(),
+                address: formData.streetAddress.trim(),
+                city: formData.city.trim(),
+                country: formData.country.trim(),
+                contact_name: formData.contactName.trim(),
+                contact_position: formData.position.trim(),
+                contact_phone: formData.phoneNumber.trim(),
+                contact_email: formData.email.trim(),
+              };
+          
+              console.log("Submitting updated data:", formattedData); // Debugging log
+          
+
         try {
             if (warehouseId) {
                 // Edit warehouse
-                await axios.put(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`, formData);
+                await axios.put(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`, formattedData);
             } else {
-            await axios.post(`${import.meta.env.VITE_BASE_URL}/api/warehouses`, formData);
+            await axios.post(`${import.meta.env.VITE_BASE_URL}/api/warehouses`, formattedData);
             }
 
             setFormData({
@@ -92,6 +108,8 @@
             email: "",
             });
             setSubmitted(false);
+
+            navigate("/");
         } catch (error) {
             console.error("Error submitting form", error);
         }
@@ -121,20 +139,20 @@
                     <h2 className="form__heading">Warehouse Details</h2>
                     <div className="form__field">
                         <h3 className="form__label">Warehouse Name</h3>
-                        <input className="form__input" placeholder="Warehouse Name" type="text" name="warehouseName" value={formData.warehouseName} onChange={handleChange} />
-                        {submitted && errors.warehouseName && <span className="error">{errors.warehouseName}</span>}
+                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Warehouse Name" type="text" name="warehouseName" value={formData.warehouseName} onChange={handleChange} />
+                        {submitted && errors.warehouseName && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.warehouseName}</span>}
                         
                         <h3 className="form__label">Street Address</h3>
-                        <input className="form__input" placeholder="Street Address" type="text" name="streetAddress" value={formData.streetAddress} onChange={handleChange} />
-                        {submitted && errors.streetAddress && <span className="error">{errors.streetAddress}</span>}
+                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Street Address" type="text" name="streetAddress" value={formData.streetAddress} onChange={handleChange} />
+                        {submitted && errors.streetAddress && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.streetAddress}</span>}
                         
                         <h3 className="form__label">City</h3>
-                        <input className="form__input" placeholder="City" type="text" name="city" value={formData.city} onChange={handleChange} />
-                        {submitted && errors.city && <span className="error">{errors.city}</span>}
+                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="City" type="text" name="city" value={formData.city} onChange={handleChange} />
+                        {submitted && errors.city && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.city}</span>}
                     
                         <h3 className="form__label">Country</h3>
-                        <input className="form__input" placeholder="Country" type="text" name="country" value={formData.country} onChange={handleChange} />
-                        {submitted && errors.country && <span className="error">{errors.country}</span>}
+                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Country" type="text" name="country" value={formData.country} onChange={handleChange} />
+                        {submitted && errors.country && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.country}</span>}
                     </div>
                 </div>
 
@@ -142,20 +160,20 @@
                     <h2 className="form__heading">Contact Details</h2>
                     <div className="form__field">
                         <h3 className="form__label">Contact Name</h3>
-                        <input className="form__input" placeholder="Contact Name" type="text" name="contactName" value={formData.contactName} onChange={handleChange} />
-                        {submitted && errors.contactName && <span className="error">{errors.contactName}</span>}
+                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Contact Name" type="text" name="contactName" value={formData.contactName} onChange={handleChange} />
+                        {submitted && errors.contactName && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.contactName}</span>}
                         
                         <h3 className="form__label">Position</h3>
-                        <input className="form__input" placeholder="Position" type="text" name="position" value={formData.position} onChange={handleChange} />
-                        {submitted && errors.position && <span className="error">{errors.position}</span>}
+                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Position" type="text" name="position" value={formData.position} onChange={handleChange} />
+                        {submitted && errors.position && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.position}</span>}
                         
                         <h3 className="form__label">Phone Number</h3>
-                        <input className="form__input" placeholder="Phone Number" type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
-                        {submitted && errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
+                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Phone Number" type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+                        {submitted && errors.phoneNumber && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.phoneNumber}</span>}
                         
                         <h3 className="form__label">Email</h3>
-                        <input className="form__input" placeholder="Email" type="email" name="email" value={formData.email} onChange={handleChange} />
-                        {submitted && errors.email && <span className="error">{errors.email}</span>}
+                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Email" type="email" name="email" value={formData.email} onChange={handleChange} />
+                        {submitted && errors.email && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.email}</span>}
                     </div>
                 </div>
             </div>
