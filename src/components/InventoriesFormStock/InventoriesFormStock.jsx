@@ -1,12 +1,38 @@
 import "./InventoriesFormStock.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
+import {useState, useEffect} from "react";
+import {useLocation} from "react-router-dom";
+import axios from "axios";
 
 function InventoriesFormStock({ formData, handleInputChange, errors }) {
+
+  const [warehouse, setWarehouse] = useState([]);
+  const location = useLocation();
+  const isEditPage = location.pathname.includes("/edit");
+
+
+  useEffect(() => {
+    fetchWarehouses();
+  }, []);
+
+  async function fetchWarehouses() {
+    try {
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/inventories`
+      );
+      const extractedWarehouse = data.map((inventory) => inventory.warehouse_name);
+      const uniqueWarehouse = [...new Set(extractedWarehouse)];
+      setWarehouse(uniqueWarehouse);
+    } catch (error) {
+      console.error("Error fetching Warehouse:", error);
+    }
+  }
+
   return (
     <div className="stock">
       <div className="stock__container">
         <div className="stock__section">
-          <h3 className="stock__availability">Item Availability</h3>
+          <h2 className="stock__availability">Item Availability</h2>
           <h4 className="stock__label">Status</h4>
           <div className="stock__statuses">
             <label className={`stock__selector ${formData.status === "instock" ? "stock__selector--selected" : ""}`}>
