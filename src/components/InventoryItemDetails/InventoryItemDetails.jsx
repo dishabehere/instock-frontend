@@ -51,8 +51,8 @@ function InventoryItemDetails() {
       <div className="item__details">
         <div className="item__descriptors">
           <div className="item__paragraph">
-          <h4 className="item__title">Item Description:</h4>
-          <p className="item__text">{item.description}</p>
+            <h4 className="item__title">Item Description:</h4>
+            <p className="item__text">{item.description}</p>
           </div>
           <h4 className="item__title">Category:</h4>
           <p className="item__text">{item.category}</p>
