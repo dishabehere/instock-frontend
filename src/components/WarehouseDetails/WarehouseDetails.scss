@@ -2,9 +2,10 @@
 @use "../../styles/partials/mixins" as *;
 
 
-.warehouse-list__name {
+.warehouse-list__names {
     border-bottom: 1px solid $table-border-color;
-    padding: 1.5rem;;
+    padding: 1.5rem;
+    display: flex;
     justify-content: space-between;
     @include responsive (tablet) {
         padding: 1.5rem 10% 1.5rem  2.5rem;

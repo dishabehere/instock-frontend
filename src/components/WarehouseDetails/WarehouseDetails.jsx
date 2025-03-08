@@ -6,7 +6,7 @@ import editIcon from "../../assets/icons/edit-white-24px.svg";
 function WarehouseDetails({ warehouse }) {
   return (
       <div className="warehouse-details">
-        <div className="warehouse-list__name">
+        <div className="warehouse-list__names">
           <div className="warehouse-details__home-name">
            <Link to="/">
               <img className="warehouse-details__home-icon" src={arrowBackIcon} alt="Arrow Image Icon" />
