@@ -24,6 +24,12 @@ button {
     }
   }
 
+  &__add {
+    height:36px; 
+    padding: 0 25px; 
+    @include text-style(13px,20px, 600);
+  }
+
   &__cancel {
     color: $table-text-color;
     border: 1px solid $table-border-color;
@@ -34,7 +40,7 @@ button {
     }
   }
 
-  &__save {
+  &__save , &__add {
     background-color: $interactive-color;
     color: $global-color;
     border: 1px solid $interactive-color;
