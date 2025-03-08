@@ -17,14 +17,14 @@ function App() {
           element={<WarehouseDetailsPage />}
         />
         <Route path="/warehouses/add" element={<WarehouseFormPage />} />
-        <Route path="/warehouses/edit" element={<WarehouseFormPage />} />
+        <Route path="/warehouses/edit" element={<WarehouseFormPage />} /> */}
         <Route path="/inventories" element={<InventoriesListPage />} />
-        <Route
+        {/* <Route
           path="/inventories/:inventoryId"
           element={<InventoryDetailsPage />}
-        />
+        /> */}
         <Route path="/inventories/add" element={<InventoriesFormPage />} />
-        <Route path="/inventories/:inventoryId/edit" element={<InventoriesFormPage />} /> */}
+        <Route path="/inventories/:inventoryId/edit" element={<InventoriesFormPage />} />
       </Routes>
       <Footer />
     </Router>
