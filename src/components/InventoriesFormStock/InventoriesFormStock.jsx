@@ -1,24 +1,19 @@
 import "./InventoriesFormStock.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
 import { useState, useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import { getInventoryItem, getAllInventories } from "../../utils/apiUtils";
+import { useLocation } from "react-router-dom";
+import { getAllInventories } from "../../utils/apiUtils";
 
 function InventoriesFormStock({ formData, handleInputChange,  setFormData, errors }) {
   const [warehouseName, setWarehouseName] = useState([]);
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
-  const { id } = useParams();
 
   useEffect(() => {
     fetchWarehouseName();
   }, []);
 
-  useEffect(() => {
-    if (isEditPage && id) {
-      fetchInventoryItem(id);
-    }
-  }, [isEditPage, id]);
+
 
   async function fetchWarehouseName() {
     try {
@@ -33,14 +28,6 @@ function InventoriesFormStock({ formData, handleInputChange,  setFormData, error
     }
   }
 
-  const fetchInventoryItem = async (id) => {
-    try {
-      const data = await getInventoryItem(id);
-      setFormData(data);
-    } catch (error) {
-      console.error("Error fetching inventory item:", error);
-    }
-  };
 
   return (
     <div className="stock">

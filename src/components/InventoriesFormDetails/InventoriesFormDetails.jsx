@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./InventoriesFormDetails.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
-import { getInventoryItem , getAllInventories } from "../../utils/apiUtils";
+import { getAllInventories } from "../../utils/apiUtils";
 
 function InventoriesFormDetails({  id, formData, setFormData, handleInputChange, errors }) {
   const [categories, setCategories] = useState([]);
@@ -24,20 +24,6 @@ function InventoriesFormDetails({  id, formData, setFormData, handleInputChange,
     }
   }
 
-  useEffect(() => {
-    if (isEditPage && id) {
-      fetchInventoryItem(id);
-    }
-  }, [isEditPage, id]);
-
-  const fetchInventoryItem = async (id) => {
-    try {
-      const data = await getInventoryItem(id);
-      setFormData(data);
-    } catch (error) {
-      console.error("Error fetching inventory item:", error);
-    }
-  };
 
   return (
     <div className="details">

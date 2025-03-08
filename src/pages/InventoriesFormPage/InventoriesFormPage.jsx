@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import InventoriesFormDetails from "../../components/InventoriesFormDetails/InventoriesFormDetails";
 import InventoriesFormStock from "../../components/InventoriesFormStock/InventoriesFormStock";
 import InventoriesFormTitle from "../../components/InventoriesFormTitle/InventoriesFormTitle";
 import InventoriesFormButtons from "../../components/InventoriesFormButtons/InventoriesFormButtons";
 import "./InventoriesFormPage.scss";
-import { createInventoryItem, updateInventoryItem } from "../../utils/apiUtils";
+import { createInventoryItem, updateInventoryItem , getInventoryItem} from "../../utils/apiUtils";
 
 export default function InventoriesFormPage() {
   const { id } = useParams();
@@ -20,6 +20,23 @@ export default function InventoriesFormPage() {
     warehouse_name: "",
   });
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (location.pathname.includes("/edit") && id) {
+      fetchInventoryItem(id);
+    }
+  }, [id, location.pathname]);
+
+  const fetchInventoryItem = async (id) => {
+    try {
+      const data = await getInventoryItem(id);
+      const status = data.status.toLowerCase() === "in stock" ? "instock" : "outofstock";
+      setFormData({...data, status: status});
+    } catch (error) {
+      console.error("Error fetching inventory item:", error);
+    }
+  };
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -52,17 +69,15 @@ export default function InventoriesFormPage() {
     if (!validateForm()) return;
 
     try {
+      const formattedData = {
+        item_name: formData.item_name.trim(),
+        description: formData.description.trim(),
+        category: formData.category.trim(),
+        status: formData.status.trim(),
+        quantity: formData.quantity,
+        warehouse_name: formData.warehouse_name.trim(),
+      };
       if (location.pathname.includes("/add")) {
-
-        const formattedData = {
-          item_name: formData.item_name.trim(),
-          description:formData.description.trim(),
-          category: formData.category.trim(),
-          status: formData.status.trim(),
-          quantity: formData.quantity.trim(),
-          warehouse_name: formData.warehouse_name.trim(),
-        };
-
         await createInventoryItem(formattedData);
       } else {
         await updateInventoryItem(id, formattedData);
