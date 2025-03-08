@@ -7,7 +7,6 @@ import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
 import { Link } from "react-router-dom";
-import { Link } from "react-router-dom"; 
 
 function WarehouseList() {
     const [warehouses, setWarehouses] = useState([]);
@@ -110,7 +109,7 @@ function WarehouseList() {
                             <Link to={`/warehouses/${warehouse.id}/edit`} className="warehouse-list__link">
                                 <img className="warehouse-list__icon" src={editIcon} alt="Edit icon" />
                             </Link>
-                        </div>
+                        </div> 
                     </div>
                 ))}
             </div>
