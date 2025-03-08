@@ -115,7 +115,7 @@ function InventoryList() {
                   </p>
                 </div>
                 <div className="inventory-list__info">
-                  <h4 className="inventory-list__label">QTY</h4>
+                  <h4 className="inventory-list__label">Qty</h4>
                   <p className="inventory-list__text">{inventory.quantity}</p>
                 </div>
                 <div className="inventory-list__info">

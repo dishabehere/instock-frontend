@@ -80,7 +80,6 @@ a {
   &__search-icon {
     width: 1.25rem;
     height: 1.25rem;
-    cursor: pointer;
   }
 
   &__button {
@@ -92,12 +91,11 @@ a {
     padding: 0.5rem 0;
     border: none;
     border-radius: 1.25rem;
-    cursor: pointer;
     transition: 0.3s;
 
     @include responsive(tablet) {
       height: 2.375rem;
-      width: 10.5rem;
+      width: 8.5rem;
       padding: 0.5rem 1rem;
       @include text-style(0.875rem, 1.375rem, 600, normal);
     }
@@ -111,7 +109,7 @@ a {
 
     @include responsive(tablet) {
       display: grid;
-      grid-template-columns: 0.95fr 0.95fr 0.85fr 0.5fr 0.75fr 0.5fr;
+      grid-template-columns: 2.3fr 1.9fr 1.9fr 1.1fr 2.3fr 1fr;
       padding: 0.75rem 2rem;
       background-color: $primary-background-color;
       text-align: center;
@@ -180,9 +178,13 @@ a {
 
     @include responsive(tablet) {
       display: grid;
-      grid-template-columns: 1.8fr 2fr 0.5fr;
-      padding: 1.5rem 2rem;
+      grid-template-columns: 2.3fr 3fr 0fr;
+      padding: 16px 32px;
       gap: 0;
+      
+      &:first-child {
+      border-top: none;
+  }
     }
   }
 
@@ -202,14 +204,14 @@ a {
     gap: 1rem;
 
     @include responsive(tablet) {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1.3fr 1fr;
       grid-template-rows: 0;
       gap: 0;
     }
 
     &--status {
       @include responsive(tablet) {
-        grid-template-columns: 0.85fr 0.5fr 0.75fr;
+        grid-template-columns: 2.6fr 1.5fr 2.8fr;
       }
     }
   }
@@ -243,15 +245,11 @@ a {
     &--category {
       padding-right: 2.5rem;
       @include responsive(tablet) {
-        padding-right: 1.125rem;
+        padding-right: 0;
       }
     }
 
     &--name {
-      padding-right: 2.5rem;
-      @include responsive(tablet) {
-        padding-right: 0;
-      }
       &:hover {
         text-decoration: underline;
       }
@@ -267,7 +265,6 @@ a {
       display: inline-block;
 
       @include responsive(tablet) {
-        padding: 0.5rem 0.75rem;
         margin-top: -0.937rem;
       }
     }
@@ -304,7 +301,4 @@ a {
     }
   }
 
-  &__icon {
-    cursor: pointer;
-  }
 }
