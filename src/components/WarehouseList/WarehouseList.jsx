@@ -105,7 +105,9 @@ function WarehouseList() {
                         {/* Actions row placed below details */}
                         <div className="warehouse-list__actions">
                             <img className="warehouse-list__icon" src={deleteIcon} alt="Delete icon" />
-                            <img className="warehouse-list__icon" src={editIcon} alt="Edit icon" />
+                            <Link to={`/warehouses/edit`} className="warehouse-list__link">
+                                <img className="warehouse-list__icon" src={editIcon} alt="Edit icon" />
+                            </Link>
                         </div>
                     </div>
                 ))}

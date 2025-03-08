@@ -1,10 +1,13 @@
+import WarehouseFormHeader from "../WarehouseFormHeader/WarehouseFormHeader";
 import "./WarehouseForm.scss"
 
-
-function warehouseForm() {
+function WarehouseForm() {
     return(
-        <></>
+        <section className="warehouse-form">
+            <WarehouseFormHeader />
+            
+        </section>
     );
 }
 
-export default warehouseForm;   
+export default WarehouseForm;   
