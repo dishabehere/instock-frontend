@@ -3,11 +3,10 @@ import axios from "axios";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
-import sort from "../../assets/icons/sort-24px.svg";
-import "./WarehouseInventoryList.scss";
+import "./WarehouseDetailsList.scss";
 import { Link } from "react-router-dom"; 
 
-function WarehouseInventoryList({ warehouse }) {
+function WarehouseDetailsList({ warehouse }) {
     const [warehouses, setWarehouses] = useState([]);
 
     useEffect(() => {
@@ -74,4 +73,4 @@ function WarehouseInventoryList({ warehouse }) {
     );
 }
 
-export default WarehouseInventoryList;
+export default WarehouseDetailsList;
