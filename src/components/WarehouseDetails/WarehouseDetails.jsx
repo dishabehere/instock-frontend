@@ -7,16 +7,19 @@ function WarehouseDetails({ warehouse }) {
   return (
       <div className="warehouse-details">
         <div className="warehouse-list__name">
-          <Link to="/">
-            <img className="warehouse-details__home-icon" src={arrowBackIcon} alt="Arrow Image Icon" />
-          </Link>
-          <h1 className="warehouse-details__name">{warehouse.warehouse_name}</h1>
-          <img className="warehouse-details__right-image" src={editIcon} alt="Edit Icon" />
+          <div className="warehouse-details__home-name">
+           <Link to="/">
+              <img className="warehouse-details__home-icon" src={arrowBackIcon} alt="Arrow Image Icon" />
+            </Link>
+            <h1 className="warehouse-details__name">{warehouse.warehouse_name}</h1>
+          </div>
+          <img className="warehouse-details__edit-image" src={editIcon} alt="Edit Icon" />
         </div>
 
+      <div className="warehouse-details__container">
         <div className="warehouse-details__info">
           <h4 className="warehouse-details__label">Warehouse Address:</h4>
-          <p className="warehouse-details__label">{warehouse.address} , {warehouse.city}, {warehouse.country}</p>
+          <p className="warehouse-details__text">{warehouse.address}, {warehouse.city}, {warehouse.country}</p>
         </div>
 
         <div className="warehouse-details__content warehouse-details__content--contact">
@@ -31,6 +34,7 @@ function WarehouseDetails({ warehouse }) {
             <p className="warehouse-details__text">{warehouse.contact_phone}</p>
             <p className="warehouse-details__text">{warehouse.contact_email}</p>
           </div>
+        </div>
         </div>
       </div>
   );
