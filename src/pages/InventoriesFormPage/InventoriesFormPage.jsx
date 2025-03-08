@@ -6,7 +6,6 @@ import InventoriesFormTitle from "../../components/InventoriesFormTitle/Inventor
 import InventoriesFormButtons from "../../components/InventoriesFormButtons/InventoriesFormButtons";
 import "./InventoriesFormPage.scss";
 import { createInventoryItem, updateInventoryItem } from "../../utils/apiUtils";
-("../../utils/apiUtils");
 
 export default function InventoriesFormPage() {
   const { id } = useParams();
@@ -34,7 +33,10 @@ export default function InventoriesFormPage() {
     if (formData.category === "" || formData.category === "Please Select")
       newErrors.category = true;
     if (formData.status === "") newErrors.status = true;
-    if (formData.status === "instock" && formData.quantity === "" && formData.quantity <= 0)
+    if (
+      formData.status === "instock" &&
+      (formData.quantity === "" || formData.quantity <= 0)
+    )
       newErrors.quantity = true;
     if (
       formData.warehouse_name === "" ||
@@ -51,9 +53,19 @@ export default function InventoriesFormPage() {
 
     try {
       if (location.pathname.includes("/add")) {
-        await createInventoryItem(formData);
+
+        const formattedData = {
+          item_name: formData.item_name.trim(),
+          description:formData.description.trim(),
+          category: formData.category.trim(),
+          status: formData.status.trim(),
+          quantity: formData.quantity.trim(),
+          warehouse_name: formData.warehouse_name.trim(),
+        };
+
+        await createInventoryItem(formattedData);
       } else {
-        await updateInventoryItem(id, formData);
+        await updateInventoryItem(id, formattedData);
       }
       navigate("/inventories");
     } catch (error) {
@@ -73,14 +85,14 @@ export default function InventoriesFormPage() {
           <InventoriesFormDetails
             id={id}
             formData={formData}
-            setFormData={setFormData} 
+            setFormData={setFormData}
             handleInputChange={handleInputChange}
             errors={errors}
           />
           <InventoriesFormStock
             id={id}
             formData={formData}
-            setFormData={setFormData} 
+            setFormData={setFormData}
             handleInputChange={handleInputChange}
             errors={errors}
           />

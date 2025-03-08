@@ -20,18 +20,18 @@ export const getAllInventories = async () => {
   }
 };
 
-export const createInventoryItem = async (formData) => {
+export const createInventoryItem = async (formattedData) => {
   try {
-    const response = await axios.post(`${BASE_URL}/api/inventories`, formData);
+    const response = await axios.post(`${BASE_URL}/api/inventories`, formattedData);
     return response.data;
   } catch (error) {
     console.error('Error creating inventory item:', error);
   }
 };
 
-export const updateInventoryItem = async (id, formData) => {
+export const updateInventoryItem = async (id, formattedData) => {
   try {
-    const response = await axios.put(`${BASE_URL}/api/inventories/${id}`, formData);
+    const response = await axios.put(`${BASE_URL}/api/inventories/${id}`, formattedData);
     return response.data;
   } catch (error) {
     console.error('Error updating inventory item:', error);
