@@ -67,7 +67,7 @@ export default function InventoriesFormPage() {
   };
 
   const handleCancel = () => {
-    navigate("/inventory");
+    navigate("/inventories");
   }
 
   return (
