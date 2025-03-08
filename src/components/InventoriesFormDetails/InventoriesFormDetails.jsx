@@ -4,7 +4,7 @@ import "./InventoriesFormDetails.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
 import { getAllInventories } from "../../utils/apiUtils";
 
-function InventoriesFormDetails({  id, formData, setFormData, handleInputChange, errors }) {
+function InventoriesFormDetails({  formData, handleInputChange, errors }) {
   const [categories, setCategories] = useState([]);
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");

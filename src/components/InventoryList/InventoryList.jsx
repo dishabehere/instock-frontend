@@ -1,7 +1,6 @@
 import "./InventoryList.scss";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import searchIcon from "../../assets/icons/search-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
@@ -125,7 +124,6 @@ function InventoryList() {
                 </div>
               </div>
             </div>
-            {/* Actions row placed below details */}
             <div className="inventory-list__actions">
               <img
                 className="inventory-list__icon"
