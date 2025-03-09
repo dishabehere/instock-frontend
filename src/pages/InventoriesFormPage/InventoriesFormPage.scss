@@ -1,9 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-h4 {
-  color: $global-text-color;
-}
 .inventoryForm {
   background-color: $global-color;
   margin: -3.5rem 1rem 0.3125rem;

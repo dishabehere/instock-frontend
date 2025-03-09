@@ -9,7 +9,7 @@ function InventoryItemDetails() {
   const [item, setItem] = useState("null");
 
   useEffect(() => {
-    const fetchItem = async () => {
+    const fetchItem = async (id) => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BASE_URL}/api/inventories/${id}`
@@ -21,7 +21,7 @@ function InventoryItemDetails() {
       }
     };
 
-    fetchItem();
+    fetchItem(id);
   }, [id]);
 
   return (
@@ -37,7 +37,7 @@ function InventoryItemDetails() {
             <p className="item__header">{item.item_name}</p>
           </div>
         </Link>
-        <Link to="/inventories/${id}/edit">
+        <Link to={`/inventories/${id}/edit`}>
           <div className="item__icon">
             <img
               className="item__edit"
