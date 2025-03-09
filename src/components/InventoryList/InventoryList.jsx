@@ -6,7 +6,7 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
-import { getAllInventories , deleteInventory } from "../../utils/apiUtils";
+import { getAllInventories, deleteInventory } from "../../utils/apiUtils";
 import ModalDelete from "../ModalDelete/ModalDelete";
 
 function InventoryList() {
@@ -16,13 +16,13 @@ function InventoryList() {
 
   const fetchInventories = async () => {
     try {
-      const data = await getAllInventories(); 
-      setInventories(data); 
+      const data = await getAllInventories();
+      setInventories(data);
     } catch (error) {
       console.error("Error fetching inventories:", error);
     }
   };
-  
+
   useEffect(() => {
     fetchInventories();
   }, []);
@@ -142,7 +142,9 @@ function InventoryList() {
                 </div>
                 <div className="inventory-list__info-field">
                   <h4 className="inventory-list__labeling">Qty</h4>
-                  <p className="inventory-list__item-description">{inventory.quantity}</p>
+                  <p className="inventory-list__item-description">
+                    {inventory.quantity}
+                  </p>
                 </div>
                 <div className="inventory-list__info-field">
                   <h4 className="inventory-list__labeling">Warehouse</h4>
