@@ -12,14 +12,10 @@ function WarehouseDetailsPage() {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            console.log("Fetching warehouse details...");
             const warehouseResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`);
-            console.log("Warehouse response:", warehouseResponse.data);
             setWarehouse(warehouseResponse.data);
 
-            console.log("Fetching inventories...");
             const inventoriesResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}/inventories`);
-            console.log("Inventories response:", inventoriesResponse.data);
             setInventories(inventoriesResponse.data);
         } catch (error) {
             console.error("Error fetching data:", error);
