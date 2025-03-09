@@ -39,11 +39,9 @@ input:-webkit-autofill:focus {
   }
 
   &__availability {
-
-    @include responsive(tablet){
+    @include responsive(tablet) {
       padding-bottom: 1.5rem;
     }
-
   }
 
   &__label {
