@@ -2,27 +2,24 @@ import "./InventoryItemDetails.scss";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { getInventoryItem } from "../../utils/apiUtils";
 
 function InventoryItemDetails() {
   const { id } = useParams();
   const [item, setItem] = useState("null");
 
   useEffect(() => {
-    const fetchItem = async (id) => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/api/inventories/${id}`
-        );
-
-        setItem(response.data);
-      } catch (error) {
-        console.error("Error fetching inventory items:", error);
-      }
+    const getItem = async () => {
+        try {
+            const data = await getInventoryItem(id);
+            setItem(data);
+        } catch (error) {
+          console.error("Error fetching inventory items:", error);
+        }
     };
 
-    fetchItem(id);
-  }, [id]);
+    getItem();
+}, [id]);
 
   return (
     <section className="item">
