@@ -1,31 +1,30 @@
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *; 
+@use "../../styles/partials/mixins" as *;
 
-h4{
-    color:$global-text-color;
+h4 {
+  color: $global-text-color;
 }
-.inventoryForm{
-    background-color: $global-color;
-    margin: -3.5rem 1rem .3125rem;
-    border-radius: .1875rem;
-    box-shadow: 0 .125rem .3125rem $box-shadow;
+.inventoryForm {
+  background-color: $global-color;
+  margin: -3.5rem 1rem 0.3125rem;
+  border-radius: 0.1875rem;
+  box-shadow: 0 0.125rem 0.3125rem $box-shadow;
 
-    @include responsive(tablet){
-        margin: -5.5rem 2rem 11.25rem;
+  @include responsive(tablet) {
+    margin: -5.5rem 2rem 11.25rem;
+  }
+
+  @include responsive(desktop) {
+    margin: -5.5rem 8.125rem 9.375rem;
+  }
+
+  &__main {
+    @include responsive(tablet) {
+      display: flex;
+      margin: 1.5rem 2rem;
     }
-
-    @include responsive(desktop){
-        margin: -5.5rem 8.125rem 9.375rem;
+    @include responsive(desktop) {
+      margin: 1.5rem 2.5rem;
     }
-
-    &__main{
-        @include responsive(tablet){
-            display:flex; 
-            margin:1.5rem 2rem;
-        }
-        @include responsive(desktop){
-            margin:1.5rem 2.5rem;
-        }
-    }
-
+  }
 }

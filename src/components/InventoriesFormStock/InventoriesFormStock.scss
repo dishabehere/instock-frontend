@@ -7,8 +7,8 @@ select {
   appearance: none;
   background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
   background-repeat: no-repeat;
-  background-position: calc(100% - 10px) center;
-  padding-right: 20px;
+  background-position: calc(100% - 0.0625rem) center;
+  padding-right: 1.25rem;
   position: relative;
 }
 
@@ -20,79 +20,78 @@ input:-webkit-autofill:focus {
 }
 
 .stock {
-
   @include responsive(tablet) {
     width: 50%;
-    border-left: 1px solid $table-border-color; 
+    border-left: 0.0625rem solid $table-border-color;
   }
 
   &__container {
-    padding: 24px;
-    border-top: 1px solid $table-border-color; 
+    padding: 1.5rem;
+    border-top: 0.0625rem solid $table-border-color;
 
-    @include responsive(tablet){
-        padding:0 0 32px 24px; 
-        border-top:none; 
+    @include responsive(tablet) {
+      padding: 0 0 2rem 1.5rem;
+      border-top: none;
     }
-    @include responsive(desktop){
-      padding: 0 0 40px 32px
+    @include responsive(desktop) {
+      padding: 0 0 2.5rem 2rem;
     }
   }
 
-  &__availability{
-    padding-bottom:24px; 
+  &__availability {
+    padding-bottom: 1.5rem;
   }
 
   &__label {
-    padding: 16px 0 4px;
+    padding: 1rem 0 0.25rem;
   }
 
   &__number {
     outline: none;
-    height: 36px;
+    height: 2.25rem;
     width: 100%;
-    padding: 0 16px;
-    border-radius: 20px;
-    border: 1px solid $table-border-color;
+    padding: 0 1rem;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $table-border-color;
   }
 
   &__statuses {
     display: flex;
-    gap: 56px;
+    gap: 3.5rem;
   }
 
   &__selector {
     display: flex;
-    gap: 4px;
-    color:$table-text-color;
-    @include text-style(13px, 20px, 400);
+    gap: 0.25rem;
+    color: $table-text-color;
+    @include text-style(0.8125rem, 1.25rem, 400);
 
-    &--selected{
+    &--selected {
       color: $global-text-color;
     }
 
-    @include responsive(desktop){
-      @include text-style(14px, 22px, 400);
+    @include responsive(desktop) {
+      @include text-style(0.875rem, 1.375rem, 400);
     }
   }
 
   &__locations {
     outline: none;
-    height: 36px;
+    height: 2.25rem;
     width: 100%;
-    padding: 0 16px;
-    border-radius: 20px;
-    border: 1px solid $table-border-color;
+    padding: 0 1rem;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $table-border-color;
   }
 
-  &__number, &__locations{
+  &__number,
+  &__locations {
     &:focus {
-      border: 1px solid $interactive-color;
+      border: 0.0625rem solid $interactive-color;
     }
 
     &--invalid {
-      border: 1px solid $error-state-color;
+      border: 0.0625rem solid $error-state-color;
     }
-
   }
 }

@@ -1,4 +1,4 @@
-import "./InventoriesFormError.scss"
+import "./InventoriesFormError.scss";
 
 function InventoriesFormError() {
   return (
@@ -10,7 +10,7 @@ function InventoriesFormError() {
       />
 
       <p className="error__text"> This field is required.</p>
-      </div>
+    </div>
   );
 }
 

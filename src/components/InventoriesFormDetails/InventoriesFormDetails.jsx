@@ -4,7 +4,7 @@ import "./InventoriesFormDetails.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
 import { getAllInventories } from "../../utils/apiUtils";
 
-function InventoriesFormDetails({  formData, handleInputChange, errors }) {
+function InventoriesFormDetails({ formData, handleInputChange, errors }) {
   const [categories, setCategories] = useState([]);
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
@@ -23,7 +23,6 @@ function InventoriesFormDetails({  formData, handleInputChange, errors }) {
       console.error("Error fetching categories:", error);
     }
   }
-
 
   return (
     <div className="details">
@@ -66,11 +65,10 @@ function InventoriesFormDetails({  formData, handleInputChange, errors }) {
           <select
             name="category"
             className={`details__category ${
-              errors.category  ? "details__category--invalid" : ""
+              errors.category ? "details__category--invalid" : ""
             }`}
             value={formData.category}
             onChange={handleInputChange}
-
           >
             <option value="">Please Select</option>
             {categories.map((category, index) => (

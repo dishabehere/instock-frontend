@@ -22,7 +22,7 @@ export default function InventoriesFormPage() {
     description: "",
     category: "",
     status: "instock",
-    quantity: "1" ,
+    quantity: "1",
     w_name: "",
   });
   const [errors, setErrors] = useState({});
@@ -77,10 +77,7 @@ export default function InventoriesFormPage() {
       (formData.quantity === "" || formData.quantity <= 0)
     )
       newErrors.quantity = true;
-    if (
-      !formData.warehouse_name ||
-      formData.warehouse_name === "Please select"
-    )
+    if (!formData.warehouse_name || formData.warehouse_name === "Please select")
       newErrors.warehouse_name = true;
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;

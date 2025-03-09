@@ -4,71 +4,70 @@
 input,
 textarea,
 option {
-  @include text-style(11px, 16px, 400);
+  @include text-style(0.6875rem, 1rem, 400);
   @include responsive(tablet) {
-    @include text-style(13px, 20px, 400);
+    @include text-style(0.8125rem, 1.25rem, 400);
   }
 }
 
 .details {
-  padding: 24px;
+  padding: 1.5rem;
   @include responsive(tablet) {
-    padding:0 2rem 1.5rem 0;
+    padding: 0 2rem 1.5rem 0;
     width: 50%;
   }
 
-  @include responsive(desktop){
-    padding: 0 2.5rem 1.5rem 0
+  @include responsive(desktop) {
+    padding: 0 2.5rem 1.5rem 0;
   }
 
   &__label {
-    padding: 16px 0 4px;
+    padding: 1rem 0 0.25rem;
   }
 
   &__name,
   &__category {
-    height: 36px;
-    padding: 0 16px;
-    border-radius: 20px;
+    height: 2.25rem;
+    padding: 0 1rem;
+    border-radius: 1.25rem;
 
-    @include responsive(tablet){
-      height:38px;
+    @include responsive(tablet) {
+      height: 2.375rem;
     }
   }
 
   &__description {
     resize: none;
-    border-radius: 12px;
-    height: 120px;
-    padding: 5px 14px; 
-
-  } 
+    border-radius: 0.75rem;
+    height: 7.5rem;
+    padding: 0.3125rem 0.875rem;
+  }
 
   &__name,
   &__category,
   &__description {
     outline: none;
     width: 100%;
-    border: 1px solid $table-border-color;
+    border: 0.0625rem solid $table-border-color;
 
     &:focus {
-      border: 1px solid $interactive-color;
+      border: 0.0625rem solid $interactive-color;
     }
 
     &--invalid {
-      border: 1px solid $error-state-color;
+      border: 0.0625rem solid $error-state-color;
     }
-    
-    @include responsive(desktop){
-      @include text-style(14px, 22px, 400);
+
+    @include responsive(desktop) {
+      @include text-style(0.875rem, 1.375rem, 400);
     }
   }
 
   &__header {
-    padding-bottom: 4px;
+    padding-bottom: 0.25rem;
 
-    @include responsive(tablet){
-      padding-bottom:24px;
+    @include responsive(tablet) {
+      padding-bottom: 1.5rem;
     }
   }
 }
