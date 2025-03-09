@@ -216,16 +216,16 @@ a {
     &--name {
       &:hover {
         text-decoration: underline;
+        text-decoration-color: $interactive-color;
       }
     }
 
-    &--instock,
-    &--outofstock {
-      padding: 0.375rem 0.625rem;
+    &--instocks,
+    &--outofstocks {
+      padding: 0.25rem 0.5rem;
       border-radius: 1.25rem;
       text-transform: uppercase;
-      margin-top: 0.25rem;
-      @include text-style(0.8125rem, 1.25rem, 600);
+      @include text-style(0.6875rem, 1.25rem, 600);
       display: inline-block;
 
       @include responsive(tablet) {
@@ -233,31 +233,29 @@ a {
       }
     }
 
-    &--instock {
+    &--instocks {
       background-color: rgba(21, 138, 99, 0.07);
       color: $instock-label-color;
     }
 
-    &--outofstock {
+    &--outofstocks {
       background-color: rgba(201, 69, 21, 0.07);
       color: $error-state-color;
     }
   }
-  &__name {
+
+  &__name-wrapper {
     display: flex;
     flex-direction: row;
     justify-content: start;
     gap: 0.25rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
 
-    &-wrapper {
-      display: flex;
-      align-items: center;
-      transition: all 0.3s ease;
-
-      &:hover {
-        .inventories-list__chevron {
-          transform: translateX(4px);
-        }
+    &:hover {
+      .inventories-list__chevron {
+        transform: translateX(4px);
       }
     }
   }

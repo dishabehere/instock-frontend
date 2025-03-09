@@ -2,11 +2,11 @@ import InventoryItemDetails from "../../components/InventoryItemDetails/Inventor
 import "./InventoriesDetailsPage.scss";
 
 function InventoriesDetailsPage() {
-return (
+  return (
     <>
-        <InventoryItemDetails />
+      <InventoryItemDetails />
     </>
-);
+  );
 }
 
 export default InventoriesDetailsPage;

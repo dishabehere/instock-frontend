@@ -2,51 +2,51 @@
 @use "./mixins" as *;
 @use "./fonts" as *;
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Titillium Web';
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Titillium Web";
 }
 
-html, body {
-    overflow-x: hidden;
+html,
+body {
+  overflow-x: hidden;
 }
-body{
-    background-color: $primary-background-color;
-    color: $global-text-color;
-    
-}
-
-h1{
-    @include text-style(1.75rem, 2.25rem, 600, normal);
-
-    @include responsive(tablet, desktop){
-        @include text-style(2rem, 2.5rem, 600, normal);
-    }
+body {
+  background-color: $primary-background-color;
+  color: $global-text-color;
 }
 
-h2{
-    @include text-style(1.25rem, 1.75rem, 600, normal);
+h1 {
+  @include text-style(1.75rem, 2.25rem, 600, normal);
 
-    @include responsive(tablet, desktop){
-        @include text-style(1.5rem, 2rem, 600, normal);
-    }
+  @include responsive(tablet, desktop) {
+    @include text-style(2rem, 2.5rem, 600, normal);
+  }
 }
 
-h3{
-    @include text-style(.8125rem, 1.25rem, 600, normal);
+h2 {
+  @include text-style(1.25rem, 1.75rem, 600, normal);
 
-    @include responsive(tablet, desktop){
-        @include text-style(.875rem, 1.375rem, 600, normal);
-    }
+  @include responsive(tablet, desktop) {
+    @include text-style(1.5rem, 2rem, 600, normal);
+  }
 }
 
-h4{
-    color: $table-text-color;
-    text-transform:uppercase; 
-    @include text-style(.6875rem, 1rem, 600, normal);
-    @include responsive(tablet, desktop){
-        @include text-style(.75rem, 1.125rem, 600, normal);
-    }
+h3 {
+  @include text-style(0.8125rem, 1.25rem, 600, normal);
+
+  @include responsive(tablet, desktop) {
+    @include text-style(0.875rem, 1.375rem, 600, normal);
+  }
+}
+
+h4 {
+  color: $table-text-color;
+  text-transform: uppercase;
+  @include text-style(0.6875rem, 1rem, 600, normal);
+  @include responsive(tablet, desktop) {
+    @include text-style(0.75rem, 1.125rem, 600, normal);
+  }
 }

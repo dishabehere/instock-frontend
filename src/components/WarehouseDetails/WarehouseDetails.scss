@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   @include responsive(tablet) {
-    padding: 1.5rem 10% 1.5rem 2.5rem;
+    padding: 2rem;
   }
 }
 
@@ -23,7 +23,7 @@
   }
 
   @include responsive(desktop) {
-    margin: -5.5rem 8.125rem 0.3125rem;
+    margin: -6rem 8.125rem 0;
   }
 
   &__container {
@@ -66,18 +66,19 @@
       @include responsive(tablet) {
         display: flex;
         width: 5.0625rem;
-        height: 2.5rem;
+        height: 2.3rem;
         border-radius: 1.25rem;
-        padding: .5rem 1rem;
       }
     }
     &-text {
       display: none;
+
       @include responsive(tablet) {
         display: flex;
         color: $global-color;
         align-items: center;
         margin-left: 8px;
+        @include text-style(0.8125rem, 1.25rem, 600);
       }
     }
     &-image {
@@ -113,18 +114,15 @@
   }
 
   &__label {
-    @include text-style(0.6875rem, 1rem, 600, normal);
-    color: $table-text-color;
-    text-transform: uppercase;
     margin-bottom: 0.25rem;
   }
 
   &__text,
   &__text-address {
-    @include text-style(0.8125rem, 1.25rem, 400, normal);
+    @include text-style(0.8125rem, 1.25rem, 400);
 
     @include responsive(tablet) {
-      @include text-style(0.875rem, 1.375rem, 400, normal);
+      @include text-style(0.875rem, 1.375rem, 400);
     }
   }
   &__text {

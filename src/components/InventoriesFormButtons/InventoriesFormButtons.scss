@@ -36,6 +36,11 @@ button {
     height: 2.25rem;
     padding: 0 0.8125rem;
     @include text-style(0.8125rem, 1.25rem, 600);
+
+    @include responsive(tablet) {
+      height: 2.25rem;
+      padding: 0 14px;
+    }
   }
 
   &__cancel {

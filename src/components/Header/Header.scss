@@ -9,7 +9,7 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 1.5rem 16px 0 1rem;
-  @include responsive(tablet , desktop) {
+  @include responsive(tablet, desktop) {
     height: 11.625rem;
     flex-direction: row;
     justify-content: space-between;
@@ -52,7 +52,8 @@ header {
         }
       }
 
-      &--warehouse-active , &--inventory-active {
+      &--warehouse-active,
+      &--inventory-active {
         .nav-bar__title {
           color: $global-color;
           background-color: $global-text-color;

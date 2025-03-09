@@ -5,37 +5,42 @@ import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails
 import WarehouseDetailsList from "../../components/WarehouseDetailsList/WarehouseDetailsList";
 
 function WarehouseDetailsPage() {
-    const { warehouseId } = useParams();
-    const [warehouse, setWarehouse] = useState(null);
-    const [inventories, setInventories] = useState([]);
+  const { warehouseId } = useParams();
+  const [warehouse, setWarehouse] = useState(null);
+  const [inventories, setInventories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-        try {
-            const warehouseResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`);
-            setWarehouse(warehouseResponse.data);
+      try {
+        const warehouseResponse = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`
+        );
+        setWarehouse(warehouseResponse.data);
 
-            const inventoriesResponse = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}/inventories`);
-            setInventories(inventoriesResponse.data);
-        } catch (error) {
-            console.error("Error fetching data:", error);
-        }
+        const inventoriesResponse = await axios.get(
+          `${
+            import.meta.env.VITE_BASE_URL
+          }/api/warehouses/${warehouseId}/inventories`
+        );
+        setInventories(inventoriesResponse.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     };
 
     fetchData();
-}, [warehouseId]);
+  }, [warehouseId]);
 
+  if (!warehouse) {
+    return <div>Loading...</div>;
+  }
 
-    if (!warehouse) {
-        return <div>Loading...</div>; 
-    }
-
-    return (
-        <div>
-            <WarehouseDetails warehouse={warehouse} /> 
-            <WarehouseDetailsList warehouse={warehouseId} inventories={inventories}/>
-        </div>
-    );
+  return (
+    <div>
+      <WarehouseDetails warehouse={warehouse} />
+      <WarehouseDetailsList warehouse={warehouseId} inventories={inventories} />
+    </div>
+  );
 }
 
 export default WarehouseDetailsPage;
