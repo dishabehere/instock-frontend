@@ -1,7 +1,7 @@
 import "./InventoriesFormStock.scss";
 import InventoriesFormError from "../InventoriesFormError/InventoriesFormError";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getAllInventories } from "../../utils/apiUtils";
 
 function InventoriesFormStock({ formData, handleInputChange, errors }) {
@@ -9,10 +9,10 @@ function InventoriesFormStock({ formData, handleInputChange, errors }) {
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
 
+
   useEffect(() => {
     fetchWarehouseName();
   }, []);
-
 
 
   async function fetchWarehouseName() {
@@ -27,7 +27,6 @@ function InventoriesFormStock({ formData, handleInputChange, errors }) {
       console.error("Error fetching Warehouse Name", error);
     }
   }
-
 
   return (
     <div className="stock">

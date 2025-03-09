@@ -18,6 +18,7 @@ export default function InventoriesFormPage() {
     status: "instock",
     quantity: "",
     warehouse_name: "",
+    warehouse_id:"",
   });
   const [errors, setErrors] = useState({});
 
@@ -31,7 +32,7 @@ export default function InventoriesFormPage() {
     try {
       const data = await getInventoryItem(id);
       const status = data.status.toLowerCase() === "in stock" ? "instock" : "outofstock";
-      setFormData({...data, status: status});
+      setFormData({...data, status: status,  warehouse_id: data.warehouse_id || 1 });
     } catch (error) {
       console.error("Error fetching inventory item:", error);
     }
@@ -107,6 +108,7 @@ export default function InventoriesFormPage() {
         status: formData.status.trim(),
         quantity: formData.quantity,
         warehouse_name: formData.warehouse_name.trim(),
+        warehouse_id:formData.warehouse_id,
       };
       console.log("Formatted data:", formattedData);
   
