@@ -109,16 +109,18 @@ function InventoryList() {
                 <div className="inventory-list__info">
                   <h4 className="inventory-list__label">Inventory Item</h4>
                   <div className="inventory-list__name">
-                    <p className="inventory-list__text inventory-list__text--name">
-                      <Link to={`/inventories/${inventory.id}`}>
-                        {inventory.item_name}{" "}
-                      </Link>
-                    </p>
-                    <img
-                      className="inventory-list__chevron"
-                      src={chevron}
-                      alt="Chevron Icon"
-                    />
+                    <div className="inventory-list__name-wrapper">
+                      <p className="inventory-list__text inventory-list__text--name">
+                        <Link to={`/inventories/${inventory.id}`}>
+                          {inventory.item_name}
+                        </Link>
+                      </p>
+                      <img
+                        className="inventory-list__chevron"
+                        src={chevron}
+                        alt="Chevron Icon"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="inventory-list__info">
