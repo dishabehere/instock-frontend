@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import InventoriesListPage from "./pages/InventoriesListPage/InventoriesListPage";
+import InventoriesDetailsPage from "./pages/InventoriesDetailsPage/InventoriesDetailsPage";
 import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -17,9 +18,12 @@ function App() {
         <Route path="/warehouses/add" element={<WarehouseFormPage />} /> 
         <Route path="/warehouses/:warehouseId/edit" element={<WarehouseFormPage />} />
         <Route path="/inventories" element={<InventoriesListPage />} />
-        {/* <Route path="/inventories/:inventoryId"element={<InventoryDetailsPage />}/> */}
-        {/* <Route path="/inventories/add" element={<InventoriesFormPage />} /> */}
-        {/* <Route path="/inventories/:inventoryId/edit" element={<InventoriesFormPage />} /> */}
+        <Route
+          path="/inventories/:id"
+          element={<InventoriesDetailsPage />}
+        />
+        {/* <Route path="/inventories/add" element={<InventoriesFormPage />} />
+        <Route path="/inventories/:id/edit" element={<InventoriesFormPage />} /> */}
       </Routes>
       <Footer />
     </Router>
