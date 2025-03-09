@@ -8,22 +8,26 @@ h4 {
 
 .item {
   background-color: $global-color;
-  margin: -3.125rem 1rem 0.3125rem;
+  margin: -3.125rem 1rem 3.125rem;
   border-radius: 0.1875rem;
   box-shadow: 0 0.125rem 0.3125rem $box-shadow;
 
   @include responsive(tablet) {
-    margin: -5.5rem 2rem 0.3125rem;
+    margin: -5.5rem 2rem 34.375rem;
     bottom: 4.375rem;
   }
 
   @include responsive(desktop) {
-    margin: -5.5625rem 8.125rem 0.3125rem;
+    margin: -5.5625rem 8.125rem 34.375rem;
   }
 
   &__header {
     @include text-style(1.5625rem, 1.25rem, 600);
     color: $global-text-color;
+
+    @include responsive(tablet){
+      @include text-style(30px, 1.25rem, 600);
+    }
   }
 
   &__container,
@@ -35,10 +39,14 @@ h4 {
   &__container {
     justify-content: space-between;
     border-bottom: 0.0625rem solid $table-border-color;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
 
     @include responsive(tablet) {
       padding: 1.5rem 2rem;
+    }
+    
+    @include responsive(desktop) {
+      padding: 1.5rem 2.5rem;
     }
   }
 
@@ -47,21 +55,24 @@ h4 {
   }
 
   &__details {
-    padding: 0 1rem 1rem;
+    padding: 0 1.5rem 1.5rem;
 
     @include responsive(tablet) {
       display: flex;
       gap: 1.5rem;
-      padding: 1.5rem;
+      padding: 1.5rem 2rem;
     }
 
     @include responsive(desktop) {
-      padding: 1.5rem 1.5rem;
+      padding: 1.5rem 2.5rem;
     }
   }
 
   &__img {
     height: 1.25rem;
+    @include responsive(tablet){
+      height: 1.5rem; 
+    }
   }
 
   &__descriptors {
@@ -88,9 +99,9 @@ h4 {
   &__edit {
     margin-top: 0.3125rem;
     background-color: $interactive-color;
-    height: 1.625rem;
+    height: 36px;
     border-radius: 50%;
-    padding: 0.3125rem;
+    padding: 8px;
 
     @include responsive(tablet) {
       padding: 0;
@@ -112,12 +123,15 @@ h4 {
     @include text-style(0.6875rem, 1rem, 400);
 
     @include responsive(tablet) {
+      @include text-style(0.875rem, 1.25rem, 400);
+    }
+    @include responsive(desktop){
       @include text-style(1rem, 1.25rem, 400);
     }
 
     &--instock,
     &--outofstock {
-      padding: 0.3125rem;
+      padding: 0.3125rem 0.5rem;
       border-radius: 1.25rem;
       text-transform: uppercase;
       margin-top: 0.25rem;
@@ -174,7 +188,7 @@ h4 {
       color: $global-color;
       border-radius: 1.25rem;
       @include text-style(0.9375rem, 1.25rem, 600);
-      padding: 0.625rem 1rem;
+      padding: 11px 17px;
     }
   }
   &__paragraph {
