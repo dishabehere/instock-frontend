@@ -10,7 +10,16 @@
         margin-top: -1rem;
     }
     }
-
+    &__text {
+        @include text-style(.9375rem, 1.625rem, 400, $style: normal); 
+        @include responsive (tablet) {
+            @include text-style(1rem, 1.75rem, 400, $style: normal);
+            max-width: 85%;
+            }
+        @include responsive (desktop) {
+            max-width: 100%;
+            }
+    }
     &__container {
         background-color: $global-color;
         height: 100vh;
@@ -70,21 +79,31 @@
     align-items: center;
     cursor: pointer;
     border-radius: 1.25rem;
-    height: 2.75rem;
+    padding: .5rem 0;
+    @include text-style(.8125rem, 1.25rem, 400, $style: normal);
     @include responsive (tablet) {
-        width: 13%;
+        width: 5rem;
+        @include text-style(.875rem, 1.375rem, 400, $style: normal);
         }
     }
 
     &__cancel-button {
     background-color: $global-color;
     border: 1px solid $table-border-color;
+    color: $table-text-color;
+    &:hover {
+        border: 0.0625rem solid $interactive-color;
+        color: $interactive-color;
+      }
     }
 
     &__delete-button {
     background-color: $error-state-color;
     border:none;
     color: $global-color;
+    &:hover {
+        background-color: $secondary-background-color;
+      }
     }
 }
 
