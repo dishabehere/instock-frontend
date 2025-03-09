@@ -1,137 +1,136 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-
 .warehouse-list__names {
-    border-bottom: 1px solid $table-border-color;
-    padding: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    @include responsive (tablet) {
-        padding: 1.5rem 10% 1.5rem  2.5rem;
-    }
+  border-bottom: 1px solid $table-border-color;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  @include responsive(tablet) {
+    padding: 1.5rem 10% 1.5rem 2.5rem;
+  }
 }
 
 .warehouse-details {
-    background-color: $global-color;
-    margin: 0 1rem .3125rem;
-    border-radius: .1875rem;
-    box-shadow: 0 .125rem .3125rem $box-shadow;
-    margin-top: -3.5rem;
+  background-color: $global-color;
+  margin: 0 1rem;
+  border-radius: 0.1875rem;
+  box-shadow: 0 0.125rem 0.3125rem $box-shadow;
+  margin-top: -3.5rem;
 
-    @include responsive(tablet){
-        margin: -5.5rem 2rem .3125rem;
+  @include responsive(tablet) {
+    margin: -5.5rem 2rem 0;
+  }
+
+  @include responsive(desktop) {
+    margin: -5.5rem 8.125rem 0.3125rem;
+  }
+
+  &__container {
+    padding: 0 1.5rem 1rem 1.5rem;
+
+    @include responsive(tablet) {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.5rem 3rem 1.5rem 2.5rem;
+      width: 95%;
     }
 
-    @include responsive(desktop){
-        margin: -5.5rem 8.125rem .3125rem;
+    @include responsive(desktop) {
+      width: 85%;
     }
+  }
 
-    &__container {
-        padding: 0 1.5rem 1rem 1.5rem;
-
-        @include responsive (tablet) {
-            display: flex;
-            justify-content: space-between;
-            padding: 1.5rem 3rem 1.5rem 2.5rem;
-            width: 95%;
-        }
-
-        @include responsive (desktop) {
-            width: 85%;
-        }
-        
+  &__home {
+    &-name {
+      display: flex;
+      align-items: end;
+      padding-right: 0.5rem;
     }
+    &-icon {
+      padding-right: 0.5rem;
+    }
+  }
 
-    &__home {
-        &-name {
+  &__edit {
+    &-container,
+    &-link {
+      background-color: $interactive-color;
+      width: 2.2rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      @include responsive(tablet) {
         display: flex;
-        align-items: end;
-        padding-right: .5rem;
-        }
-        &-icon {
-        padding-right: .5rem;
-        }
+        width: 5.0625rem;
+        height: 2.5rem;
+        border-radius: 1.25rem;
+        padding: .5rem 1rem;
+      }
     }
-
-    &__edit {
-        &-container , &-link {
-        background-color: $interactive-color;
-        width: 2.2rem;
-        height: 2.25rem;
-        border-radius: 50%;
+    &-text {
+      display: none;
+      @include responsive(tablet) {
         display: flex;
-        justify-content: center;
+        color: $global-color;
         align-items: center;
-        cursor: pointer;
-        @include responsive (tablet) {
-            display: flex;
-            width: 5.5rem;
-            height: 2.5rem;
-            border-radius: 1.25rem;
-            padding: 8px 16px;
-        }
-        }
-        &-text {
-        display: none;
-        @include responsive (tablet) {
-            display: flex;
-            color: $global-color;
-            align-items: center;
-            margin-left: 8px;
-        }
-        }
-        &-image {
-        width: 1.25rem;
-        }
+        margin-left: 8px;
+      }
+    }
+    &-image {
+      width: 1.25rem;
+    }
+  }
+
+  &__content,
+  &__content--contact {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+
+    @include responsive(tablet) {
+      margin-top: 0;
+      justify-content: space-around;
+      width: 60%;
+      border-left: 1px solid $table-border-color;
+      padding-left: 1.5rem;
     }
 
-    &__content , &__content--contact {
-        display: flex;
-        justify-content: space-between;
-        width: 90%;
-        margin-top: 1rem;
-
-        @include responsive (tablet) {
-            margin-top: 0;
-            justify-content: space-around;
-            width: 60%;
-            border-left: 1px solid $table-border-color;
-            padding-left: 1.5rem;
-        }
-
-        @include responsive (desktop) {
-            gap: 1.5rem;
-        }
+    @include responsive(desktop) {
+      gap: 1.5rem;
     }
+  }
 
-    &__info {
-        margin-top: 1rem;
+  &__info {
+    margin-top: 1rem;
 
-        @include responsive (tablet) {
-            margin-top: 0;
-        }
+    @include responsive(tablet) {
+      margin-top: 0;
     }
+  }
 
-    &__label {
-        @include text-style(.6875rem, 1rem, 600, normal);
-        color: $table-text-color;
-        text-transform: uppercase;
-        margin-bottom: .25rem; 
+  &__label {
+    @include text-style(0.6875rem, 1rem, 600, normal);
+    color: $table-text-color;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  &__text,
+  &__text-address {
+    @include text-style(0.8125rem, 1.25rem, 400, normal);
+
+    @include responsive(tablet) {
+      @include text-style(0.875rem, 1.375rem, 400, normal);
     }
-
-    &__text , &__text-address {
-        @include text-style(.8125rem, 1.25rem, 400, normal);
-
-        @include responsive(tablet){
-            @include text-style(.875rem, 1.375rem, 400, normal);
-        }
+  }
+  &__text {
+    display: flex;
+    @include responsive(tablet) {
+      flex-direction: column;
     }
-    &__text {
-        display: flex;
-        @include responsive (tablet) {
-            flex-direction: column;
-        }
-    }
-
+  }
 }

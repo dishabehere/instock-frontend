@@ -72,21 +72,21 @@ a {
     }
   }
 
-&__index-container {
+  &__index-container {
     display: none;
 
-    @include responsive(tablet){
-        display: grid;
-        grid-template-columns: 1.05fr .7fr 1fr 1fr 0.3fr;
-        padding: .75rem 2rem;
-        background-color: $primary-background-color;
-        text-align: center;
+    @include responsive(tablet) {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr 1.2fr 1.1fr 0.3fr;
+      padding: 0.75rem 2rem;
+      background-color: $primary-background-color;
+      text-align: center;
     }
     @include responsive(desktop) {
-              display: grid;
-              grid-template-columns: 2.3fr 1.9fr 1.9fr 1.1fr 2.3fr 0fr;
-            }
-}
+      display: grid;
+      grid-template-columns: 1.3fr 1.1fr 1.4fr 1.16fr 0.3fr;
+    }
+  }
   &__title {
     @include responsive(tablet) {
       display: flex;
@@ -139,7 +139,6 @@ a {
   &__item {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
     padding: 1rem;
     border-top: 0.0625rem solid $table-border-color;
 
@@ -157,7 +156,7 @@ a {
         border-top: none;
       }
     }
-  } 
+  }
 
   &__details {
     display: grid;
