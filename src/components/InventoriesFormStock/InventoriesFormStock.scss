@@ -1,0 +1,97 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("../../assets/icons/arrow_drop_down-24px.svg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0.0625rem) center;
+  padding-right: 1.25rem;
+  position: relative;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: inherit;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.stock {
+  @include responsive(tablet) {
+    width: 50%;
+    border-left: 0.0625rem solid $table-border-color;
+  }
+
+  &__container {
+    padding: 1.5rem;
+    border-top: 0.0625rem solid $table-border-color;
+
+    @include responsive(tablet) {
+      padding: 0 0 2rem 1.5rem;
+      border-top: none;
+    }
+    @include responsive(desktop) {
+      padding: 0 0 2.5rem 2rem;
+    }
+  }
+
+  &__availability {
+    padding-bottom: 1.5rem;
+  }
+
+  &__label {
+    padding: 1rem 0 0.25rem;
+  }
+
+  &__number {
+    outline: none;
+    height: 2.25rem;
+    width: 100%;
+    padding: 0 1rem;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $table-border-color;
+  }
+
+  &__statuses {
+    display: flex;
+    gap: 3.5rem;
+  }
+
+  &__selector {
+    display: flex;
+    gap: 0.25rem;
+    color: $table-text-color;
+    @include text-style(0.8125rem, 1.25rem, 400);
+
+    &--selected {
+      color: $global-text-color;
+    }
+
+    @include responsive(desktop) {
+      @include text-style(0.875rem, 1.375rem, 400);
+    }
+  }
+
+  &__locations {
+    outline: none;
+    height: 2.25rem;
+    width: 100%;
+    padding: 0 1rem;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $table-border-color;
+  }
+
+  &__number,
+  &__locations {
+    &:focus {
+      border: 0.0625rem solid $interactive-color;
+    }
+
+    &--invalid {
+      border: 0.0625rem solid $error-state-color;
+    }
+  }
+}

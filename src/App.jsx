@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import WarehouseDetailsPage from "./pages/WarehouseDetailsPage/WarehouseDetailsPage";
 import WarehouseFormPage from "./pages/WarehouseFormPage/WarehouseFormPage";
+import InventoriesFormPage from "./pages/InventoriesFormPage/InventoriesFormPage.jsx"
 
 function App() {
   return (
@@ -18,9 +19,12 @@ function App() {
         <Route path="/warehouses/add" element={<WarehouseFormPage />} /> 
         <Route path="/warehouses/:warehouseId/edit" element={<WarehouseFormPage />} />
         <Route path="/inventories" element={<InventoriesListPage />} />
-        <Route path="/inventories/:id" element={<InventoriesDetailsPage />} />
-        {/* <Route path="/inventories/add" element={<InventoriesFormPage />} />
-        <Route path="/inventories/:id/edit" element={<InventoriesFormPage />} /> */}
+        <Route
+          path="/inventories/:id"
+          element={<InventoriesDetailsPage />}
+        />
+        <Route path="/inventories/add" element={<InventoriesFormPage />} />
+        <Route path="/inventories/:id/edit" element={<InventoriesFormPage />} />
       </Routes>
       <Footer />
     </Router>

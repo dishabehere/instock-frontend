@@ -1,0 +1,61 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+button {
+  all: unset;
+  border-radius: 1.25rem;
+}
+
+.buttons {
+  display: flex;
+  padding: 1rem;
+  gap: 0.625rem;
+  justify-content: flex-end;
+  background-color: $primary-background-color;
+
+  @include responsive(tablet) {
+    padding: 1.5rem 2rem;
+  }
+
+  @include responsive(desktop) {
+    padding: 1.5rem 2.5rem;
+  }
+
+  &__cancel,
+  &__save {
+    height: 2.25rem;
+    padding: 0 2.8125rem;
+    @include text-style(0.8125rem, 1.25rem, 600);
+
+    @include responsive(tablet) {
+      padding: 0 1rem;
+    }
+  }
+
+  &__add {
+    height: 2.25rem;
+    padding: 0 1.5625rem;
+    @include text-style(0.8125rem, 1.25rem, 600);
+  }
+
+  &__cancel {
+    color: $table-text-color;
+    border: 0.0625rem solid $table-border-color;
+    background-color: $global-color;
+    &:hover {
+      color: $interactive-color;
+      border: 0.0625rem solid $interactive-color;
+    }
+  }
+
+  &__save,
+  &__add {
+    background-color: $interactive-color;
+    color: $global-color;
+    border: 0.0625rem solid $interactive-color;
+    &:hover {
+      background-color: $secondary-background-color;
+      border: 0.0625rem solid $secondary-background-color;
+    }
+  }
+}

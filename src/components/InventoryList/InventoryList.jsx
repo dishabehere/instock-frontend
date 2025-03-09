@@ -1,12 +1,12 @@
 import "./InventoryList.scss";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import searchIcon from "../../assets/icons/search-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
+import { getAllInventories } from "../../utils/apiUtils";
 import ModalDelete from "../ModalDelete/ModalDelete";
 
 function InventoryList() {
@@ -14,18 +14,15 @@ function InventoryList() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [inventoryToDelete, setInventoryToDelete] = useState(null);
 
-  const fetchInventories = async () => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}/api/inventories`
-      );
-      setInventories(response.data);
-    } catch (error) {
-      console.error("Error fetching inventories:", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchInventories = async () => {
+      try {
+        const data = await getAllInventories(); 
+        setInventories(data); 
+      } catch (error) {
+        console.error("Error fetching inventories:", error);
+      }
+    };
 
     fetchInventories();
   }, []);
@@ -157,7 +154,6 @@ function InventoryList() {
                 </div>
               </div>
             </div>
-            {/* Actions row placed below details */}
             <div className="inventory-list__actions">
               <img
                 className="inventory-list__icon"
