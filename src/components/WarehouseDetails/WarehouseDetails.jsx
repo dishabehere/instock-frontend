@@ -14,7 +14,7 @@ function WarehouseDetails({ warehouse }) {
             <h1 className="warehouse-details__name">{warehouse.warehouse_name}</h1>
           </div>
           <div className="warehouse-details__edit-container">
-            <Link className="warehouse-details__edit-link" to={`/warehouses/${warehouse.warehouse_id}/edit`}>
+            <Link className="warehouse-details__edit-link" to={`/warehouses/${warehouse.id}/edit`}>
             <img className="warehouse-details__edit-image" src={editIcon} alt="Edit Icon" />
             <p className="warehouse-details__edit-text">Edit</p>
             </Link>
