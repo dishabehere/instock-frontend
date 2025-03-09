@@ -79,12 +79,18 @@
     &__cancel-button {
     background-color: $global-color;
     border: 1px solid $table-border-color;
+    &:hover {
+        border: 0.0625rem solid $interactive-color;
+      }
     }
 
     &__delete-button {
     background-color: $error-state-color;
     border:none;
     color: $global-color;
+    &:hover {
+        background-color: $secondary-background-color;
+      }
     }
 }
 
