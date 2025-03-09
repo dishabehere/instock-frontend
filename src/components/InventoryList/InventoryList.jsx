@@ -7,7 +7,7 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
-import WarehouseModal from "../ModalDelete/ModalDelete";
+import ModalDelete from "../ModalDelete/ModalDelete";
 
 function InventoryList() {
   const [inventories, setInventories] = useState([]);
@@ -171,7 +171,7 @@ function InventoryList() {
         ))}
       </div>
       {/* Modal */}
-      <WarehouseModal
+      <ModalDelete
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
         handleDelete={handleDelete}

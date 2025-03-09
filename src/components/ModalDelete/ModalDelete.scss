@@ -3,12 +3,65 @@
 @use "/src/styles/partials/_variables.scss" as *;
 
 
-.modal__title {
+.modal {
+    &__title {
     padding-bottom: 1rem;
-}
-.warehouse-modal__cancel-button , 
-.warehouse-modal__delete-button {
-    width: 40%;
+    @include responsive (tablet) {
+        margin-top: -1rem;
+    }
+    }
+
+    &__container {
+        background-color: $global-color;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        outline: none;
+        flex-grow: 1;
+        @include responsive (tablet) {
+            height: 16.375rem;
+            background-color: $global-color;
+            margin: 10.5rem 2rem 0 2rem;
+            padding: 1rem 1rem 1rem 2.5rem;
+        }
+        @include responsive (desktop) {
+            margin: 10.5rem 22% 0 22%;
+        }
+
+        &-text {
+            flex-grow: 1;
+            justify-content: center;
+            align-items: center;
+            text-align: left; 
+            margin-top: 10%;
+            @include responsive (tablet) {
+                margin-top: 1rem;
+                width: 90%;
+            }
+          }
+
+        &-button {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            gap: 1rem;
+            padding: 2rem 0;
+            @include responsive (tablet) {
+                width: 85%;
+                justify-content: flex-end;
+            }
+        }
+        
+        &-close-button  {
+            display: flex;
+            justify-content: end;
+            cursor: pointer;
+        }
+    }
+
+    &__cancel-button , 
+    &__delete-button {
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,82 +69,27 @@
     border-radius: 20px;
     height: 2.25rem;
     @include responsive (tablet) {
-        width: 10%;
+        width: 13%;
+        }
     }
-}
 
-.warehouse-modal__cancel-button {
+    &__cancel-button {
     background-color: $global-color;
     border: 1px solid $table-border-color;
+    }
 
-}
-.warehouse-modal__delete-button {
+    &__delete-button {
     background-color: $error-state-color;
     border:none;
     color: $global-color;
-}
-.warehouse-modal__container-button {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
-    padding: 20px 0;
-    @include responsive (tablet) {
-        width: 85%;
-        justify-content: flex-end;
     }
 }
-.warehouse-modal__container {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-.modal__container-text {
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
-    text-align: left; 
-    padding: 0 20px;
-    margin-top: 10%;
-    @include responsive (tablet) {
-        margin-top: 1rem;
-        width: 85%;
-    }
-  }
 
-.warehouse-modal__container-close-button  {
-    display: flex;
-    justify-content: end;
-    cursor: pointer;
-}
-.ReactModalPortal {
-    .ReactModal__Overlay , 
-    .ReactModal__Overlay--after-open {
+.ReactModal__Overlay--after-open {
     height: 100vh;
     padding: 1rem;
     background-color: $global-color !important;
     @include responsive (tablet) {
         background-color: rgba(0, 0, 0, 0.5) !important; 
-    }
-    }
-}
-.ReactModal__Content , 
-.ReactModal__Content--after-open , 
-.warehouse-modal__container {
-    background-color: $global-color;
-    height: 100vh;
-    outline: none;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    display: flex;
-    @include responsive (tablet) {
-        height: 16.375rem;
-        background-color: $global-color;
-        margin: 10.5rem 2rem 0 2rem;
-        padding: 1rem;
-    }
-    @include responsive (desktop) {
-        margin: 10.5rem 20% 0 20%;
     }
 }

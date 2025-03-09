@@ -6,7 +6,7 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
-import WarehouseModal from "../ModalDelete/ModalDelete";
+import ModalDelete from "../ModalDelete/ModalDelete";
 import React from "react";
 
 
@@ -32,7 +32,7 @@ function WarehouseList() {
         fetchWarehouses();
     }, []);
 
-//added below
+// Modal for Warehouse
     const openDeleteModal = (warehouse) => {
         setWarehouseToDelete(warehouse);
         setModalIsOpen(true);
@@ -140,8 +140,8 @@ function WarehouseList() {
                     </div>
                 ))}
             </div>
-            {/* added modal */}
-               <WarehouseModal
+            {/* Modal */}
+               <ModalDelete
                 modalIsOpen={modalIsOpen}
                 closeModal={closeModal}
                 handleDelete={handleDelete}

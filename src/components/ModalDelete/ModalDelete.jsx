@@ -3,7 +3,7 @@ import React from "react";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import "./ModalDelete.scss";
 
-const WarehouseModal = ({
+const ModalDelete = ({
   modalIsOpen,
   closeModal,
   itemName,
@@ -15,10 +15,10 @@ const WarehouseModal = ({
     <Modal
       isOpen={modalIsOpen}
       onRequestClose={closeModal}
-      className="warehouse-modal__container"
+      className="modal__container"
       contentLabel="Delete Warehouse Confirmation"
     >
-      <div className="warehouse-modal__container-close-button">
+      <div className="modal__container-close-button">
         <div onClick={closeModal} className="warehouse-modal__close-button">
           <img src={closeIcon} alt="Close Icon" />
         </div>
@@ -30,12 +30,12 @@ const WarehouseModal = ({
         list of ${itemListType}. You won’t be able to undo this action.`}
       </p>
       </div>
-      <div className="warehouse-modal__container-button">
-        <button className="warehouse-modal__cancel-button" onClick={closeModal}>
+      <div className="modal__container-button">
+        <button className="modal__cancel-button" onClick={closeModal}>
           Cancel
         </button>
         <button
-          className="warehouse-modal__delete-button"
+          className="modal__delete-button"
           onClick={handleDelete}
         >
           Delete
@@ -45,4 +45,4 @@ const WarehouseModal = ({
   );
 };
 
-export default WarehouseModal;
+export default ModalDelete;
