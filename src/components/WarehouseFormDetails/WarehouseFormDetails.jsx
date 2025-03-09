@@ -1,5 +1,5 @@
     import { useState, useEffect } from "react";
-    import { Link, useLocation, useNavigate } from "react-router-dom";
+    import { useLocation, useNavigate } from "react-router-dom";
     import axios from "axios";
     import "./WarehouseFormDetails.scss";
     import error from "../../assets/icons/error-24px.svg";
@@ -86,9 +86,6 @@
                 contact_email: formData.email.trim(),
               };
           
-              console.log("Submitting updated data:", formattedData); // Debugging log
-          
-
         try {
             if (warehouseId) {
                 // Edit warehouse
@@ -139,7 +136,7 @@
 
     return (
         <section className="form">
-        <form onSubmit={handleSubmit} noValidate className="form__form"> 
+        <form onSubmit={handleSubmit} noValidate className="form__container"> 
             <div className="form__details">
                 <div className="form__fields form__fields--modified">  
                     <h2 className="form__heading">Warehouse Details</h2>
