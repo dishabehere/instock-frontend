@@ -1,10 +1,11 @@
-import React from "react";
+import WarehouseForm from "../../components/WarehouseForm/WarehouseForm";
+import "./WarehouseFormPage.scss";
 
-function WarehouseFormPage () {
-  return (
-    <>
-    </>
-  );
+
+function warehouseFormPage() {
+    return(
+            <WarehouseForm />
+    );
 }
 
-export default WarehouseFormPage;
+export default warehouseFormPage;

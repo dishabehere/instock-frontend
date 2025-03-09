@@ -3,7 +3,6 @@
 
 header {
   background-color: $secondary-background-color;
-  min-width: 23.4375rem;
   width: 100%;
   height: 12.5rem;
   display: flex;
@@ -36,6 +35,8 @@ header {
       gap: 1rem;
       @include responsive(tablet) {
         width: 30%;
+        justify-content: end;
+        margin-right: 2rem;
       }
     }
     &__link {
@@ -61,7 +62,7 @@ header {
           width: 95%;
           @include responsive(tablet) {
             padding: 0.5rem 1.5rem;
-            width: 10.25rem;
+            width: 6.6875rem;
           }
         }
       }

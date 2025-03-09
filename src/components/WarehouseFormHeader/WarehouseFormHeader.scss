@@ -1,0 +1,20 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header{
+    padding: 2rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: .5rem;
+    border-bottom: .0625rem solid $table-border-color;
+
+    @include responsive(tablet){
+        padding: 2rem 2rem 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    &__arrow-icon{
+        margin-top: .5rem;
+    }
+}
