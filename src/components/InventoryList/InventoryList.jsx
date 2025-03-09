@@ -7,9 +7,12 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
+import ModalDelete from "../ModalDelete/ModalDelete";
 
 function InventoryList() {
   const [inventories, setInventories] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [inventoryToDelete, setInventoryToDelete] = useState(null);
 
   const fetchInventories = async () => {
     try {
@@ -26,6 +29,31 @@ function InventoryList() {
 
     fetchInventories();
   }, []);
+
+  // Modal for Inventories
+  const openDeleteModal = (inventory) => {
+    setInventoryToDelete(inventory);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setInventoryToDelete(null);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_BASE_URL}/api/inventories/${
+          inventoryToDelete.id
+        }`
+      );
+      fetchInventories();
+      closeModal();
+    } catch (error) {
+      console.error("Error deleting warehouse:", error);
+    }
+  };
 
   return (
     <section className="inventory-list">
@@ -81,16 +109,18 @@ function InventoryList() {
                 <div className="inventory-list__info">
                   <h4 className="inventory-list__label">Inventory Item</h4>
                   <div className="inventory-list__name">
-                    <p className="inventory-list__text inventory-list__text--name">
-                      <Link to={`/inventories/${inventory.id}`}>
-                        {inventory.item_name}{" "}
-                      </Link>
-                    </p>
-                    <img
-                      className="inventory-list__chevron"
-                      src={chevron}
-                      alt="Chevron Icon"
-                    />
+                    <div className="inventory-list__name-wrapper">
+                      <p className="inventory-list__text inventory-list__text--name">
+                        <Link to={`/inventories/${inventory.id}`}>
+                          {inventory.item_name}
+                        </Link>
+                      </p>
+                      <img
+                        className="inventory-list__chevron"
+                        src={chevron}
+                        alt="Chevron Icon"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="inventory-list__info">
@@ -146,6 +176,15 @@ function InventoryList() {
           </div>
         ))}
       </div>
+      {/* Modal */}
+      <ModalDelete
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        handleDelete={handleDelete}
+        itemName={inventoryToDelete?.item_name}
+        itemType="inventory item"
+        itemListType="inventory"
+      />
     </section>
   );
 }

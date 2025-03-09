@@ -256,6 +256,7 @@ a {
     &--name {
       &:hover {
         text-decoration: underline;
+        text-decoration-color: $interactive-color;
       }
     }
 
@@ -288,6 +289,22 @@ a {
     flex-direction: row;
     justify-content: start;
     gap: 0.25rem;
+  }
+
+  &__name-wrapper {
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  
+    &:hover {
+      .inventory-list__chevron {
+        transform: translateX(4px);
+      }
+    }
+  }
+  
+ &__chevron {
+    transition: transform 0.3s ease;
   }
 
   &__actions {
