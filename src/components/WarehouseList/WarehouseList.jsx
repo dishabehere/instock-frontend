@@ -6,7 +6,7 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
-import WarehouseModal from "../WarehouseModal/WarehouseModal";
+import WarehouseModal from "../ModalDelete/ModalDelete";
 import React from "react";
 
 
