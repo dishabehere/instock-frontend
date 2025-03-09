@@ -1,11 +1,16 @@
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import InventoriesFormDetails from "../../components/InventoriesFormDetails/InventoriesFormDetails";
 import InventoriesFormStock from "../../components/InventoriesFormStock/InventoriesFormStock";
 import InventoriesFormTitle from "../../components/InventoriesFormTitle/InventoriesFormTitle";
 import InventoriesFormButtons from "../../components/InventoriesFormButtons/InventoriesFormButtons";
 import "./InventoriesFormPage.scss";
-import { createInventoryItem, updateInventoryItem , getInventoryItem} from "../../utils/apiUtils";
+import {
+  getAllWarehouses,
+  createInventoryItem,
+  updateInventoryItem,
+  getInventoryItem,
+} from "../../utils/apiUtils";
 
 export default function InventoriesFormPage() {
   const { id } = useParams();
@@ -18,10 +23,10 @@ export default function InventoriesFormPage() {
     category: "",
     status: "instock",
     quantity: "",
-    warehouse_name: "",
-    warehouse_id:"",
+    w_name: "",
   });
   const [errors, setErrors] = useState({});
+  const [warehouses, setWarehouses] = useState({});
 
   useEffect(() => {
     if (location.pathname.includes("/edit") && id) {
@@ -32,12 +37,25 @@ export default function InventoriesFormPage() {
   const fetchInventoryItem = async (id) => {
     try {
       const data = await getInventoryItem(id);
-      const status = data.status.toLowerCase() === "in stock" ? "instock" : "outofstock";
-      setFormData({...data, status: status,  warehouse_id: data.warehouse_id || 1 });
+      const status =
+        data.status.toLowerCase() === "in stock" ? "instock" : "outofstock";
+      setFormData({ ...data, status: status });
     } catch (error) {
       console.error("Error fetching inventory item:", error);
     }
   };
+
+  useEffect(() => {
+    async function fetchWarehouses() {
+      try {
+        const data = await getAllWarehouses();
+        setWarehouses(data);
+      } catch (error) {
+        console.error("Error fetching Warehouse", error);
+      }
+    }
+    fetchWarehouses();
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +64,6 @@ export default function InventoriesFormPage() {
       setErrors((prev) => ({ ...prev, [name]: false }));
     }
   };
-
 
   const validateForm = () => {
     const newErrors = {};
@@ -96,38 +113,49 @@ export default function InventoriesFormPage() {
   const handleSubmit = async (e) => {
     console.log("handleSubmit function called");
     e.preventDefault();
-    setIsSubmitted(true)
+    setIsSubmitted(true);
     console.log("Form data before validation:", formData);
-    
+
     if (!validateForm()) {
       console.log("Form validation failed");
       return;
     }
     console.log("Form validation passed");
-  
+    const warehouse = warehouses.find((warehouse) => {
+      return warehouse.warehouse_name === formData.warehouse_name;
+    });
+    console.log(warehouses);
+    
+    let status = ""
+    if (formData.status === "instock"){
+      status = "In Stock"
+    } else{
+      status ="Out of Stock"
+      formData.quantity = 0
+    };
+
     try {
       console.log("Formatting data");
       const formattedData = {
         item_name: formData.item_name.trim(),
         description: formData.description.trim(),
         category: formData.category.trim(),
-        status: formData.status.trim(),
+        status: status,
         quantity: formData.quantity,
-        warehouse_name: formData.warehouse_name.trim(),
-        warehouse_id:formData.warehouse_id,
+        warehouse_id: warehouse.id,
       };
       console.log("Formatted data:", formattedData);
-  
+
       if (location.pathname.includes("/add")) {
         console.log("Adding new inventory item");
         const result = await createInventoryItem(formattedData);
         console.log("Create result:", result);
       } else {
         console.log("Updating inventory item with id:", id);
-        const result = await updateInventoryItem( id, formattedData);
+        const result = await updateInventoryItem(id, formattedData);
         console.log("Update result:", result);
       }
-      
+
       console.log("Operation successful, navigating to /inventories");
       navigate("/inventories");
     } catch (error) {
