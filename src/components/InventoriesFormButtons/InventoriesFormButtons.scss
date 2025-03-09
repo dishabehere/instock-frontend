@@ -17,6 +17,10 @@ button {
       padding: 24px 32px; 
     }
 
+    @include responsive(desktop){
+      padding: 24px 40px;
+    }
+
   &__cancel,
   &__save {
     height: 36px;

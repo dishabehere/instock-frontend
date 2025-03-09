@@ -17,6 +17,10 @@ option {
     width: 50%;
   }
 
+  @include responsive(desktop){
+    padding: 0 2.5rem 1.5rem 0
+  }
+
   &__label {
     padding: 16px 0 4px;
   }
@@ -37,7 +41,8 @@ option {
     border-radius: 12px;
     height: 120px;
     padding: 5px 14px; 
-  }
+
+  } 
 
   &__name,
   &__category,
@@ -52,6 +57,10 @@ option {
 
     &--invalid {
       border: 1px solid $error-state-color;
+    }
+    
+    @include responsive(desktop){
+      @include text-style(14px, 22px, 400);
     }
   }
 

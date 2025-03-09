@@ -15,13 +15,16 @@ h4{
     }
 
     @include responsive(desktop){
-        margin: 0 8.125rem .3125rem;
+        margin: -5.5rem 8.125rem 9.375rem;
     }
 
     &__main{
         @include responsive(tablet){
             display:flex; 
             margin:1.5rem 2rem;
+        }
+        @include responsive(desktop){
+            margin:1.5rem 2.5rem;
         }
     }
 

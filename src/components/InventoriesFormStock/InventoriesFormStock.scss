@@ -27,6 +27,9 @@ select {
         padding:0 0 32px 24px; 
         border-top:none; 
     }
+    @include responsive(desktop){
+      padding: 0 0 40px 32px
+    }
   }
 
   &__availability{
@@ -59,6 +62,10 @@ select {
 
     &--selected{
       color: $global-text-color;
+    }
+
+    @include responsive(desktop){
+      @include text-style(14px, 22px, 400);
     }
   }
 

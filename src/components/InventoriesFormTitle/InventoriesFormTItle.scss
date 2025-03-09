@@ -4,19 +4,27 @@
 .form{
     &__header{
         display:flex; 
-        gap: 4px; 
+        gap: 0.25rem; 
         align-items:center; 
         padding: 1.5rem;
-        border-bottom: 1px solid $table-border-color;
+        border-bottom: 0.0625rem solid $table-border-color;
         @include responsive (tablet){
             padding:1.5rem 2rem;
+        }
+
+        @include responsive(desktop){
+            padding:1.5rem 2.5rem;
         }
     }
 
     &__img{
-        height:20px; 
+        height:1.25rem; 
         display:flex;
         align-items:center;
+
+        @include responsive(tablet){
+            height:1.75rem;
+        }
     }
 }
 
