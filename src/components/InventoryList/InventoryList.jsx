@@ -40,6 +40,16 @@ const closeModal = () => {
   setInventoryToDelete(null);
 };
 
+const handleDelete = async () => {
+  try {
+      await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/inventories/${inventoryToDelete.id}`);
+      fetchInventories()
+      closeModal();
+  } catch (error) {
+      console.error("Error deleting warehouse:", error);
+  }
+};
+
   return (
     <section className="inventory-list">
       <div className="inventory-list__header">
