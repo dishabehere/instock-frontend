@@ -9,6 +9,9 @@
     font-family: 'Titillium Web';
 }
 
+html, body {
+    overflow-x: hidden;
+}
 body{
     background-color: $primary-background-color;
     color: $global-text-color;

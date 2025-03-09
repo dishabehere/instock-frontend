@@ -8,9 +8,7 @@ import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
 import ModalDelete from "../ModalDelete/ModalDelete";
 import React from "react";
-
-
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 function WarehouseList() {
     const [warehouses, setWarehouses] = useState([]);
@@ -74,7 +72,9 @@ function WarehouseList() {
                         />
                         <img className="warehouse-list__search-icon" src={searchIcon} alt="Search" />
                     </div>
-                    <button className="warehouse-list__button">+ Add New Warehouse</button>
+                    <Link to={`/warehouses/add`} className="warehouse-list__link">
+                        <button className="warehouse-list__button">+ Add New Warehouse</button>
+                    </Link>
                 </div>
             </div>
 
@@ -135,7 +135,9 @@ function WarehouseList() {
                         <div className="warehouse-list__actions">
                             <img className="warehouse-list__icon" src={deleteIcon} alt="Delete icon" onClick={() => openDeleteModal(warehouse)}/>
                             {/* added onlick for Modal */}
-                            <img className="warehouse-list__icon" src={editIcon} alt="Edit icon" />
+                            <Link to={`/warehouses/${warehouse.id}/edit`} className="warehouse-list__link">
+                                <img className="warehouse-list__icon" src={editIcon} alt="Edit icon" />
+                            </Link>
                         </div>
                     </div>
                 ))}
