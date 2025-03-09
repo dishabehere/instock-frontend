@@ -79,9 +79,11 @@ function WarehouseList() {
                                 <div className="warehouse-list__info"> 
                                     <h4 className="warehouse-list__label">Warehouse</h4>
                                     <div className="warehouse-list__name">
+                                        <div className="warehouse-list__name-wrapper">
                                         <Link to={`/warehouses/${warehouse.id}`} className="warehouse-list__text warehouse-list__text--name">
                                             <p>{warehouse.warehouse_name}</p></Link>
                                         <img className="warehouse-list__chevron" src={chevron} alt="Chevron Icon" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="warehouse-list__info"> 

@@ -236,6 +236,22 @@
         gap: .25rem;
     }
 
+    &__name-wrapper {
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+      
+        &:hover {
+          .warehouse-list__chevron {
+            transform: translateX(4px);
+          }
+        }
+      }
+      
+     &__chevron {
+        transition: transform 0.3s ease;
+      }
+
     &__actions {
         display: flex;
         align-items: center;
