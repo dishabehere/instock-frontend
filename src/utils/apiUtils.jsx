@@ -56,3 +56,13 @@ export const deleteInventory = async (id) => {
     return false; 
   }
 };
+
+
+export const deleteWarehouse = async (warehouseId) => {
+  try {
+      await axios.delete(`${BASE_URL}/api/warehouses/${warehouseId}`);
+  } catch (error) {
+      console.error("Error deleting warehouse:", error);
+      throw error;
+  }
+};
