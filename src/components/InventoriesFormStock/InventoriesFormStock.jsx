@@ -33,7 +33,7 @@ function InventoriesFormStock({ formData, handleInputChange,errors }) {
       <div className="stock__container">
         <div className="stock__section">
           <h2 className="stock__availability">Item Availability</h2>
-          <h4 className="stock__label">Status</h4>
+          <h3 className="stock__label">Status</h3>
           <div className="stock__statuses">
             <label
               className={`stock__selector ${
@@ -72,7 +72,7 @@ function InventoriesFormStock({ formData, handleInputChange,errors }) {
         </div>
         {formData.status === "instock" && (
           <>
-            <h4 className="stock__label">Quantity</h4>
+            <h3 className="stock__label">Quantity</h3>
             <label className="stock__field">
               <input
                 type="number"
@@ -90,7 +90,7 @@ function InventoriesFormStock({ formData, handleInputChange,errors }) {
           </>
         )}
 
-        <h4 className="stock__label">Warehouse</h4>
+        <h3 className="stock__label">Warehouse</h3>
         <label className="stock__field">
           <select
             name="warehouse_name"

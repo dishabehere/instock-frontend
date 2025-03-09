@@ -20,13 +20,17 @@ select {
   }
 
   &__container {
-    padding: 16px;
+    padding: 24px;
     border-top: 1px solid $table-border-color; 
 
     @include responsive(tablet){
-        padding:0 24px 24px; 
+        padding:0 0 32px 24px; 
         border-top:none; 
     }
+  }
+
+  &__availability{
+    padding-bottom:24px; 
   }
 
   &__label {

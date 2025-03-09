@@ -29,7 +29,7 @@ function InventoriesFormDetails({  formData, handleInputChange, errors }) {
     <div className="details">
       <h2 className="details__header">Item Details</h2>
 
-      <h4 className="details__label">Item Name</h4>
+      <h3 className="details__label">Item Name</h3>
       <label className="details__fields">
         <input
           type="text"
@@ -44,7 +44,7 @@ function InventoriesFormDetails({  formData, handleInputChange, errors }) {
         {errors.item_name && <InventoriesFormError />}
       </label>
 
-      <h4 className="details__label">Description</h4>
+      <h3 className="details__label">Description</h3>
       <label className="details__fields">
         <textarea
           name="description"
@@ -60,7 +60,7 @@ function InventoriesFormDetails({  formData, handleInputChange, errors }) {
         {errors.description && <InventoriesFormError />}
       </label>
 
-      <h4 className="details__label">Category</h4>
+      <h3 className="details__label">Category</h3>
       <div>
         <label className="details__dropdown">
           <select

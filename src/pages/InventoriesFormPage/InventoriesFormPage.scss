@@ -1,16 +1,17 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *; 
 
+h4{
+    color:$global-text-color;
+}
 .inventoryForm{
     background-color: $global-color;
-    margin: 0 1rem .3125rem;
+    margin: -3.5rem 1rem .3125rem;
     border-radius: .1875rem;
     box-shadow: 0 .125rem .3125rem $box-shadow;
-    position:relative; 
-    bottom:80px;
 
     @include responsive(tablet){
-        margin: 0 2rem .3125rem;
+        margin: -5.5rem 2rem 11.25rem;
     }
 
     @include responsive(desktop){
@@ -20,7 +21,7 @@
     &__main{
         @include responsive(tablet){
             display:flex; 
-            margin:24px;
+            margin:1.5rem 2rem;
         }
     }
 

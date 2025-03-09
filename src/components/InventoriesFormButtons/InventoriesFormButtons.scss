@@ -13,6 +13,10 @@ button {
     justify-content: flex-end;
     background-color: $primary-background-color;
 
+    @include responsive(tablet){
+      padding: 24px 32px; 
+    }
+
   &__cancel,
   &__save {
     height: 36px;

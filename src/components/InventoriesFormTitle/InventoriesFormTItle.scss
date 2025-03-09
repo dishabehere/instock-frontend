@@ -6,8 +6,11 @@
         display:flex; 
         gap: 4px; 
         align-items:center; 
-        padding: 24px 16px 24px;
+        padding: 1.5rem;
         border-bottom: 1px solid $table-border-color;
+        @include responsive (tablet){
+            padding:1.5rem 2rem;
+        }
     }
 
     &__img{
