@@ -24,7 +24,7 @@ function InventoryList() {
       console.error("Error fetching inventories:", error);
     }
   };
-  
+
   useEffect(() => {
 
     fetchInventories();
@@ -161,6 +161,7 @@ function InventoryList() {
                 className="inventory-list__icon"
                 src={deleteIcon}
                 alt="Delete icon"
+                onClick={() => openDeleteModal(inventory)}
               />
               <Link to={`/inventories/${inventory.id}/edit`}>
                 <img

@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
+import logo from "../../assets/logo/InStock-Logo.svg";
 
 function Header() {
   return (
@@ -7,7 +8,7 @@ function Header() {
       <NavLink to="/">
         <img
           className="header__logo"
-          src="../src/assets/logo/InStock-Logo.svg"
+          src={logo}
           alt="header logo of two arrows in opposite directions"
         ></img>
       </NavLink>
