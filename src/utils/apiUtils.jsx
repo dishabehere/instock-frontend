@@ -46,3 +46,13 @@ export const updateInventoryItem = async (id, formattedData) => {
     console.error('Error updating inventory item:', error);
   }
 };
+
+export const deleteInventory = async (id) => {
+  try {
+    await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/inventories/${id}`);
+    return true; 
+  } catch (error) {
+    console.error("Error deleting inventory:", error);
+    return false; 
+  }
+};

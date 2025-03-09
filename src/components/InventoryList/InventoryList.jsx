@@ -6,7 +6,7 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
-import { getAllInventories } from "../../utils/apiUtils";
+import { getAllInventories, deleteInventory } from "../../utils/apiUtils";
 import ModalDelete from "../ModalDelete/ModalDelete";
 
 function InventoryList() {
@@ -14,16 +14,16 @@ function InventoryList() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [inventoryToDelete, setInventoryToDelete] = useState(null);
 
-  useEffect(() => {
-    const fetchInventories = async () => {
-      try {
-        const data = await getAllInventories(); 
-        setInventories(data); 
-      } catch (error) {
-        console.error("Error fetching inventories:", error);
-      }
-    };
+  const fetchInventories = async () => {
+    try {
+      const data = await getAllInventories();
+      setInventories(data);
+    } catch (error) {
+      console.error("Error fetching inventories:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchInventories();
   }, []);
 
@@ -39,131 +39,131 @@ function InventoryList() {
   };
 
   const handleDelete = async () => {
-    try {
-      await axios.delete(
-        `${import.meta.env.VITE_BASE_URL}/api/inventories/${
-          inventoryToDelete.id
-        }`
-      );
-      fetchInventories();
-      closeModal();
-    } catch (error) {
-      console.error("Error deleting warehouse:", error);
+    if (inventoryToDelete) {
+      const isDeleted = await deleteInventory(inventoryToDelete.id);
+      if (isDeleted) {
+        await fetchInventories();
+        closeModal();
+      } else {
+        console.error("Failed to delete inventory");
+      }
     }
   };
 
   return (
     <section className="inventory-list">
-      <div className="inventory-list__header">
-        <h1 className="inventory-list__heading">Inventory</h1>
-        <div className="inventory-list__buttons">
-          <div className="inventory-list__search-bar">
+      <div className="inventory-list__head">
+        <h1 className="inventory-list__headings">Inventory</h1>
+        <div className="inventory-list__btns">
+          <div className="inventory-list__searching">
             <input
-              className="inventory-list__search-text"
+              className="inventory-list__searchtext"
               type="text"
               placeholder="Search..."
             />
             <img
-              className="inventory-list__search-icon"
+              className="inventory-list__search-icn"
               src={searchIcon}
               alt="Search"
             />
           </div>
           <Link to={`/inventories/add`}>
-            <button className="inventory-list__button">+ Add New Item</button>
+            <button className="inventory-list__btn">+ Add New Item</button>
           </Link>
         </div>
       </div>
 
-      <div className="inventory-list__index">
-        <div className="inventory-list__title">
-          <h4 className="inventory-list__title-text">Inventory Item</h4>
-          <img className="inventory-list__sort" src={sort} alt="sort" />
+      <div className="inventory-list__section">
+        <div className="inventory-list__titles">
+          <h4 className="inventory-list__nav">Inventory Item</h4>
+          <img className="inventory-list__sorting" src={sort} alt="sort" />
         </div>
-        <div className="inventory-list__title">
-          <h4 className="inventory-list__title-text">Category</h4>
-          <img className="inventory-list__sort" src={sort} alt="sort" />
+        <div className="inventory-list__titles">
+          <h4 className="inventory-list__nav">Category</h4>
+          <img className="inventory-list__sorting" src={sort} alt="sort" />
         </div>
-        <div className="inventory-list__title">
-          <h4 className="inventory-list__title-text">Status</h4>
-          <img className="inventory-list__sort" src={sort} alt="sort" />
+        <div className="inventory-list__titles">
+          <h4 className="inventory-list__nav">Status</h4>
+          <img className="inventory-list__sorting" src={sort} alt="sort" />
         </div>
-        <div className="inventory-list__title">
-          <h4 className="inventory-list__title-text">Qty</h4>
-          <img className="inventory-list__sort" src={sort} alt="sort" />
+        <div className="inventory-list__titles">
+          <h4 className="inventory-list__nav">Qty</h4>
+          <img className="inventory-list__sorting" src={sort} alt="sort" />
         </div>
-        <div className="inventory-list__title">
-          <h4 className="inventory-list__title-text">Warehouse</h4>
-          <img className="inventory-list__sort" src={sort} alt="sort" />
+        <div className="inventory-list__titles">
+          <h4 className="inventory-list__nav">Warehouse</h4>
+          <img className="inventory-list__sorting" src={sort} alt="sort" />
         </div>
-        <h4 className="inventory-list__title-text">Actions</h4>
+        <h4 className="inventory-list__nav">Actions</h4>
       </div>
-      <div className="inventory-list__container">
+      <div className="inventory-list__outer">
         {inventories.map((inventory) => (
-          <div key={inventory.id} className="inventory-list__item">
-            <div className="inventory-list__details">
-              <div className="inventory-list__content">
-                <div className="inventory-list__info">
-                  <h4 className="inventory-list__label">Inventory Item</h4>
-                  <div className="inventory-list__name">
-                    <div className="inventory-list__name-wrapper">
-                      <p className="inventory-list__text inventory-list__text--name">
+          <div key={inventory.id} className="inventory-list__object">
+            <div className="inventory-list__detailing">
+              <div className="inventory-list__descriptor-wrapper">
+                <div className="inventory-list__info-field">
+                  <h4 className="inventory-list__labeling">Inventory Item</h4>
+                  <div className="inventory-list__name-container">
+                    <div className="inventory-list__name-wrapping">
+                      <p className="inventory-list__item-description inventory-list__item-description--name">
                         <Link to={`/inventories/${inventory.id}`}>
                           {inventory.item_name}
                         </Link>
                       </p>
                       <img
-                        className="inventory-list__chevron"
+                        className="inventory-list__chevron-icn"
                         src={chevron}
                         alt="Chevron Icon"
                       />
                     </div>
                   </div>
                 </div>
-                <div className="inventory-list__info">
-                  <h4 className="inventory-list__label">Category</h4>
-                  <p className="inventory-list__text inventory-list__text--category">
+                <div className="inventory-list__info-field">
+                  <h4 className="inventory-list__labeling">Category</h4>
+                  <p className="inventory-list__item-description inventory-list__item-description--category">
                     {inventory.category}
                   </p>
                 </div>
               </div>
 
-              <div className="inventory-list__content inventory-list__content--status">
-                <div className="inventory-list__info">
-                  <h4 className="inventory-list__label">Status</h4>
+              <div className="inventory-list__descriptor-wrapper inventory-list__descriptor-wrapper--status">
+                <div className="inventory-list__info-field">
+                  <h4 className="inventory-list__labeling">Status</h4>
 
                   <p
-                    className={`inventory-list__text ${
+                    className={`inventory-list__item-description ${
                       inventory.status === "In Stock"
-                        ? "inventory-list__text--instock"
-                        : "inventory-list__text--outofstock"
+                        ? "inventory-list__item-description--instock"
+                        : "inventory-list__item-description--outofstock"
                     }`}
                   >
                     {inventory.status}
                   </p>
                 </div>
-                <div className="inventory-list__info">
-                  <h4 className="inventory-list__label">Qty</h4>
-                  <p className="inventory-list__text">{inventory.quantity}</p>
+                <div className="inventory-list__info-field">
+                  <h4 className="inventory-list__labeling">Qty</h4>
+                  <p className="inventory-list__item-description">
+                    {inventory.quantity}
+                  </p>
                 </div>
-                <div className="inventory-list__info">
-                  <h4 className="inventory-list__label">Warehouse</h4>
-                  <p className="inventory-list__text">
+                <div className="inventory-list__info-field">
+                  <h4 className="inventory-list__labeling">Warehouse</h4>
+                  <p className="inventory-list__item-description">
                     {inventory.warehouse_name}
                   </p>
                 </div>
               </div>
             </div>
-            <div className="inventory-list__actions">
+            <div className="inventory-list__action-icn">
               <img
-                className="inventory-list__icon"
+                className="inventory-list__icn"
                 src={deleteIcon}
                 alt="Delete icon"
                 onClick={() => openDeleteModal(inventory)}
               />
               <Link to={`/inventories/${inventory.id}/edit`}>
                 <img
-                  className="inventory-list__icon"
+                  className="inventory-list__icn"
                   src={editIcon}
                   alt="Edit icon"
                 />{" "}

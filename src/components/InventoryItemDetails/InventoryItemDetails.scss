@@ -1,11 +1,6 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
 
-h4 {
-  text-transform: uppercase;
-  color: $table-text-color;
-}
-
 .item {
   background-color: $global-color;
   margin: -3.125rem 1rem 3.125rem;
