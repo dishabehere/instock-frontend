@@ -117,19 +117,25 @@
     };
 
     const handleCancel = () => {
-        setFormData({
-        warehouseName: "",
-        streetAddress: "",
-        city: "",
-        country: "",
-        contactName: "",
-        position: "",
-        phoneNumber: "",
-        email: "",
-        });
-        setErrors({});
-        setSubmitted(false);
+        if (isAddPage) {
+            setFormData({
+                warehouseName: "",
+                streetAddress: "",
+                city: "",
+                country: "",
+                contactName: "",
+                position: "",
+                phoneNumber: "",
+                email: "",
+            });
+            setErrors({});
+            setSubmitted(false);
+            navigate("/");
+        } else {
+            navigate("/");
+        }
     };
+    
 
     return (
         <section className="form">
