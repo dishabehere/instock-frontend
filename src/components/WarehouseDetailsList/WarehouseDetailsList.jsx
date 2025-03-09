@@ -8,7 +8,6 @@ import "./WarehouseDetailsList.scss";
 
 function WarehouseDetailsList ({warehouse , inventories }) {
     const { id } = useParams();
-    // const [inventories, setInventories] = useState([]);
 
   return (
     <section className="inventory-list">
