@@ -67,8 +67,20 @@
     };
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+    
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    
+        // Clear error for the field being updated
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: "",
+        }));
     };
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
