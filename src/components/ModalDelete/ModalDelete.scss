@@ -70,7 +70,7 @@
     align-items: center;
     cursor: pointer;
     border-radius: 1.25rem;
-    height: 2.75rem;
+    padding: .5rem 0;
     @include responsive (tablet) {
         width: 13%;
         }
@@ -79,8 +79,10 @@
     &__cancel-button {
     background-color: $global-color;
     border: 1px solid $table-border-color;
+    color: $table-border-color;
     &:hover {
         border: 0.0625rem solid $interactive-color;
+        color: $interactive-color;
       }
     }
 
