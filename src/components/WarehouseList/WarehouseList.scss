@@ -78,9 +78,11 @@
 
     &__button {
         background-color: $interactive-color;
+        display: flex;
+        justify-content: center;
         color: $global-color;
         @include text-style(.8125rem, 1.25rem, 600, normal);
-        height: 2.25rem;
+        height: 1.25rem;
         width: 100%;
         padding: .5rem 0;
         border: none;
