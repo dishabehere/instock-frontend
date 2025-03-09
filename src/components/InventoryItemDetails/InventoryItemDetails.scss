@@ -120,9 +120,7 @@
     @include responsive(tablet) {
       @include text-style(0.875rem, 1.25rem, 400);
     }
-    @include responsive(desktop){
-      @include text-style(1rem, 1.25rem, 400);
-    }
+  
 
     &--instock,
     &--outofstock {

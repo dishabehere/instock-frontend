@@ -1,5 +1,4 @@
 import Modal from "react-modal";
-import React from "react";
 import closeIcon from "../../assets/icons/close-24px.svg";
 import "./ModalDelete.scss";
 

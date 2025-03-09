@@ -1,15 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseDetailsList.scss";
 import ModalDelete from "../ModalDelete/ModalDelete";
+import { getAllInventories, deleteInventory } from "../../utils/apiUtils";
 
-function WarehouseDetailsList({ warehouse, inventories }) {
+function WarehouseDetailsList() {
+
+  const [inventories, setInventories] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [inventoryToDelete, setInventoryToDelete] = useState(null);
+
+  const fetchInventories = async () => {
+    try {
+      const data = await getAllInventories();
+      setInventories(data);
+    } catch (error) {
+      console.error("Error fetching inventories:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchInventories();
+  }, []);
 
   // Modal for Inventories
   const openDeleteModal = (inventory) => {
@@ -23,19 +39,17 @@ function WarehouseDetailsList({ warehouse, inventories }) {
   };
 
   const handleDelete = async () => {
-    try {
-      await axios.delete(
-        `${import.meta.env.VITE_BASE_URL}/api/inventories/${
-          inventoryToDelete.id
-        }`
-      );
-      fetchInventories();
-      closeModal();
-    } catch (error) {
-      console.error("Error deleting warehouse:", error);
+    if (inventoryToDelete) {
+      const isDeleted = await deleteInventory(inventoryToDelete.id);
+      if (isDeleted) {
+        await fetchInventories();
+        closeModal();
+      } else {
+        console.error("Failed to delete inventory");
+      }
     }
   };
-
+  
   return (
     <section className="inventories-list">
       <div className="inventories-list__index-container">

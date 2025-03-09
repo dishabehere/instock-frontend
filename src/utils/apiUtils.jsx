@@ -20,6 +20,7 @@ export const getInventoryItem = async (id) => {
   }
 };
 
+
 export const getAllInventories = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/api/inventories`);
@@ -54,5 +55,15 @@ export const deleteInventory = async (id) => {
   } catch (error) {
     console.error("Error deleting inventory:", error);
     return false; 
+  }
+};
+
+
+export const deleteWarehouse = async (warehouseId) => {
+  try {
+      await axios.delete(`${BASE_URL}/api/warehouses/${warehouseId}`);
+  } catch (error) {
+      console.error("Error deleting warehouse:", error);
+      throw error;
   }
 };

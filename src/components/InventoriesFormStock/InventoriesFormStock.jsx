@@ -98,11 +98,11 @@ function InventoriesFormStock({ formData, handleInputChange, errors }) {
             value={formData.warehouse_name}
             onChange={handleInputChange}
           >
-            <option className="stock__select" value="">
+            <option value="">
               Please select
             </option>
             {warehouseName.map((warehouse, index) => (
-              <option key={index} value={warehouse}>
+              <option className="stock__select" key={index} value={warehouse}>
                 {warehouse}
               </option>
             ))}
