@@ -14,41 +14,46 @@ function InventoryList() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [inventoryToDelete, setInventoryToDelete] = useState(null);
 
+  const fetchInventories = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/inventories`
+      );
+      setInventories(response.data);
+    } catch (error) {
+      console.error("Error fetching inventories:", error);
+    }
+  };
+  
   useEffect(() => {
-    const fetchInventories = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/api/inventories`
-        );
-        setInventories(response.data);
-      } catch (error) {
-        console.error("Error fetching inventories:", error);
-      }
-    };
 
     fetchInventories();
   }, []);
 
   // Modal for Inventories
-const openDeleteModal = (inventory) => {
-  setInventoryToDelete(inventory);
-  setModalIsOpen(true);
-};
+  const openDeleteModal = (inventory) => {
+    setInventoryToDelete(inventory);
+    setModalIsOpen(true);
+  };
 
-const closeModal = () => {
-  setModalIsOpen(false);
-  setInventoryToDelete(null);
-};
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setInventoryToDelete(null);
+  };
 
-const handleDelete = async () => {
-  try {
-      await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/inventories/${inventoryToDelete.id}`);
-      fetchInventories()
+  const handleDelete = async () => {
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_BASE_URL}/api/inventories/${
+          inventoryToDelete.id
+        }`
+      );
+      fetchInventories();
       closeModal();
-  } catch (error) {
+    } catch (error) {
       console.error("Error deleting warehouse:", error);
-  }
-};
+    }
+  };
 
   return (
     <section className="inventory-list">
@@ -168,6 +173,15 @@ const handleDelete = async () => {
           </div>
         ))}
       </div>
+      {/* Modal */}
+      <ModalDelete
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        handleDelete={handleDelete}
+        itemName={inventoryToDelete?.item_name}
+        itemType="inventory item"
+        itemListType="inventory"
+      />
     </section>
   );
 }
