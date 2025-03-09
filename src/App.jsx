@@ -26,8 +26,8 @@ function App() {
           path="/inventories/:id"
           element={<InventoriesDetailsPage />}
         />
-        {/* <Route path="/inventories/add" element={<InventoriesFormPage />} />
-        <Route path="/inventories/:id/edit" element={<InventoriesFormPage />} /> */}
+        <Route path="/inventories/add" element={<InventoriesFormPage />} />
+        <Route path="/inventories/:id/edit" element={<InventoriesFormPage />} />
       </Routes>
       <Footer />
     </Router>

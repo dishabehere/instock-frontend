@@ -11,6 +11,7 @@ export default function InventoriesFormPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     item_name: "",
     description: "",
@@ -41,7 +42,11 @@ export default function InventoriesFormPage() {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (isSubmitted) {
+      setErrors((prev) => ({ ...prev, [name]: false }));
+    }
   };
+
 
   const validateForm = () => {
     const newErrors = {};
@@ -91,6 +96,7 @@ export default function InventoriesFormPage() {
   const handleSubmit = async (e) => {
     console.log("handleSubmit function called");
     e.preventDefault();
+    setIsSubmitted(true)
     console.log("Form data before validation:", formData);
     
     if (!validateForm()) {

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { getAllInventories } from "../../utils/apiUtils";
 
-function InventoriesFormStock({ formData, handleInputChange, errors }) {
+function InventoriesFormStock({ formData, handleInputChange,errors }) {
   const [warehouseName, setWarehouseName] = useState([]);
   const location = useLocation();
   const isEditPage = location.pathname.includes("/edit");
@@ -68,7 +68,7 @@ function InventoriesFormStock({ formData, handleInputChange, errors }) {
               Out of Stock
             </label>
           </div>
-          {errors.status && <InventoriesFormError />}
+          {errors.status  && <InventoriesFormError />}
         </div>
         {formData.status === "instock" && (
           <>
@@ -95,7 +95,7 @@ function InventoriesFormStock({ formData, handleInputChange, errors }) {
           <select
             name="warehouse_name"
             className={`stock__locations ${
-              errors.warehouse_name ? "stock__locations--invalid" : ""
+              errors.warehouse_name  ? "stock__locations--invalid" : ""
             }`}
             value={formData.warehouse_name}
             onChange={handleInputChange}

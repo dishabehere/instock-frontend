@@ -29,7 +29,6 @@ function InventoriesFormDetails({  formData, handleInputChange, errors }) {
     <div className="details">
       <h2 className="details__header">Item Details</h2>
 
-      {/* Item Name */}
       <h4 className="details__label">Item Name</h4>
       <label className="details__fields">
         <input
@@ -67,10 +66,11 @@ function InventoriesFormDetails({  formData, handleInputChange, errors }) {
           <select
             name="category"
             className={`details__category ${
-              errors.category ? "details__category--invalid" : ""
+              errors.category  ? "details__category--invalid" : ""
             }`}
             value={formData.category}
             onChange={handleInputChange}
+
           >
             <option value="">Please Select</option>
             {categories.map((category, index) => (
