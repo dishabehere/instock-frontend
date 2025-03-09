@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseDetailsList.scss";
 
-function WarehouseDetailsList () {
+function WarehouseDetailsList ({warehouse , inventories }) {
     const { id } = useParams();
-    const [inventories, setInventories] = useState([]);
+    // const [inventories, setInventories] = useState([]);
 
   return (
     <section className="inventory-list">

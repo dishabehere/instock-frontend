@@ -64,7 +64,7 @@ function WarehouseDetailsPage() {
     return (
         <div>
             <WarehouseDetails warehouse={warehouse} /> 
-            <WarehouseDetailsList warehouse={warehouseId}/>
+            <WarehouseDetailsList warehouse={warehouseId} inventories={inventories}/>
         </div>
     );
 }
