@@ -27,7 +27,6 @@ function InventoriesFormDetails({ formData, handleInputChange, errors }) {
   return (
     <div className="details">
       <h2 className="details__header">Item Details</h2>
-
       <h3 className="details__label">Item Name</h3>
       <label className="details__fields">
         <input
