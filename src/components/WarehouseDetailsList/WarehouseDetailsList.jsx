@@ -29,10 +29,6 @@ function WarehouseDetailsList ({warehouse , inventories }) {
           <h4 className="inventory-list__title-text">Qty</h4>
           <img className="inventory-list__sort" src={sort} alt="sort" />
         </div>
-        <div className="inventory-list__title">
-          <h4 className="inventory-list__title-text">Warehouse</h4>
-          <img className="inventory-list__sort" src={sort} alt="sort" />
-        </div>
         <h4 className="inventory-list__title-text">Actions</h4>
       </div>
       <div className="inventory-list__container">
@@ -80,12 +76,6 @@ function WarehouseDetailsList ({warehouse , inventories }) {
                 <div className="inventory-list__info">
                   <h4 className="inventory-list__label">Qty</h4>
                   <p className="inventory-list__text">{inventory.quantity}</p>
-                </div>
-                <div className="inventory-list__info">
-                  <h4 className="inventory-list__label">Warehouse</h4>
-                  <p className="inventory-list__text">
-                    {inventory.warehouse_name}
-                  </p>
                 </div>
               </div>
             </div>
