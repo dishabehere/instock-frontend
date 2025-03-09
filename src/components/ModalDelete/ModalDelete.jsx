@@ -23,8 +23,8 @@ const WarehouseModal = ({
           <img src={closeIcon} alt="Close Icon" />
         </div>
       </div>
-      <div>
-      <h2 className="modal__title">{`Delete ${itemName} ${itemType}?`}</h2>
+      <div className="modal__container-text">
+      <h1 className="modal__title">{`Delete ${itemName} ${itemType}?`}</h1>
       <p>
         {`Please confirm that you’d like to delete the ${itemName} from the
         list of ${itemListType}. You won’t be able to undo this action.`}
