@@ -25,7 +25,7 @@ const ModalDelete = ({
       </div>
       <div className="modal__container-text">
       <h1 className="modal__title">{`Delete ${itemName} ${itemType}?`}</h1>
-      <p>
+      <p className="modal__text">
         {`Please confirm that you’d like to delete the ${itemName} from the
         list of ${itemListType}. You won’t be able to undo this action.`}
       </p>
