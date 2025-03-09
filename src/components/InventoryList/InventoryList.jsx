@@ -7,9 +7,12 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
+import ModalDelete from "../ModalDelete/ModalDelete";
 
 function InventoryList() {
   const [inventories, setInventories] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [inventoryToDelete, setInventoryToDelete] = useState(null);
 
   useEffect(() => {
     const fetchInventories = async () => {
@@ -25,6 +28,17 @@ function InventoryList() {
 
     fetchInventories();
   }, []);
+
+  // Modal for Inventories
+const openDeleteModal = (inventory) => {
+  setInventoryToDelete(inventory);
+  setModalIsOpen(true);
+};
+
+const closeModal = () => {
+  setModalIsOpen(false);
+  setInventoryToDelete(null);
+};
 
   return (
     <section className="inventory-list">
