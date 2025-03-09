@@ -3,18 +3,22 @@
 
 // The same mixin can be used for both tablet and desktop individually and together
 @mixin responsive($breakpoints...) {
-    @each $breakpoint in $breakpoints {
-      @if $breakpoint == tablet {
-        @media (min-width: $tablet-breakpoint) { @content; }
-      } @else if $breakpoint == desktop {
-        @media (min-width: $desktop-breakpoint) { @content; }
+  @each $breakpoint in $breakpoints {
+    @if $breakpoint == tablet {
+      @media (min-width: $tablet-breakpoint) {
+        @content;
+      }
+    } @else if $breakpoint == desktop {
+      @media (min-width: $desktop-breakpoint) {
+        @content;
       }
     }
+  }
 }
 // To add all font-styles using one mixin
 @mixin text-style($size, $line-height, $weight, $style: normal) {
-    font-size: $size;
-    line-height: $line-height;
-    font-weight: $weight;
-    font-style: $style;
+  font-size: $size;
+  line-height: $line-height;
+  font-weight: $weight;
+  font-style: $style;
 }

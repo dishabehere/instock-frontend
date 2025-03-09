@@ -9,7 +9,6 @@ import ModalDelete from "../ModalDelete/ModalDelete";
 import { getAllInventories, deleteInventory } from "../../utils/apiUtils";
 
 function WarehouseDetailsList() {
-
   const [inventories, setInventories] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [inventoryToDelete, setInventoryToDelete] = useState(null);
@@ -49,7 +48,7 @@ function WarehouseDetailsList() {
       }
     }
   };
-  
+
   return (
     <section className="inventories-list">
       <div className="inventories-list__index-container">
@@ -78,8 +77,8 @@ function WarehouseDetailsList() {
               <div className="inventories-list__content">
                 <div className="inventories-list__info">
                   <h4 className="inventories-list__label">Inventory Item</h4>
-                  <div className="inventories-list__name">
-                    <p className="inventories-list__text inventories-list__text--name inventories-list__name-wrapper ">
+                  <div className=" inventories-list__name-wrapper">
+                    <p className="inventories-list__text">
                       <Link to={`/inventories/${inventory.id}`}>
                         {inventory.item_name}{" "}
                       </Link>
@@ -106,8 +105,8 @@ function WarehouseDetailsList() {
                   <p
                     className={`inventories-list__text ${
                       inventory.status === "In Stock"
-                        ? "inventories-list__text--instock"
-                        : "inventories-list__text--outofstock"
+                        ? "inventories-list__text--instocks"
+                        : "inventories-list__text--outofstocks"
                     }`}
                   >
                     {inventory.status}

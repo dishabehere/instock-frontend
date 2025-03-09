@@ -10,16 +10,16 @@ function InventoryItemDetails() {
 
   useEffect(() => {
     const getItem = async () => {
-        try {
-            const data = await getInventoryItem(id);
-            setItem(data);
-        } catch (error) {
-          console.error("Error fetching inventory items:", error);
-        }
+      try {
+        const data = await getInventoryItem(id);
+        setItem(data);
+      } catch (error) {
+        console.error("Error fetching inventory items:", error);
+      }
     };
 
     getItem();
-}, [id]);
+  }, [id]);
 
   return (
     <section className="item">

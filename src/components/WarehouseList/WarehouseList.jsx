@@ -50,11 +50,6 @@ function WarehouseList() {
     }
   };
 
-  //     // // Filter warehouses based on search query
-  //     // const filteredWarehouses = warehouses.filter((warehouse) =>
-  //     //     warehouse.name.toLowerCase().includes(searchQuery.toLowerCase())
-  //     // );
-
   return (
     <section className="warehouse-list">
       <div className="warehouse-list__header">
