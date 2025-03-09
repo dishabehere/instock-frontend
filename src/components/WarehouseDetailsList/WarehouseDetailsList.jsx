@@ -26,7 +26,7 @@ function WarehouseDetailsList ({warehouse , inventories }) {
           <img className="inventory-list__sort" src={sort} alt="sort" />
         </div>
         <div className="inventory-list__title">
-          <h4 className="inventory-list__title-text">Qty</h4>
+          <h4 className="inventory-list__title-text">Quantity</h4>
           <img className="inventory-list__sort" src={sort} alt="sort" />
         </div>
         <h4 className="inventory-list__title-text">Actions</h4>

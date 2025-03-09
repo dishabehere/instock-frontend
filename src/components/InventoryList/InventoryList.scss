@@ -11,10 +11,10 @@ a {
   margin: 0 1rem 0.3125rem;
   border-radius: 0.1875rem;
   box-shadow: 0 0.125rem 0.3125rem $box-shadow;
-  top: 8.5rem;
-  position: absolute;
-  right: 0;
-  left: 0;
+  // top: 8.5rem;
+  // position: absolute;
+  // right: 0;
+  // left: 0;
 
   @include responsive(tablet) {
     margin: 0 2rem 0.3125rem;
