@@ -8,21 +8,17 @@ a {
 
 .inventory-list {
   background-color: $global-color;
-  margin: 0 1rem 0.3125rem;
+  margin: -4.0625rem 1rem 0.3125rem;
   border-radius: 0.1875rem;
   box-shadow: 0 0.125rem 0.3125rem $box-shadow;
-  // top: 8.5rem;
-  // position: absolute;
-  // right: 0;
-  // left: 0;
 
   @include responsive(tablet) {
-    margin: 0 2rem 0.3125rem;
+    margin: -6.5rem 2rem 0.3125rem;
     top: 5.1rem;
   }
 
   @include responsive(desktop) {
-    margin: 0 8.125rem 0.3125rem;
+    margin: -6.5rem 8.125rem 0.3125rem;
   }
 
   &__header {
