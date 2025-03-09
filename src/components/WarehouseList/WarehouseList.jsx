@@ -6,14 +6,17 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import "./WarehouseList.scss";
+import ModalDelete from "../ModalDelete/ModalDelete";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function WarehouseList() {
     const [warehouses, setWarehouses] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [warehouseToDelete, setWarehouseToDelete] = useState(null);
 
-    useEffect(() => {
-        const fetchWarehouses = async () => {
+    const fetchWarehouses = async () => {
             try {
                 const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/warehouses`);
                 setWarehouses(response.data);
@@ -22,13 +25,37 @@ function WarehouseList() {
             }
         };
 
+    useEffect(() => {
+
         fetchWarehouses();
     }, []);
 
-    // // Filter warehouses based on search query
-    // const filteredWarehouses = warehouses.filter((warehouse) =>
-    //     warehouse.name.toLowerCase().includes(searchQuery.toLowerCase())
-    // );
+// Modal for Warehouse
+    const openDeleteModal = (warehouse) => {
+        setWarehouseToDelete(warehouse);
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+        setWarehouseToDelete(null);
+    };
+
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseToDelete.id}`);
+            fetchWarehouses()
+            closeModal();
+        } catch (error) {
+            console.error("Error deleting warehouse:", error);
+        }
+    };
+
+//     // // Filter warehouses based on search query
+//     // const filteredWarehouses = warehouses.filter((warehouse) =>
+//     //     warehouse.name.toLowerCase().includes(searchQuery.toLowerCase())
+//     // );
+
 
     return (
         <section className="warehouse-list">
@@ -71,6 +98,7 @@ function WarehouseList() {
                 <h4 className="warehouse-list__title-text">Actions</h4>
             </div>
 
+    
             <div className="warehouse-list__container">
                 {warehouses.map((warehouse) => (
                     <div key={warehouse.id} className="warehouse-list__item">
@@ -105,17 +133,27 @@ function WarehouseList() {
 
                         {/* Actions row placed below details */}
                         <div className="warehouse-list__actions">
-                            <img className="warehouse-list__icon" src={deleteIcon} alt="Delete icon" />
+                            <img className="warehouse-list__icon" src={deleteIcon} alt="Delete icon" onClick={() => openDeleteModal(warehouse)}/>
+                            {/* added onlick for Modal */}
                             <Link to={`/warehouses/${warehouse.id}/edit`} className="warehouse-list__link">
                                 <img className="warehouse-list__icon" src={editIcon} alt="Edit icon" />
                             </Link>
-                        </div> 
+                        </div>
                     </div>
                 ))}
             </div>
-
+            {/* Modal */}
+               <ModalDelete
+                modalIsOpen={modalIsOpen}
+                closeModal={closeModal}
+                handleDelete={handleDelete}
+                itemName={warehouseToDelete?.warehouse_name}
+                itemType="warehouse"
+                itemListType="warehouses"
+            />
         </section>
     );
 }
 
 export default WarehouseList;
+

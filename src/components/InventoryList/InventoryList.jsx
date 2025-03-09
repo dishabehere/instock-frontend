@@ -11,17 +11,18 @@ import sort from "../../assets/icons/sort-24px.svg";
 function InventoryList() {
   const [inventories, setInventories] = useState([]);
 
+  const fetchInventories = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/inventories`
+      );
+      setInventories(response.data);
+    } catch (error) {
+      console.error("Error fetching inventories:", error);
+    }
+  };
+
   useEffect(() => {
-    const fetchInventories = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/api/inventories`
-        );
-        setInventories(response.data);
-      } catch (error) {
-        console.error("Error fetching inventories:", error);
-      }
-    };
 
     fetchInventories();
   }, []);
@@ -132,6 +133,7 @@ function InventoryList() {
                 className="inventory-list__icon"
                 src={deleteIcon}
                 alt="Delete icon"
+                onClick={() => openDeleteModal(inventory)}
               />
               <Link to={`/inventories/${inventory.id}/edit`}>
                 <img
