@@ -149,15 +149,15 @@
                         {submitted && errors.warehouseName && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.warehouseName}</span>}
                         
                         <h3 className="form__label">Street Address</h3>
-                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Street Address" type="text" name="streetAddress" value={formData.streetAddress} onChange={handleChange} />
+                        <input className={`form__input ${submitted && errors.streetAddress ? "form__input--error" : ""}`} placeholder="Street Address" type="text" name="streetAddress" value={formData.streetAddress} onChange={handleChange} />
                         {submitted && errors.streetAddress && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.streetAddress}</span>}
                         
                         <h3 className="form__label">City</h3>
-                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="City" type="text" name="city" value={formData.city} onChange={handleChange} />
+                        <input className={`form__input ${submitted && errors.city ? "form__input--error" : ""}`} placeholder="City" type="text" name="city" value={formData.city} onChange={handleChange} />
                         {submitted && errors.city && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.city}</span>}
                     
                         <h3 className="form__label">Country</h3>
-                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Country" type="text" name="country" value={formData.country} onChange={handleChange} />
+                        <input className={`form__input ${submitted && errors.country ? "form__input--error" : ""}`} placeholder="Country" type="text" name="country" value={formData.country} onChange={handleChange} />
                         {submitted && errors.country && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.country}</span>}
                     </div>
                 </div>
@@ -166,26 +166,26 @@
                     <h2 className="form__heading">Contact Details</h2>
                     <div className="form__field">
                         <h3 className="form__label">Contact Name</h3>
-                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Contact Name" type="text" name="contactName" value={formData.contactName} onChange={handleChange} />
+                        <input className={`form__input ${submitted && errors.contactName ? "form__input--error" : ""}`} placeholder="Contact Name" type="text" name="contactName" value={formData.contactName} onChange={handleChange} />
                         {submitted && errors.contactName && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.contactName}</span>}
                         
                         <h3 className="form__label">Position</h3>
-                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Position" type="text" name="position" value={formData.position} onChange={handleChange} />
+                        <input className={`form__input ${submitted && errors.position ? "form__input--error" : ""}`} placeholder="Position" type="text" name="position" value={formData.position} onChange={handleChange} />
                         {submitted && errors.position && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.position}</span>}
                         
                         <h3 className="form__label">Phone Number</h3>
-                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Phone Number" type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
+                        <input className={`form__input ${submitted && errors.phoneNumber ? "form__input--error" : ""}`} placeholder="Phone Number" type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
                         {submitted && errors.phoneNumber && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.phoneNumber}</span>}
                         
                         <h3 className="form__label">Email</h3>
-                        <input className={`form__input ${submitted && errors.warehouseName ? "form__input--error" : ""}`} placeholder="Email" type="email" name="email" value={formData.email} onChange={handleChange} />
+                        <input className={`form__input ${submitted && errors.email ? "form__input--error" : ""}`} placeholder="Email" type="email" name="email" value={formData.email} onChange={handleChange} />
                         {submitted && errors.email && <span className="form__error"><img className="form__error-icon" src={error} alt="Error Icon" />{errors.email}</span>}
                     </div>
                 </div>
             </div>
 
             <div className="form__buttons">
-            <button type="button" className="form__button form__button--cancel" onClick={handleCancel}>Cancel</button>
+            <button type="button" className="form__button form__button--cancel" onClick={handleCancel}> Cancel</button>
             {isAddPage ? (
                     <button type="submit" className="form__button form__button--submit">+ Add Warehouse</button>
                 ) : (

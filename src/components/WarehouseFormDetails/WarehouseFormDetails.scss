@@ -58,7 +58,6 @@
 
         &--error {
             border: 0.125rem solid $error-state-color; 
-            color: $error-state-color;
         }
     }
 
@@ -102,6 +101,7 @@
         &--cancel {
             background-color: $global-color;
             border: .0625rem solid $table-border-color;
+            color: $table-text-color;
 
             &:hover {
                 border: .0625rem solid $interactive-color;
