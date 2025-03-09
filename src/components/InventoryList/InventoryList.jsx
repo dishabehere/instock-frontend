@@ -7,12 +7,9 @@ import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import chevron from "../../assets/icons/chevron_right-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
-import ModalDelete from "../ModalDelete/ModalDelete";
 
 function InventoryList() {
   const [inventories, setInventories] = useState([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [inventoryToDelete, setInventoryToDelete] = useState(null);
 
   const fetchInventories = async () => {
     try {
@@ -29,27 +26,6 @@ function InventoryList() {
 
     fetchInventories();
   }, []);
-
-  const openDeleteModal = (inventory) => {
-    setInventoryToDelete(inventory);
-    setModalIsOpen(true);
-  };
-  
-  const closeModal = () => {
-    setModalIsOpen(false);
-    setInventoryToDelete(null);
-  };
-  
-  const handleDelete = async () => {
-    try {
-        // await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/inventories/${inventoryToDelete.id}`);
-        console.log('inventories delete')
-        fetchInventories()
-        closeModal();
-    } catch (error) {
-        console.error("Error deleting warehouse:", error);
-    }
-};
 
   return (
     <section className="inventory-list">
@@ -170,15 +146,6 @@ function InventoryList() {
           </div>
         ))}
       </div>
-      {/* Modal */}
-      <ModalDelete
-        modalIsOpen={modalIsOpen}
-        closeModal={closeModal}
-        handleDelete={handleDelete}
-        itemName={inventoryToDelete?.item_name}
-        itemType="inventory item"
-        itemListType="inventory"
-        />
     </section>
   );
 }
