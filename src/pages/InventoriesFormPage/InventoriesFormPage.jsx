@@ -86,56 +86,26 @@ export default function InventoriesFormPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (!validateForm()) return;
-
-  //   try {
-  //     const formattedData = {
-  //       item_name: formData.item_name.trim(),
-  //       description: formData.description.trim(),
-  //       category: formData.category.trim(),
-  //       status: formData.status.trim(),
-  //       quantity: formData.quantity,
-  //       warehouse_name: formData.warehouse_name.trim(),
-  //     };
-  //     if (location.pathname.includes("/add")) {
-  //       await createInventoryItem(formattedData);
-  //     } else {
-  //       await updateInventoryItem(id, formattedData);
-  //     }
-  //     navigate("/inventories");
-  //   } catch (error) {
-  //     console.error("Error submitting form:", error);
-  //   }
-  // };
-
   const handleSubmit = async (e) => {
-    console.log("handleSubmit function called");
     e.preventDefault();
     setIsSubmitted(true);
-    console.log("Form data before validation:", formData);
 
     if (!validateForm()) {
-      console.log("Form validation failed");
       return;
     }
-    console.log("Form validation passed");
     const warehouse = warehouses.find((warehouse) => {
       return warehouse.warehouse_name === formData.warehouse_name;
     });
-    console.log(warehouses);
-    
-    let status = ""
-    if (formData.status === "instock"){
-      status = "In Stock"
-    } else{
-      status ="Out of Stock"
-      formData.quantity = 0
-    };
+
+    let status = "";
+    if (formData.status === "instock") {
+      status = "In Stock";
+    } else {
+      status = "Out of Stock";
+      formData.quantity = 0;
+    }
 
     try {
-      console.log("Formatting data");
       const formattedData = {
         item_name: formData.item_name.trim(),
         description: formData.description.trim(),
@@ -144,23 +114,16 @@ export default function InventoriesFormPage() {
         quantity: formData.quantity,
         warehouse_id: warehouse.id,
       };
-      console.log("Formatted data:", formattedData);
 
       if (location.pathname.includes("/add")) {
-        console.log("Adding new inventory item");
         const result = await createInventoryItem(formattedData);
-        console.log("Create result:", result);
       } else {
-        console.log("Updating inventory item with id:", id);
         const result = await updateInventoryItem(id, formattedData);
-        console.log("Update result:", result);
       }
 
-      console.log("Operation successful, navigating to /inventories");
       navigate("/inventories");
     } catch (error) {
       console.error("Error in try block of handleSubmit:", error);
-      console.log("Error details:", error.response?.data);
     }
   };
 
