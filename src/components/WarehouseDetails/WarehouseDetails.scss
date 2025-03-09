@@ -65,10 +65,10 @@
       cursor: pointer;
       @include responsive(tablet) {
         display: flex;
-        width: 5.5rem;
+        width: 5.0625rem;
         height: 2.5rem;
         border-radius: 1.25rem;
-        padding: 8px 16px;
+        padding: .5rem 1rem;
       }
     }
     &-text {
