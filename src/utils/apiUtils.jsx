@@ -20,6 +20,7 @@ export const getInventoryItem = async (id) => {
   }
 };
 
+
 export const getAllInventories = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/api/inventories`);
