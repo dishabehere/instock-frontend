@@ -69,7 +69,7 @@ function InventoriesFormDetails({ formData, handleInputChange, errors }) {
             value={formData.category}
             onChange={handleInputChange}
           >
-            <option value="">Please Select</option>
+            <option value="" className="details__select">Please Select</option>
             {categories.map((category, index) => (
               <option className="details__options" key={index} value={category}>
                 {category}
