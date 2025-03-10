@@ -36,14 +36,26 @@ header {
       @include responsive(tablet) {
         width: 30%;
         justify-content: end;
-        margin-right: 2rem;
+        gap: 1.5rem;
       }
+
+      @include responsive(desktop) {
+        justify-content: end;
+      }
+
     }
     &__link {
       text-decoration: none;
       width: 90%;
       display: flex;
       justify-content: center;
+
+      @include responsive(desktop){
+        display: block;
+        justify-content: flex-end;
+        width: 6.6875rem;
+
+      }
 
       &:hover {
         .nav-bar__title {

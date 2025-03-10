@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getWarehouse, createWarehouse, updateWarehouse} from "../../utils/apiUtils";
-import axios from "axios";
 import "./WarehouseFormDetails.scss";
 import error from "../../assets/icons/error-24px.svg";
 
