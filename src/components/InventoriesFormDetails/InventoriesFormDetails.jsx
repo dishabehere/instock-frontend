@@ -61,7 +61,7 @@ function InventoriesFormDetails({ formData, handleInputChange, errors }) {
       <h3 className="details__label">Category</h3>
       <div>
         <label className="details__dropdown">
-          <select
+          <select 
             name="category"
             className={`details__category ${
               errors.category ? "details__category--invalid" : ""
