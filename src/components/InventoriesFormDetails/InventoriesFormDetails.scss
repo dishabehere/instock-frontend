@@ -62,10 +62,6 @@ option {
     &--invalid {
       border: 0.0625rem solid $error-state-color;
     }
-
-    @include responsive(desktop) {
-      @include text-style(0.875rem, 1.375rem, 400);
-    }
   }
 
   &__header {
