@@ -61,7 +61,7 @@ function InventoriesFormDetails({ formData, handleInputChange, errors }) {
       <h3 className="details__label">Category</h3>
       <div>
         <label className="details__dropdown">
-          <select
+          <select 
             name="category"
             className={`details__category ${
               errors.category ? "details__category--invalid" : ""
@@ -69,7 +69,7 @@ function InventoriesFormDetails({ formData, handleInputChange, errors }) {
             value={formData.category}
             onChange={handleInputChange}
           >
-            <option value="">Please Select</option>
+            <option value="" className="details__select">Please Select</option>
             {categories.map((category, index) => (
               <option className="details__options" key={index} value={category}>
                 {category}

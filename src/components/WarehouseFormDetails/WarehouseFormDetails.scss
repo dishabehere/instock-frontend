@@ -94,7 +94,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include text-style(13px, 16px, 600);
+    @include text-style(0.8125rem, 1rem, 600);
 
     @include responsive(tablet) {
       width: auto;
