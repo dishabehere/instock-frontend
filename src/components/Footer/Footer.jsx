@@ -1,10 +1,10 @@
 import React from "react";
 import "./Footer.scss";
 
-function Footer () {
+function Footer() {
   return (
     <footer className="footer__container">
-        <p className="footer__text">© InStock Inc. All Rights Reserved.</p>
+      <p className="footer__text">© InStock Inc. All Rights Reserved.</p>
     </footer>
   );
 }

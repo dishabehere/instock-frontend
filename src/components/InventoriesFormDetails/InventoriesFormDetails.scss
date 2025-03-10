@@ -11,7 +11,7 @@ option {
 }
 
 .details {
-  padding: 1.5rem;
+  padding: 1.25rem;
   @include responsive(tablet) {
     padding: 0 2rem 1.5rem 0;
     width: 50%;
@@ -38,9 +38,14 @@ option {
 
   &__description {
     resize: none;
-    border-radius: 0.75rem;
+    border-radius: 1.25rem;
     height: 7.5rem;
-    padding: 0.3125rem 0.875rem;
+    padding: 0.5rem 0.875rem;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
   }
 
   &__name,
@@ -62,7 +67,6 @@ option {
       @include text-style(0.875rem, 1.375rem, 400);
     }
   }
-
 
   &__header {
     padding-bottom: 0.25rem;

@@ -1,73 +1,72 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.form{
+.form {
+  &__details {
+    display: flex;
+    flex-direction: column;
 
-    &__details{
-        display: flex;
-        flex-direction: column;
+    @include responsive(tablet) {
+      flex-direction: row;
+    }
+  }
 
-        @include responsive(tablet) {
-            flex-direction: row;
-        }
+  &__fields {
+    padding: 1.5rem;
+
+    @include responsive(tablet) {
+      width: 100%;
+      padding: 0 2rem;
     }
 
-    &__fields{
-        padding: 1.5rem;
-       
-        @include responsive(tablet){
-            width: 100%;
-            padding: 0 2rem;
-        }
+    &--modified {
+      border-bottom: 0.0625rem solid $table-border-color;
 
-        &--modified{
-            border-bottom: .0625rem solid $table-border-color;
-
-            @include responsive(tablet){
-                border-bottom: 0;
-                border-right: .0625rem solid $table-border-color;
-            }
-        }
+      @include responsive(tablet) {
+        border-bottom: 0;
+        border-right: 0.0625rem solid $table-border-color;
+      }
     }
+  }
 
-    &__field{
-        display: flex;
-        flex-direction: column;
-        padding-top: .5rem;
+  &__field {
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+  }
+
+  &__label {
+    padding-top: 1rem;
+
+    @include responsive(tablet) {
+      padding-top: 1.5rem;
     }
+  }
 
-    &__label {
-        padding-top: 1rem;
+  &__input {
+    margin-top: 0.25rem;
+    height: 2.25rem;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid $table-border-color;
+    padding: 0.5rem 1rem;
 
-        @include responsive (tablet) {
-            padding-top: 1.5rem;
-        }
+    &:focus {
+      border: 0.125rem solid $interactive-color;
+      outline: none;
     }
-
-    &__input {
-        margin-top: .25rem;
-        height: 2.25rem;
-        border-radius: 1.25rem;
-        border: .0625rem solid $table-border-color;
-        padding: .5rem 1rem;
-
-        &:focus {
-            border: 0.125rem solid $interactive-color; 
-            outline: none;
-        }
 
         &--error {
             border: .0625rem solid $error-state-color; 
         }
     }
 
-    &__error {
-        color: $error-state-color;
-        @include text-style(.75rem, 1.125rem, 400, normal);
-        margin-top: 0.25rem;
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
+  &__error {
+    color: $error-state-color;
+    @include text-style(0.75rem, 1.125rem, 400, normal);
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 
         &::before {
             font-size: 1rem;
@@ -79,52 +78,53 @@
         }
     }
 
-    &__buttons {
-        padding: 1rem 1.5rem;
-        background-color: $tertiary-background-color;
-        display: flex;
-        justify-content: space-around;
-        gap: 1rem;
+  &__buttons {
+    padding: 1rem 1.5rem;
+    background-color: $tertiary-background-color;
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
 
-        @include responsive(tablet) {
-            margin-top: 2rem;
-            justify-content: flex-end;
-        }
+    @include responsive(tablet) {
+      margin-top: 2rem;
+      justify-content: flex-end;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: 2.25rem;
+    border: 0;
+    border-radius: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include text-style(13px, 16px, 600);
+
+    @include responsive(tablet) {
+      width: auto;
+      padding: 0.5rem 1rem;
+      height: 1.375rem;
     }
 
-    &__button {
-        width: 100%;
-        height: 2.25rem;
-        border: 0;
-        border-radius: 1.25rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    &--cancel {
+      background-color: $global-color;
+      border: 0.0625rem solid $table-border-color;
+      color: $table-text-color;
 
-        @include responsive(tablet){
-            width: auto;
-            padding: .5rem 1rem;
-            height: 1.375rem;
-        }
-
-        &--cancel {
-            background-color: $global-color;
-            border: .0625rem solid $table-border-color;
-            color: $table-text-color;
-
-            &:hover {
-                border: .0625rem solid $interactive-color;
-                color: $interactive-color;
-            }
-        }
-
-        &--submit {
-            background-color: $interactive-color;
-            color: $global-color;
-
-            &:hover {
-                background-color: $secondary-background-color;
-            }
-        }
+      &:hover {
+        border: 0.0625rem solid $interactive-color;
+        color: $interactive-color;
+      }
     }
+
+    &--submit {
+      background-color: $interactive-color;
+      color: $global-color;
+
+      &:hover {
+        background-color: $secondary-background-color;
+      }
+    }
+  }
 }

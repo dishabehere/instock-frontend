@@ -29,7 +29,6 @@ export default function InventoriesFormPage() {
   const [warehouses, setWarehouses] = useState({});
 
   useEffect(() => {
-    console.log(id);
     if (location.pathname.includes("/edit") && id) {
       fetchInventoryItem(id);
     }
