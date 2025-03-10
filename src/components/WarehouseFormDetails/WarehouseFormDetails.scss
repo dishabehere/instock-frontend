@@ -55,10 +55,10 @@
       outline: none;
     }
 
-    &--error {
-      border: 0.125rem solid $error-state-color;
+        &--error {
+            border: .0625rem solid $error-state-color; 
+        }
     }
-  }
 
   &__error {
     color: $error-state-color;
@@ -68,10 +68,15 @@
     align-items: center;
     gap: 0.25rem;
 
-    &::before {
-      font-size: 1rem;
+        &::before {
+            font-size: 1rem;
+        }
+
+        &-icon{
+            height: 1rem;
+            width: 1rem;
+        }
     }
-  }
 
   &__buttons {
     padding: 1rem 1.5rem;

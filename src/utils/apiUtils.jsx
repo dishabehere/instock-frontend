@@ -11,6 +11,37 @@ export const getAllWarehouses = async () => {
   }
 };
 
+export const getWarehouse = async (warehouseId) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/api/warehouses/${warehouseId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching warehouse:", error);
+    throw error;
+  }
+};
+
+export const createWarehouse = async (warehouseData) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/api/warehouses`, warehouseData);
+    return response.data;
+  } catch (error) {
+    console.error("Error creating warehouse:", error);
+    throw error;
+  }
+};
+
+export const updateWarehouse = async (warehouseId, warehouseData) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/api/warehouses/${warehouseId}`, warehouseData);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating warehouse:", error);
+    throw error;
+  }
+};
+
+
 export const getInventoryItem = async (id) => {
   try {
     const response = await axios.get(`${BASE_URL}/api/inventories/${id}`);

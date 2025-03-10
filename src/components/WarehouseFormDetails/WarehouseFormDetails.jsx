@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { getWarehouse, createWarehouse, updateWarehouse} from "../../utils/apiUtils";
 import "./WarehouseFormDetails.scss";
 import error from "../../assets/icons/error-24px.svg";
 
@@ -24,18 +24,16 @@ function WarehouseFormDetails({ warehouseId }) {
     if (!isAddPage && warehouseId) {
       const fetchWarehouse = async () => {
         try {
-          const response = await axios.get(
-            `${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`
-          );
+          const data = await getWarehouse(warehouseId);
           setFormData({
-            warehouseName: response.data.warehouse_name || "",
-            streetAddress: response.data.address || "",
-            city: response.data.city || "",
-            country: response.data.country || "",
-            contactName: response.data.contact_name || "",
-            position: response.data.contact_position || "",
-            phoneNumber: response.data.contact_phone || "",
-            email: response.data.contact_email || "",
+            warehouseName: data.warehouse_name || "",
+            streetAddress: data.address || "",
+            city: data.city || "",
+            country: data.country || "",
+            contactName: data.contact_name || "",
+            position: data.contact_position || "",
+            phoneNumber: data.contact_phone || "",
+            email: data.contact_email || "",
           });
         } catch (error) {
           console.error("Error fetching warehouse data:", error);
@@ -74,9 +72,20 @@ function WarehouseFormDetails({ warehouseId }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+    
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    
+        setErrors((prevErrors) => ({
+            ...prevErrors,
+            [name]: "",
+        }));
+    };
+    
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -95,16 +104,9 @@ function WarehouseFormDetails({ warehouseId }) {
 
       try {
         if (warehouseId) {
-          // Edit warehouse
-          await axios.put(
-            `${import.meta.env.VITE_BASE_URL}/api/warehouses/${warehouseId}`,
-            formattedData
-          );
+          await updateWarehouse(warehouseId, formattedData);
         } else {
-          await axios.post(
-            `${import.meta.env.VITE_BASE_URL}/api/warehouses`,
-            formattedData
-          );
+          await createWarehouse(formattedData);
         }
 
         setFormData({

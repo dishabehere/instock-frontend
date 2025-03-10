@@ -8,23 +8,23 @@
   box-shadow: 0 0.125rem 0.3125rem $box-shadow;
   margin-top: -3.5rem;
 
-  @include responsive(tablet) {
-    margin: 0 2rem 0.3125rem;
-    margin-top: -5rem;
-  }
+    @include responsive(tablet){
+        margin: 0 2rem .3125rem;
+        margin-top: -6.5rem;
+    }
 
-  @include responsive(desktop) {
-    margin: 0 8.125rem 0.3125rem;
-    margin-top: -6rem;
-  }
+    @include responsive(desktop){
+        margin: 0 8.125rem .3125rem;
+        margin-top: -6.5rem;
+    }
 
-  &__header {
-    padding: 2rem 1.5rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    gap: 1rem;
-    justify-content: space-between;
+    &__header {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 1rem;
+        justify-content: space-between;
 
     @include responsive(tablet) {
       flex-direction: row;
@@ -55,12 +55,16 @@
     width: 100%;
     border: 0.0625rem solid $table-border-color;
 
-    @include responsive(tablet) {
-      height: 2.375rem;
-      width: 11.5625rem;
-      padding: 0.5rem 1rem;
+        @include responsive(tablet){
+            height: 2.375rem;
+            width: 11.5625rem;
+            padding: .5rem 1rem;
+        }
+
+        @include responsive(desktop){
+            width: 17.125rem;
+        }
     }
-  }
 
   &__search-text {
     border: none;
@@ -90,12 +94,12 @@
     cursor: pointer;
     transition: 0.3s;
 
-    @include responsive(tablet) {
-      height: 1.375rem;
-      width: 10.5rem;
-      padding: 0.5rem 0;
-      @include text-style(0.875rem, 1.375rem, 600, normal);
-    }
+        @include responsive(tablet){
+            height: 1.375rem;
+            width: 8.5rem;
+            padding: .5rem 1rem;
+            @include text-style(.875rem, 1.375rem, 600, normal);
+        }
 
     &:hover {
       background-color: $secondary-background-color;
@@ -105,14 +109,17 @@
   &__index {
     display: none;
 
-    @include responsive(tablet) {
-      display: grid;
-      grid-template-columns: 1.05fr 1.05fr 0.95fr 1.5fr 0.5fr;
-      padding: 0.75rem 2rem;
-      background-color: $primary-background-color;
-      text-align: center;
+        @include responsive(tablet){
+            display: grid;
+            grid-template-columns: 1fr 1fr 0.9fr 1.5fr 0fr;
+            padding: .75rem 2rem;
+            background-color: $primary-background-color;
+            text-align: center;
+        }
+        @include responsive(desktop){
+            grid-template-columns: 1.05fr 1.05fr 1fr 1.5fr 0fr;
+        }
     }
-  }
 
   &__title {
     @include responsive(tablet) {
@@ -155,13 +162,14 @@
       background-color: $hover-state;
     }
 
-    @include responsive(tablet) {
-      display: grid;
-      grid-template-columns: 1.8fr 2fr 0.5fr;
-      padding: 2rem;
-      gap: 0;
+        @include responsive(tablet){
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: 1.8fr 2fr 0fr;
+            gap: 0;
+
+        }
     }
-  }
 
   &__details {
     display: grid;
