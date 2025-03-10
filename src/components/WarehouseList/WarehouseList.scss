@@ -164,7 +164,6 @@
         @include responsive(tablet){
             display: grid;
             grid-template-columns: 1.8fr 2fr 0.5fr;
-            padding: 2rem;
             gap: 0;
 
         }
