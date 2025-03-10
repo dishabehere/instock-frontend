@@ -60,8 +60,6 @@ function WarehouseList() {
               className="warehouse-list__search-text"
               type="text"
               placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <img
               className="warehouse-list__search-icon"
