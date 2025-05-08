@@ -16,19 +16,22 @@ Develop a robust Express.js API with efficient data handling.
 ### 🛠️ Tech Stack
 
 #### Front-End:
-React
-React Router
-SASS
-Axios for API requests
+- React
+- React Router
+- SASS
+- Axios for API requests
 
 #### Back-End:
-Node.js
-Express.js
-RESTful API structure
-MySQL
+- Node.js
+- Express.js
+- RESTful API structure
+- MySQL
 
 #### Dev Tools:
-Jira for Scrum workflow
-Git & GitHub for version control
-Postman for API testing
-Prettier for code quality
+- Jira for Scrum workflow
+- Git & GitHub for version control
+- Postman for API testing
+- Prettier for code quality
+  
+### Team
+Alexandria Balkaran, Candice Leung, Disha Behere
